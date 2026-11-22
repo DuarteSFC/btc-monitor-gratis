@@ -137,7 +137,7 @@ export function indicators(bars,ms){
     rsi14:rsi(x),macd12_26_9:macd(x),ema20:ema(x,20)?.at(-1),ema50:ema(x,50)?.at(-1),ema200:ema(x,200)?.at(-1),atr14:atr(bars),
     structure,highs,lows,fibonacci:fibonacciFromClosedBars(bars)};
 }
-async function derivatives(now,request){
+export async function derivatives(now,request){
   const errors=[];let funding=null,openInterest=null;
   try{
     const j=await request("https://www.okx.com/api/v5/public/funding-rate?instId=BTC-USDT-SWAP"),z=j.data?.[0];
@@ -149,6 +149,25 @@ async function derivatives(now,request){
     if(j.code!=="0"||!z||Math.abs(now-num(z.ts))>3600000)throw Error("OI_invalid_or_stale");
     openInterest={source:"OKX BTC-USDT-SWAP only",observedUtc:iso(num(z.ts)),contracts:num(z.oi),btc:num(z.oiCcy),usd:num(z.oiUsd)};
   }catch(e){errors.push("OI: "+String(e.message||e));}
+  if(!funding||!openInterest){
+    try{
+      const j=await request("https://api.bitget.com/api/v2/mix/market/ticker?symbol=BTCUSDT&productType=USDT-FUTURES");
+      const z=j.data?.[0],t=num(z?.ts);
+      if(j.code!=="00000"||z?.symbol!=="BTCUSDT"||!Number.isFinite(t)||Math.abs(now-t)>120000)
+        throw Error("Bitget_derivative_snapshot_invalid_or_stale");
+      if(!funding){
+        if(!Number.isFinite(num(z.fundingRate)))throw Error("Bitget_funding_missing");
+        funding={source:"Bitget BTCUSDT USDT-FUTURES only",rate:num(z.fundingRate),observedUtc:iso(t),
+          fundingTimeUtc:null,nextFundingTimeUtc:null,plan:"B"};
+      }
+      if(!openInterest){
+        const btc=num(z.holdingAmount),mark=num(z.markPrice);
+        if(!(btc>0&&mark>0))throw Error("Bitget_OI_missing");
+        openInterest={source:"Bitget BTCUSDT USDT-FUTURES only",observedUtc:iso(t),
+          contracts:null,btc,usd:btc*mark,usdIsEstimate:true,plan:"B"};
+      }
+    }catch(e){errors.push("Bitget derivatives fallback: "+String(e.message||e));}
+  }
   return {funding,openInterest,errors};
 }
 export async function report(now=Date.now(),request=json){
