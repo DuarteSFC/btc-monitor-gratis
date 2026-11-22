@@ -46,3 +46,5 @@ jobs:
           node-version: '22'
       - name: Comprobar fuentes ETF on-chain liquidaciones
         run: node probe_sources.mjs
+      - name: Inspeccionar esquemas del respaldo
+        run: node probe_shapes.mjs
