@@ -25,9 +25,10 @@ for(const p of ["BTCUSD","BTCUSDT"]){
  await check(p+"_plan_B",()=>price(p,now,noA));
  await check(p+"_plan_C",()=>price(p,now,noAB));
 }
+const noABforCandles=async u=>{if(u.includes("okx.com")||u.includes("bitget.com"))throw Error("Injected A+B failures");return request(u);};
 for(const t of ["1H","4H","1D"]){
  await check("candles_"+t+"_B",()=>candles(t,now,noA));
- await check("candles_"+t+"_C",()=>candles(t,now,noAB));
+ await check("candles_"+t+"_C",()=>candles(t,now,noABforCandles));
 }
 await check("liquidations_B",()=>getLiquidations(now,async u=>{if(u.includes("marketlight"))throw Error("Injected A failure");return request(u)}));
 await check("onchain_B",()=>getOnchain(now,async u=>{if(u.includes("bitcoincreditstack"))throw Error("Injected A failure");return request(u)}));
