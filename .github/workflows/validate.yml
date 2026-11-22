@@ -26,6 +26,7 @@ jobs:
           node test_context.mjs
           node test_technical_context.mjs
           node test_risk.mjs
+          node test_derivatives.mjs
           node test_risk.mjs
           node --check api/report.mjs
           node --check api/health.mjs
@@ -66,27 +67,3 @@ jobs:
           node-version: "22"
       - name: Probar fuentes reales alternativas B y C
         run: node test_live_failover.mjs
-
-  probe-real-alternative:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Probar proveedor C BTC USDT gratis
-        run: node probe_fallback_c.mjs
-
-  probe-derivative-alternatives:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    timeout-minutes: 4
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Probar funding y OI alternativos de mercado
-        run: node probe_derivatives.mjs
