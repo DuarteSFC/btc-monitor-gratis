@@ -24,6 +24,8 @@ jobs:
         run: |
           node test_worker.mjs
           node test_context.mjs
+          node test_technical_context.mjs
+          node test_risk.mjs
           node test_risk.mjs
           node --check api/report.mjs
           node --check api/health.mjs
