@@ -1,0 +1,15 @@
+import assert from "node:assert/strict";
+import {fibonacciFromClosedBars} from "./technical_context.mjs";
+const bars=Array.from({length:90},(_,i)=>({t:i*3600000,h:100,l:90}));
+bars[20].h=150;bars[70].l=50;
+const down=fibonacciFromClosedBars(bars);
+assert.equal(down.direction,"down_leg");
+assert.equal(down.high.price,150);
+assert.equal(down.low.price,50);
+assert.equal(down.retracements.find(x=>x.ratio===0.5).level,100);
+bars[20].h=100;bars[70].l=90;bars[15].l=50;bars[77].h=150;
+const up=fibonacciFromClosedBars(bars);
+assert.equal(up.direction,"up_leg");
+assert.equal(up.retracements.find(x=>x.ratio===0.382).level,111.8);
+assert.equal(fibonacciFromClosedBars(bars.slice(0,50)),null);
+console.log("PASS: Fibonacci descriptive extremum anchors and invalid-window checks.");
