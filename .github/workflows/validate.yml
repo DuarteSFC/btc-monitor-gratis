@@ -54,3 +54,15 @@ jobs:
           node-version: "22"
       - name: Probar endpoint remoto HTTP sin cache
         run: node test_http_endpoint.mjs
+
+  test-source-fallbacks:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Probar fuentes reales alternativas B y C
+        run: node test_live_failover.mjs
