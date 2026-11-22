@@ -34,3 +34,15 @@ jobs:
           node-version: "22"
       - name: Validar cotizaciones publicas e indicadores reales
         run: node market_smoke.mjs
+
+  inspect-free-sources:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar fuentes ETF on-chain liquidaciones
+        run: node probe_sources.mjs
