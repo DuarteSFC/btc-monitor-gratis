@@ -1,6 +1,6 @@
 import {report} from "../worker.mjs";
 export const config={maxDuration:60};
-export default async function handler(request){
+export async function GET(request){
   if(request.method!=="GET")return new Response(JSON.stringify({error:"method_not_allowed"}),{status:405,headers:{"Content-Type":"application/json","Cache-Control":"no-store"}});
   try{
     const snapshot=await report(Date.now());
