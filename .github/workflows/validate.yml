@@ -42,3 +42,15 @@ jobs:
       - name: Validar cotizaciones publicas e indicadores reales
         run: node market_smoke.mjs
 
+
+  http-endpoint-live:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Probar endpoint remoto HTTP sin cache
+        run: node test_http_endpoint.mjs
