@@ -52,4 +52,4 @@ No insertar credenciales, nombres de usuario financiero, capturas personales ni 
 
 ## Verificación externa (22/11/2026)
 
-Se ha publicado una primera versión de la API en Vercel Hobby gratuita. Consultar https://btc-monitor-gratis.vercel.app/api/report para lecturas bajo demanda. Estado real de acceso desde Internet sujeto al job `http-endpoint-live`; las pruebas de infraestructura y las alertas de ChatGPT se consideran independientes.
+API Vercel Hobby publicada en https://btc-monitor-gratis.vercel.app/api/report. El job `http-endpoint-live` superó la prueba HTTP real (22/11/2026, 19:38 h Europe/Madrid; ejecución https://github.com/DuarteSFC/btc-monitor-gratis/actions/runs/45056247247): /api/health y /api/report respondieron, BTC/USD y BTC/USDT tenían marcas de operación de ~1 s, RSI/MACD/EMA/ATR y contexto ETF/on-chain/liquidaciones presentes. Cache-Control: no-store validado. LIMITACIÓN: el lector web de ChatGPT no consiguió abrir ese endpoint; su acceso desde automatizaciones sigue sin demostrarse. El despliegue Vercel fue directo y todavía NO se vinculó al repositorio de GitHub para autodesplegar cambios.
