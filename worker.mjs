@@ -1,3 +1,4 @@
+import {collectContext} from "./context.mjs";
 /**
  * BTC Public Data Gate — datos públicos, sin órdenes ni acceso Quantfury.
  * Cloudflare Worker, también ejecutable en Node 22 para pruebas.
@@ -150,6 +151,7 @@ async function derivatives(now,request){
   return {funding,openInterest,errors};
 }
 export async function report(now=Date.now(),request=json){
+  const contextPromise=collectContext(now,request);
   const [usdt,usd,...barData]=await Promise.all([
     price("BTCUSDT",now,request),price("BTCUSD",now,request),
     ...Object.keys(frames).map(f=>candles(f,now,request))
@@ -160,24 +162,26 @@ export async function report(now=Date.now(),request=json){
       {status:"unavailable",attempts:d.attempts};
   }
   const discrepancy=usdt.data&&usd.data?Math.abs(usdt.data.price-usd.data.price)/usd.data.price*100:null;
-  const priceOk=discrepancy!==null&&discrepancy<=SETTINGS.maxPriceGapPct;
+  const completedAt=Date.now();
+  const realClock=Math.abs(completedAt-now)<15*60*1000;
+  const freshAtOutput=(p)=>!realClock||!p?.data?!!p?.data:(completedAt-Date.parse(p.data.tradeUtc)<=SETTINGS.maxAgeMs&&completedAt-Date.parse(p.data.tradeUtc)>=-SETTINGS.futureToleranceMs);
+  const priceOk=discrepancy!==null&&discrepancy<=SETTINGS.maxPriceGapPct&&freshAtOutput(usdt)&&freshAtOutput(usd);
   const technicalOk=Object.values(timeframes).every(z=>Number.isFinite(z.rsi14)&&Number.isFinite(z.atr14)&&Number.isFinite(z.ema200)&&Number.isFinite(z.macd12_26_9?.histogram));
-  return {engine:"BTC Public Data Gate",version:"1.0.0",generatedUtc:iso(now),
-    status:{pricesFreshAndCoherent:priceOk,technicalIndicatorsComputed:technicalOk,eligibleForEntrySignal:false,
+  const context=await contextPromise;
+  const contextComplete=Object.values(context.coverage).every(Boolean);
+  return {engine:"BTC Public Data Gate",version:"1.1.0",generatedUtc:iso(now),completedUtc:iso(completedAt),
+    status:{pricesFreshAndCoherent:priceOk,technicalIndicatorsComputed:technicalOk,contextComplete,eligibleForEntrySignal:false,
       reason:!priceOk?"no_fresh_prices":!technicalOk?"missing_valid_ohlcv":"no_QF_and_incomplete_context"},
     prices:{BTCUSDT:usdt,BTCUSD:usd,discrepancyPct:discrepancy},timeframes,
-    derivatives:await derivatives(now,request),
-    additionalContext:{etf:"not_integrated_last_complete_session_from_farside",
-      onchain:"not_integrated_dated_mvrv_realized_price_sopr",
-      liquidations:"not_integrated_global_data_not_free",
-      quantfury:"private_unconnected_requires_fresh_user_snapshot"},
+    derivatives:await derivatives(now,request),context,
+    additionalContext:{quantfury:"private_unconnected_requires_fresh_user_snapshot"},
     notice:"Public analysis only. No orders. No position sizing. Suppress entry signals."
   };
 }
 export default {
   async fetch(request){
     const path=new URL(request.url).pathname;
-    if(path==="/health")return new Response(JSON.stringify({ok:true,service:"BTC Public Data Gate",version:"1.0.0"}),{headers:{"Content-Type":"application/json","Cache-Control":"no-store"}});
+    if(path==="/health")return new Response(JSON.stringify({ok:true,service:"BTC Public Data Gate",version:"1.1.0"}),{headers:{"Content-Type":"application/json","Cache-Control":"no-store"}});
     if(path!=="/report")return new Response("Use /health or /report",{status:404});
     try{return new Response(JSON.stringify(await report(Date.now())),{headers:{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store, max-age=0","Access-Control-Allow-Origin":"*"}})}
     catch(e){return new Response(JSON.stringify({ok:false,error:String(e.message||e)}),{status:503,headers:{"Content-Type":"application/json","Cache-Control":"no-store"}})}
