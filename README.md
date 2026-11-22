@@ -49,3 +49,7 @@ No insertar credenciales, nombres de usuario financiero, capturas personales ni 
 ## Política de riesgo
 
 Único long BTC/USDT de ciclo y estrategias independientes de longs tácticos BTC/USD; riesgo conjunto sobre una sola cuenta QF. Nunca utilizar crédito, emergencia ni reservas de ahorro.
+
+## Verificación externa (22/11/2026)
+
+Se ha publicado una primera versión de la API en Vercel Hobby gratuita. Consultar https://btc-monitor-gratis.vercel.app/api/report para lecturas bajo demanda. Estado real de acceso desde Internet sujeto al job `http-endpoint-live`; las pruebas de infraestructura y las alertas de ChatGPT se consideran independientes.
