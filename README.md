@@ -1,47 +1,51 @@
-# BTC Monitor Gratis · análisis público de Bitcoin
+# BTC Monitor Gratis · v1.1
 
-**Objetivo obligatorio: 0 €**. Sin claves de trading, sin pagos, sin órdenes, sin acceso directo a Quantfury y sin publicar datos privados.
+**Coste cero.** Repositorio abierto con código, datos públicos e indicadores técnicos calculados automáticamente. No ejecuta trading, no accede a Quantfury, ni almacena información privada del usuario.
 
-## Estado verificado a 22/11/2026
+## Estado validado el 22/11/2026
 
-- ✅ **GitHub Actions**: tests simulados y prueba real completados contra los proveedores, según los registros de ejecución.
-- ✅ **BTC/USD y BTC/USDT**: precios spot frescos y verificados con hora original de exchange.
-- ✅ **Indicadores**: 1H/4H/1D, RSI14, MACD12/26/9, EMA20/50/200, ATR14, pivotes y volumen sobre velas cerradas reales.
-- ✅ **Derivados**: funding + open interest de OKX SWAP (no se confunden con el conjunto de exchanges).
-- ✅ **Flujos ETF**: última sesión declarada completa según TFTC/SoSoValue, con fecha, desglose por fondos e historial (Farside directo puede devolver 403 desde GitHub).
-- ✅ **On-chain**: MVRV, realized price, STH cost basis y SOPR de Bitcoin Credit Stack, contrastados contra Explore21 cuando las fechas coinciden; datos diarios y rezagados identificados.
-- ✅ **Liquidaciones**: Marketlight BTCUSDT por exchanges como fuente primaria y XOOMAR como respaldo, con fecha y ventana de 24 horas. Son coberturas PARCIALES, nunca mercado global y no deben sumarse por duplicado.
-- ✅ **Riesgo**: `risk.mjs` simula exposición compartida y caída adicional 10/20/30 %, solo con entradas privadas del usuario EN MEMORIA. **Nunca estima la liquidación oficial**.
-- 🟠 **Pendiente**: despliegue HTTP público y su verificación desde ChatGPT, integración real de endpoint HTTP en las dos automatizaciones, más verificación de saldos actuales QF antes de cualquier tamaño operativo.
+GitHub Actions superó pruebas sintéticas y pruebas REALES del mercado:
+- Spot BTC/USD en Coinbase Exchange con timestamp de operación.
+- Spot BTC/USDT en OKX con timestamp de operación.
+- Velas 1H / 4H / diario y cálculo RSI14, MACD12/26/9, EMA20/50/200, ATR14, volumen spot, extremos locales y niveles matemáticos de Fibonacci con anclajes y periodo mostrado.
+- Funding e interés abierto de OKX SWAP (solo OKX, no un agregado global).
+- ETF: último cierre completo publicado por [TFTC](https://www.tftc.io/bitcoin-etf-flows/latest.json) basado en SoSoValue; Farside dio 403 desde GitHub. Etiquetar revisiones posibles de cifras históricas.
+- MVRV, realized price y SOPR fechados mediante [Bitcoin Credit Stack](https://api.bitcoincreditstack.com/v1/onchain/indicators/latest), y contraste MVRV y realized price con [Explore21](https://data.explore21.com/v1/metrics/bitcoin-mvrv-ratio/latest) (puede ser un día distinto).
+- Liquidaciones BTCUSDT de ventana 24 h por [Marketlight](https://marketlight.ai/bt/api/public/liquidations/summary?symbol=BTCUSDT), cobertura Binance Futures / Bybit / OKX; respaldo [XOOMAR](https://xoomar.com/api/markets/liquidations), cobertura OKX / Gate.io / HTX; **no representa todas las liquidaciones del mercado**.
+- Simulador offline de riesgo agregado Quantfury que exige saldo y posiciones actuales confirmadas y nunca afirma conocer liquidación oficial.
 
-## Fuente del código y pruebas
+Las comprobaciones se ejecutan al subir cambios y cada hora mediante .github/workflows/validate.yml; GitHub puede retrasar los trabajos programados. Un job exitoso no significa señal de entrada.
 
-`worker.mjs` + `context.mjs` recopilan los datos de forma gratuita. `test_worker.mjs`, `test_context.mjs`, `test_risk.mjs` son pruebas con datos simulados. `market_smoke.mjs` realiza consultas reales y falla si no hay precios, indicadores o bloques públicos esenciales; GitHub Actions corre con cada push y programado cada hora. **El éxito de una ejecución no garantiza que la siguiente funcione**.
+## Pruebas de seguridad de datos
 
-Las respuestas contienen `status.eligibleForEntrySignal=false` incluso con los datos públicos completos, porque falta confirmar el saldo actual y todas las posiciones del usuario.
+- Rechaza precio original sin marca temporal o con más de 60 s.
+- Rechaza series OHLCV con huecos, valores imposibles o sin suficientes velas para EMA200.
+- No presenta ETF, SOPR y realized price como lecturas al segundo; sus fechas son diarias.
+- Rechaza liquidaciones sin fecha y periodo coherentes, y nunca mezcla cantidades de exchanges de diferente cobertura.
+- Si una fuente falla, usa los respaldos disponibles. No inventa valores faltantes.
+- `eligibleForEntrySignal` permanece en **false**: sin estado privado completo y actualizado de Quantfury y confirmación humana no hay señal operativa aprobada.
+- Fibonacci se calcula de extremos de la ventana de lookback; NO interpreta automáticamente Elliott (es subjetivo) ni convierte niveles en órdenes.
 
-## Endpoint HTTP preparado, NO desplegado
+## Cómo ejecutar las pruebas
 
-- Cloudflare Worker: `worker.mjs` y `wrangler.toml`, endpoints `/health` y `/report`.
-- Vercel Hobby gratuito: `api/health.mjs`, `api/report.mjs`, `vercel.json` y `package.json`.
+Requiere Node.js 22:
 
-Ambas alternativas necesitan que la persona autorice un alojamiento gratuito. El acceso de GitHub Actions al mercado no equivale a una URL de lectura viva para ChatGPT.
+    node test_worker.mjs
+    node test_context.mjs
+    node test_technical_context.mjs
+    node test_risk.mjs
+    node market_smoke.mjs
 
-## Política de fiabilidad
+La última prueba realiza peticiones reales. Los tests unitarios usan fixtures simulados.
 
-Las cotizaciones usan timestamps REALES de transacciones, con tolerancia ideal de 60 s; el sistema rechaza datos vencidos, velas incompletas, huecos y diferencias graves entre proveedores. Un valor no disponible es `null`, no cero.
+## Despliegue web e integración ChatGPT
 
-Las fuentes ETF y on-chain son diarias y conservan la fecha del dato, aunque se consulten ahora. Las liquidaciones son por exchange/mercado y tienen ventanas de agregación, no son predicciones. Los stops no garantizan ejecución.
+El endpoint `/api/report` está preparado para Vercel Hobby y debe devolver datos de mercado recientes cada vez que se solicita, con `Cache-Control: no-store`; `/api/health` prueba la ejecución del servicio, no los datos de mercado. Existe además `worker.mjs` como entrada para Cloudflare Workers Free.
 
-Las automatizaciones de ChatGPT deben permanecer separadas por estrategia: un único long BTC/USDT de ciclo y análisis táctico BTC/USD aparte, pero patrimonio y riesgo Quantfury compartidos. Sin datos privados actualizados, no se recomienda tamaño ni nueva exposición. Nunca crédito, fondo de emergencia ni ahorro protegido.
+**Pendiente:** Vercel necesita autorización del usuario para el ámbito de su cuenta antes de crear el proyecto y publicar el endpoint. Aún no existe una URL desplegada y probada desde esta integración. Después de publicar, verificar que el navegador / lector ChatGPT realmente recibe JSON sin caché. La actualización de tareas ChatGPT no está conectada en vivo hasta demostrar esa lectura.
 
-## Manual técnico
+No insertar credenciales, nombres de usuario financiero, capturas personales ni saldos Quantfury en el repositorio. No activar servicios de pago.
 
-Con Node.js 22:
+## Política de riesgo
 
-```sh
-npm test
-npm run live
-```
-
-Abrir [GitHub Actions](https://github.com/DuarteSFC/btc-monitor-gratis/actions) para comprobar ejecuciones, logs y errores.
+Único long BTC/USDT de ciclo y estrategias independientes de longs tácticos BTC/USD; riesgo conjunto sobre una sola cuenta QF. Nunca utilizar crédito, emergencia ni reservas de ahorro.
