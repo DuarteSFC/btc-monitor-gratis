@@ -21,7 +21,9 @@ jobs:
       - name: Comprobar sintaxis
         run: node --check worker.mjs
       - name: Pruebas simuladas - sin trading
-        run: node test_worker.mjs
+        run: |
+          node test_worker.mjs
+          node test_context.mjs
 
   market-live-check:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
@@ -35,16 +37,3 @@ jobs:
       - name: Validar cotizaciones publicas e indicadores reales
         run: node market_smoke.mjs
 
-  inspect-free-sources:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    timeout-minutes: 4
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Comprobar fuentes ETF on-chain liquidaciones
-        run: node probe_sources.mjs
-      - name: Inspeccionar esquemas del respaldo
-        run: node probe_shapes.mjs
