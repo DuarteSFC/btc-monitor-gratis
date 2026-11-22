@@ -22,7 +22,7 @@ const providers={
   BTCUSDT:[
     ["A","OKX Spot","https://www.okx.com/api/v5/market/ticker?instId=BTC-USDT",j=>{const z=j.data?.[0];if(j.code!=="0"||z?.instId!=="BTC-USDT")throw Error("OKX unexpected");return {price:num(z.last),time:num(z.ts)};}],
     ["B","Bitget Spot","https://api.bitget.com/api/v2/spot/market/tickers?symbol=BTCUSDT",j=>{const z=j.data?.[0];if(z?.symbol!=="BTCUSDT")throw Error("Bitget unexpected");return {price:num(z.lastPr),time:num(z.ts)};}],
-    ["C","Binance Spot","https://api.binance.com/api/v3/trades?symbol=BTCUSDT&limit=5",j=>{if(!Array.isArray(j)||!j.length)throw Error("Binance unexpected");const z=j.at(-1);return {price:num(z.price),time:num(z.time)};}]
+    ["C","Gate.io Spot","https://api.gateio.ws/api/v4/spot/trades?currency_pair=BTC_USDT&limit=5",j=>{if(!Array.isArray(j)||!j.length)throw Error("Gate invalid trades");const z=j[0];if(z.currency_pair!=="BTC_USDT")throw Error("Gate wrong instrument");return {price:num(z.price),time:num(z.create_time_ms)};}]
   ],
   BTCUSD:[
     ["A","Coinbase Exchange Spot","https://api.exchange.coinbase.com/products/BTC-USD/ticker",j=>({price:num(j.price),time:Date.parse(j.time)})],
