@@ -1,4 +1,5 @@
 import {collectContext} from "./context.mjs";
+import {fibonacciFromClosedBars} from "./technical_context.mjs";
 /**
  * BTC Public Data Gate — datos públicos, sin órdenes ni acceso Quantfury.
  * Cloudflare Worker, también ejecutable en Node 22 para pruebas.
@@ -134,7 +135,7 @@ export function indicators(bars,ms){
   }
   return {lastClosedOpenUtc:iso(z.t),lastClosedEndUtc:iso(z.t+ms),close:z.c,volume:z.v,volumeVs20:avgVolume>0?z.v/avgVolume:null,
     rsi14:rsi(x),macd12_26_9:macd(x),ema20:ema(x,20)?.at(-1),ema50:ema(x,50)?.at(-1),ema200:ema(x,200)?.at(-1),atr14:atr(bars),
-    structure,highs,lows};
+    structure,highs,lows,fibonacci:fibonacciFromClosedBars(bars)};
 }
 async function derivatives(now,request){
   const errors=[];let funding=null,openInterest=null;
