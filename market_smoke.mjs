@@ -15,10 +15,14 @@ const summary={
     ema200:v.ema200??null,atr14:v.atr14??null,attempts:v.attempts
   }])),
   derivatives:r.derivatives,
+  etf:r.context.etf,
+  onchain:r.context.onchain,
+  liquidations:r.context.liquidations,
+  contextCoverage:r.context.coverage,
   status:r.status
 };
 console.log(JSON.stringify(summary,null,2));
-if(!r.status.pricesFreshAndCoherent||!r.status.technicalIndicatorsComputed){
+if(!r.status.pricesFreshAndCoherent||!r.status.technicalIndicatorsComputed||!r.status.contextComplete){
  console.error("INCOMPLETE PUBLIC DATA — NO ENTRY SIGNAL");
  process.exitCode=1;
 }
