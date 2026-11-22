@@ -1,0 +1,10 @@
+{
+  "name": "btc-monitor-gratis",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test_worker.mjs && node test_context.mjs && node test_risk.mjs",
+    "live": "node market_smoke.mjs"
+  }
+}
