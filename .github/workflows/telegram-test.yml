@@ -1,0 +1,42 @@
+name: Telegram - Prueba de entrega
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/telegram-test.yml'
+permissions: {}
+jobs:
+  delivery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Verificar bot y enviar prueba al chat privado
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BTC_FAST_ALERTS: ${{ vars.BTC_FAST_ALERTS }}
+        run: |
+          python3 - <<'PY'
+          import os,json,urllib.request,sys,re
+          token=os.environ.get("TELEGRAM_BOT_TOKEN","").strip()
+          chat=os.environ.get("TELEGRAM_CHAT_ID","").strip()
+          if not token or not re.fullmatch(r"[0-9]+",chat):
+              sys.exit("Falta token o chat ID privado válido.")
+          def call(method,data):
+              try:
+                  req=urllib.request.Request("https://api.telegram.org/bot"+token+"/"+method,data=json.dumps(data).encode(),headers={"Content-Type":"application/json"})
+                  with urllib.request.urlopen(req,timeout=12) as r:
+                      result=json.load(r)
+                  if result.get("ok"): return result["result"]
+              except Exception:
+                  pass
+              sys.exit("Telegram rechazó la solicitud o no respondió; detalles privados omitidos.")
+          if call("getMe",{}).get("username","").lower()!="alertas_de_longs_tacticos_bot":
+              sys.exit("El token no pertenece al bot previsto.")
+          if call("getChat",{"chat_id":chat}).get("type")!="private":
+              sys.exit("Destino no privado; envío bloqueado.")
+          call("sendMessage",{"chat_id":chat,"text":"CICLO BTC ALERTS · PRUEBA DE CONEXIÓN\nTelegram funciona correctamente. Este mensaje es una prueba técnica, NO una señal de compra ni venta."})
+          print("Entrega de prueba aceptada por Telegram.")
+          print("Programación de alertas: "+("activada" if os.environ.get("BTC_FAST_ALERTS")=="true" else "desactivada"))
+          PY
