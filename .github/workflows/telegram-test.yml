@@ -40,3 +40,4 @@ jobs:
           print("Entrega de prueba aceptada por Telegram.")
           print("Programación de alertas: "+("activada" if os.environ.get("BTC_FAST_ALERTS")=="true" else "desactivada"))
           PY
+# Fresh configuration check after successful delivery confirmation.
