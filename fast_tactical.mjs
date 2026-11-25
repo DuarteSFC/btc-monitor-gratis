@@ -1,6 +1,6 @@
 import {candles,price,indicators,atr,rsi,validatePrice} from "./worker.mjs";
 
-export const FAST_VERSION="1.0.0";
+export const FAST_VERSION="2.0.0";
 const FRAMES=["5M","15M"];
 const msFor=f=>f==="5M"?300000:900000;
 const iso=t=>new Date(t).toISOString();
@@ -20,6 +20,7 @@ export function detectEvents(bars,frame,source,now){
     const body=z.c-z.o, range=z.h-z.l, recovery=range>0?(z.c-z.l)/range:0;
     const priorRsi=rsi(history.map(b=>b.c)), currentRsi=rsi([...history.map(b=>b.c),z.c]);
     const strength=volume>=1.5||Math.abs(body)>=1.5*a;
+    const local=prev.slice(-6), localHigh=Math.max(...local.map(b=>b.h)), localLow=Math.min(...local.map(b=>b.l));
     let type=null,level=null;
     if(z.c<low&&body<0&&strength){type="support_loss";level=low;}
     else if(z.c>high&&body>0&&strength){type="breakout";level=high;}
@@ -28,6 +29,9 @@ export function detectEvents(bars,frame,source,now){
     }else if(z.c>prev.at(-1).h&&body>=1.5*a&&volume>=1.2){
       type="recovery_impulse";level=prev.at(-1).h;
     }
+    if(!type && z.c>localHigh && body>0 && volume>=1.5 && body>=0.6*a){type="breakout";level=localHigh;}
+    if(!type && z.c<localLow && body<0 && volume>=1.5 && -body>=0.6*a){type="support_loss";level=localLow;}
+    if(!type && z.l<localLow && z.c>localLow && recovery>=0.65 && body>0 && volume>=1.2){type="sweep_recovery";level=localLow;}
     if(type)events.push({id:frame+":"+type+":"+end,frame,type,source,closedUtc:iso(end),
       open:z.o,high:z.h,low:z.l,close:z.c,level,volumeVs20:volume,
       atrBefore:a,bodyVsAtr:Math.abs(body)/a,rsi14:currentRsi,rsiChange:currentRsi-priorRsi,
