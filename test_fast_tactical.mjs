@@ -28,3 +28,10 @@ const stale=await fastReport(now,async u=>u.includes("BTC-USD/ticker")?{price:"6
 assert.equal(stale.status.pricesFreshAndCoherent,false);
 assert.equal(stale.events.length,0);
 console.log("OK: fast market, swept levels, breakout, support loss, no entry validation, stale suppression.");
+
+const localBase=base.map((b,i)=>i===225?{...b,h:60300,l:59700}:b);
+const localBreak=detectEvents([...localBase.slice(0,-1),{...localBase.at(-1),o:60000,h:60090,l:59980,c:60080,v:20}],"5M","mock",now,0);
+assert.equal(localBreak.length,1);assert.equal(localBreak[0].type,"breakout");assert.equal(localBreak[0].scope,"local");
+assert.equal(detectEvents([...localBase.slice(0,-1),{...localBase.at(-1),o:60000,h:60090,l:59980,c:60080,v:10}],"5M","mock",now,0).length,0);
+assert.equal(detectEvents([...localBase.slice(0,-1),{...localBase.at(-1),o:60000,h:60010,l:59900,c:59920,v:20}],"5M","mock",now,0)[0].type,"support_loss");
+console.log("OK: local break, low-volume rejection, local support loss and single-close replay.");
