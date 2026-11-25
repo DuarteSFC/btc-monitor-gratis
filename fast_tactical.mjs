@@ -1,18 +1,18 @@
 import {candles,price,indicators,atr,rsi,validatePrice} from "./worker.mjs";
 
-export const FAST_VERSION="1.0.0";
+export const FAST_VERSION="2.0.0";
 const FRAMES=["5M","15M"];
 const msFor=f=>f==="5M"?300000:900000;
 const iso=t=>new Date(t).toISOString();
 
 // Rules are deliberately preliminary, not entries, and use only information
-// available at each candle close. All levels use the preceding 20 candles.
-export function detectEvents(bars,frame,source,now){
+// available at each candle close. Levels use preceding 20 and six closed candles.
+export function detectEvents(bars,frame,source,now,lookbackMs=7200000){
   const ms=msFor(frame), events=[];
-  for(let i=Math.max(35,bars.length-Math.ceil(7200000/ms));i<bars.length;i++){
+  for(let i=Math.max(35,bars.length-Math.max(1,Math.ceil(lookbackMs/ms)));i<bars.length;i++){
     const z=bars[i], prev=bars.slice(i-20,i), history=bars.slice(0,i);
     const end=z.t+ms;
-    if(end>now||now-end>7200000)continue;
+    if(end>now||now-end>lookbackMs)continue;
     const low=Math.min(...prev.map(b=>b.l)),high=Math.max(...prev.map(b=>b.h));
     const avg=prev.reduce((s,b)=>s+b.v,0)/20;
     const volume=avg>0?z.v/avg:null, a=atr(history);
@@ -20,15 +20,18 @@ export function detectEvents(bars,frame,source,now){
     const body=z.c-z.o, range=z.h-z.l, recovery=range>0?(z.c-z.l)/range:0;
     const priorRsi=rsi(history.map(b=>b.c)), currentRsi=rsi([...history.map(b=>b.c),z.c]);
     const strength=volume>=1.5||Math.abs(body)>=1.5*a;
+    const local=prev.slice(-6), localHigh=Math.max(...local.map(b=>b.h)), localLow=Math.min(...local.map(b=>b.l));
     let type=null,level=null;
     if(z.c<low&&body<0&&strength){type="support_loss";level=low;}
     else if(z.c>high&&body>0&&strength){type="breakout";level=high;}
     else if(z.l<low&&z.c>low&&recovery>=0.65&&body>0&&(volume>=1.2||body>=a)){
       type="sweep_recovery";level=low;
-    }else if(z.c>prev.at(-1).h&&body>=1.5*a&&volume>=1.2){
-      type="recovery_impulse";level=prev.at(-1).h;
     }
-    if(type)events.push({id:frame+":"+type+":"+end,frame,type,source,closedUtc:iso(end),
+    if(!type && z.c>localHigh && body>0 && volume>=1.5 && body>=0.6*a){type="breakout";level=localHigh;}
+    if(!type && z.c<localLow && body<0 && volume>=1.5 && -body>=0.6*a){type="support_loss";level=localLow;}
+    if(!type && z.l<localLow && z.c>localLow && recovery>=0.65 && body>0 && volume>=1.2){type="sweep_recovery";level=localLow;}
+    if(!type && z.c>prev.at(-1).h&&body>=1.5*a&&volume>=1.2){type="recovery_impulse";level=prev.at(-1).h;}
+    if(type)events.push({id:frame+":"+type+":"+end,frame,type,source,closedUtc:iso(end),scope:level===high||level===low?"20_candles" :"local",
       open:z.o,high:z.h,low:z.l,close:z.c,level,volumeVs20:volume,
       atrBefore:a,bodyVsAtr:Math.abs(body)/a,rsi14:currentRsi,rsiChange:currentRsi-priorRsi,
       classification:"preliminary_market_event_not_entry"});
