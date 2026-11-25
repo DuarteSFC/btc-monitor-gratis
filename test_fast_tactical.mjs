@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {detectEvents,fastReport} from "./fast_tactical.mjs";
-const ms=300000,now=Date.UTC(2026,10,25,18,0);
+const ms=300000,now=Date.UTC(2020,10,25,18,0);
 const base=Array.from({length:240},(_,i)=>({t:now-(240-i)*ms,o:60000,h:60030,l:59970,c:60000,v:10}));
 const event=(patch)=>detectEvents([...base.slice(0,-1),{...base.at(-1),...patch}],"5M","mock",now);
 assert.equal(event({o:59980,l:59920,h:60040,c:60030,v:20}).at(-1).type,"sweep_recovery");

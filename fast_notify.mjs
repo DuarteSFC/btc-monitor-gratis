@@ -5,7 +5,7 @@ const file=".fast-state/state.json";
 const token=process.env.TELEGRAM_BOT_TOKEN,chat=process.env.TELEGRAM_CHAT_ID;
 const snapshot=await fastReport();
 const now=Date.now();
-const valid=Object.values(snapshot.prices).filter(p=>p?.data).length===2&&snapshot.status.pricesFreshAndCoherent&&
+const valid=Object.values(snapshot.prices).filter(p=>p?.data).length===2&&snapshot.status.pricesFreshAndCoherent&&snapshot.status.shortIndicatorsComputed&&
   ["BTCUSD","BTCUSDT"].every(p=>{const age=now-Date.parse(snapshot.prices[p].data.tradeUtc);return age>=0&&age<60000;});
 if(!valid){console.log("No valid fresh market data; no alerts.");process.exit(0);}
 if(!active){console.log("Dry run: market valid; Telegram disabled; no messages sent.");process.exit(0);}
