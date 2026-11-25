@@ -1,3 +1,4 @@
+import {fromEvents} from "./tactical_candidate.mjs";
 import {fastReport} from "./fast_tactical.mjs";
 import {readFile,writeFile,mkdir} from "node:fs/promises";
 const active=process.env.BTC_FAST_ALERTS==="true";
@@ -14,12 +15,13 @@ let state={sent:[],lastByType:{}};
 try{const x=JSON.parse(await readFile(file,"utf8"));if(Array.isArray(x.sent)&&x.lastByType&&typeof x.lastByType==="object")state=x;}catch{}
 const labels={support_loss:"Pérdida de soporte",breakout:"Ruptura alcista",sweep_recovery:"Barrido y recuperación",recovery_impulse:"Impulso de recuperación"};
 const seen=new Set(state.sent.filter(x=>typeof x==="string").slice(-500));
-const recent=snapshot.events.filter(e=>now-Date.parse(e.closedUtc)>=0&&now-Date.parse(e.closedUtc)<=7200000&&!seen.has(e.id));
+const candidates=fromEvents(snapshot.events,now,5,2).map(c=>({...c,type:"candidate",level:c.stop,close:c.entry,source:"Costes hipotéticos: 5 + 2 puntos básicos por lado"}));
+const recent=[...snapshot.events,...candidates].filter(e=>now-Date.parse(e.closedUtc)>=0&&now-Date.parse(e.closedUtc)<=7200000&&!seen.has(e.id));
 const groups=new Map();
-for(const e of recent){groups.set(e.id,e);}
+for(const e of recent.slice(0,8)){groups.set(e.id,e);}
 const fmt=x=>Number(x).toLocaleString("es-ES",{maximumFractionDigits:2});
 if(groups.size){
-  const lines=["BTC · Aviso preliminar (no es entrada)",...Array.from(groups.values()).map(e=>(e.type==="support_loss"?"🔴 BTC · Pérdida de soporte":"🟡 BTC · Movimiento relevante")+"\n"+labels[e.type]+" · "+e.frame+" · "+new Date(e.closedUtc).toLocaleString("es-ES",{timeZone:"Europe/Madrid"})+"\nNivel "+fmt(e.level)+" | cierre "+fmt(e.close)+" | volumen "+fmt(e.volumeVs20)+"x | "+e.source),"BTC/USD "+fmt(snapshot.prices.BTCUSD.data.price)+" · BTC/USDT "+fmt(snapshot.prices.BTCUSDT.data.price),"Esperar validación de estructura y riesgo. No perseguir el precio."];
+  const lines=["BTC · Aviso preliminar (no es entrada)",...Array.from(groups.values()).map(e=>e.type==="candidate"?"🟢 BTC · Candidato LONG táctico (hipotético)\nEntrada "+fmt(e.entry)+" | Stop "+fmt(e.stop)+" | Objetivo "+fmt(e.target)+" | B/R neto estimado "+fmt(e.rr)+"\n"+e.source+"\nValidar costes reales y riesgo agregado; no ejecutar automáticamente.":(e.type==="support_loss"?"🔴 BTC · Pérdida de soporte":"🟡 BTC · Movimiento relevante")+"\n"+labels[e.type]+" · "+e.frame+" · "+new Date(e.closedUtc).toLocaleString("es-ES",{timeZone:"Europe/Madrid"})+"\nNivel "+fmt(e.level)+" | cierre "+fmt(e.close)+" | volumen "+fmt(e.volumeVs20)+"x | "+e.source),"BTC/USD "+fmt(snapshot.prices.BTCUSD.data.price)+" · BTC/USDT "+fmt(snapshot.prices.BTCUSDT.data.price),"Esperar validación de estructura y riesgo. No perseguir el precio."];
   let sent=false;
   try{
     const r=await fetch("https://api.telegram.org/bot"+token+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chat,text:lines.join("\n\n"),disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
