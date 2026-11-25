@@ -1,7 +1,5 @@
 name: BTC tactical fast alerts
 on:
-  schedule:
-    - cron: "2-57/5 * * * *"
   workflow_dispatch:
 permissions:
   contents: read
@@ -21,15 +19,23 @@ jobs:
         with:
           node-version: "22"
       - name: Restore public market deduplication state
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
+        uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684
         with:
           path: .fast-state
           key: btc-fast-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: btc-fast-state-v1-
       - run: node test_fast_tactical.mjs
+      - run: node test_tactical_candidate.mjs
       - name: Observe market and send only material alerts
         run: node fast_notify.mjs
         env:
           BTC_FAST_ALERTS: ${{ vars.BTC_FAST_ALERTS }}
+          BTC_CANDIDATES_VALIDATED: "false"
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - name: Persist public event IDs even after a partial send failure
+        if: always() && hashFiles('.fast-state/state.json') != ''
+        uses: actions/cache/save@5a3ec84eff668545956fd18022155c47e93e2684
+        with:
+          path: .fast-state
+          key: btc-fast-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
