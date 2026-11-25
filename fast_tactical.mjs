@@ -7,12 +7,12 @@ const iso=t=>new Date(t).toISOString();
 
 // Rules are deliberately preliminary, not entries, and use only information
 // available at each candle close. Levels use preceding 20 and six closed candles.
-export function detectEvents(bars,frame,source,now){
+export function detectEvents(bars,frame,source,now,lookbackMs=7200000){
   const ms=msFor(frame), events=[];
-  for(let i=Math.max(35,bars.length-Math.ceil(7200000/ms));i<bars.length;i++){
+  for(let i=Math.max(35,bars.length-Math.max(1,Math.ceil(lookbackMs/ms)));i<bars.length;i++){
     const z=bars[i], prev=bars.slice(i-20,i), history=bars.slice(0,i);
     const end=z.t+ms;
-    if(end>now||now-end>7200000)continue;
+    if(end>now||now-end>lookbackMs)continue;
     const low=Math.min(...prev.map(b=>b.l)),high=Math.max(...prev.map(b=>b.h));
     const avg=prev.reduce((s,b)=>s+b.v,0)/20;
     const volume=avg>0?z.v/avg:null, a=atr(history);
