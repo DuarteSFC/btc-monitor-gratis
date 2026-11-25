@@ -1,0 +1,46 @@
+name: Telegram - Obtener mi chat ID
+on:
+  workflow_dispatch:
+permissions: {}
+jobs:
+  identify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Responder al chat privado sin publicar datos
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os, json, urllib.request, sys, time
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+          if not token:
+              sys.exit("Falta el secreto TELEGRAM_BOT_TOKEN en Actions.")
+          def call(method, data):
+              try:
+                  req = urllib.request.Request("https://api.telegram.org/bot" + token + "/" + method,
+                      data=json.dumps(data).encode(), headers={"Content-Type":"application/json"})
+                  with urllib.request.urlopen(req, timeout=12) as resp:
+                      obj = json.load(resp)
+                  if not obj.get("ok"):
+                      sys.exit("Telegram rechazó la solicitud.")
+                  return obj["result"]
+              except Exception as e:
+                  sys.exit("Error Telegram: " + str(getattr(e, "code", "conexión o respuesta inválida")))
+          bot = call("getMe", {})
+          if bot.get("username", "").lower() != "alertas_de_longs_tacticos_bot":
+              sys.exit("El secreto pertenece a otro bot.")
+          updates = call("getUpdates", {"limit":100,"timeout":0})
+          chats = set()
+          for u in updates:
+              m = u.get("message", {})
+              c = m.get("chat", {})
+              if c.get("type") == "private" and m.get("text","").strip() == "/id" and 0 <= time.time() - m.get("date",0) <= 1800:
+                  chats.add(c["id"])
+          if len(chats) != 1:
+              sys.exit("Envía /id al bot y ejecuta de nuevo. Debe haber un único chat solicitante reciente.")
+          cid = chats.pop()
+          call("sendMessage", {"chat_id":cid,"text":"Tu TELEGRAM_CHAT_ID es: " + str(cid) + "\nGuárdalo en GitHub Actions secrets. No lo publiques."})
+          print("Identificador enviado por Telegram. No se ha mostrado ningún dato privado en este registro.")
+          PY
