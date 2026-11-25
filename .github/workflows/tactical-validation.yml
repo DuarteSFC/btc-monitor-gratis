@@ -20,6 +20,10 @@ jobs:
       - run: node test_fast_tactical.mjs
       - run: node test_tactical_candidate.mjs
   historical:
+    strategy:
+      fail-fast: false
+      matrix:
+        offset: [90, 180, 270, 360, 450]
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -30,3 +34,6 @@ jobs:
         with:
           node-version: "22"
       - run: node historical_tactical.mjs
+        env:
+          HISTORY_END_UTC: "2026-11-25T20:10:00.000Z"
+          HISTORY_OFFSET_DAYS: ${{ matrix.offset }}

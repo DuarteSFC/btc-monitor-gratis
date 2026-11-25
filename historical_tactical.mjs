@@ -1,7 +1,11 @@
 // Read-only historical replay. Public OKX spot data. No account or orders.
 import {detectEvents} from "./fast_tactical.mjs";
 import {fromBars,candidate} from "./tactical_candidate.mjs";
-const ms=300000, days=90, cutoff=Math.floor(Date.now()/ms)*ms, first=cutoff-days*86400000;
+const ms=300000, days=90;
+const anchor=process.env.HISTORY_END_UTC?Date.parse(process.env.HISTORY_END_UTC):Date.now();
+const offset=Number(process.env.HISTORY_OFFSET_DAYS??0);
+if(!Number.isFinite(anchor)||!Number.isInteger(offset)||offset<0)throw Error("Invalid fixed historical window");
+const cutoff=Math.floor(anchor/ms)*ms-offset*86400000, first=cutoff-days*86400000;
 const data=new Map();
 let after=cutoff;
 for(let p=0;p<280&&after>first;p++){
