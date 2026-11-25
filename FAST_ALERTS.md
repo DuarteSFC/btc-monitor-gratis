@@ -1,0 +1,7 @@
+# Alertas tácticas rápidas (5M/15M)
+- GET /api/fast devuelve datos públicos y eventos de las últimas dos horas; /api/tactical añade shortTactical y conserva el contrato anterior. /api/report y /api/cycle mantienen sus marcos originales.
+- No hay órdenes, acceso a brokers, dinero real ni credenciales de exchanges. Los eventos son avisos de mercado preliminares; no son señales de compra.
+- GitHub Actions usa consultas públicas directas para evitar gastar cuota de Vercel cada cinco minutos. Solo corre con frecuencia programada en repositorio público y cuando la variable BTC_FAST_ALERTS es true. Los horarios de GitHub son aproximados; puede haber retrasos, ejecuciones omitidas y pausa por inactividad.
+- Para activar, crear un bot dedicado de Telegram con @BotFather, abrir conversación y enviar /start. Configurar TELEGRAM_BOT_TOKEN y TELEGRAM_CHAT_ID como secrets de Actions; no publicarlos ni pegarlos en conversaciones. Crear variable de repositorio BTC_FAST_ALERTS=true. Si se omite, solo se permite prueba manual sin enviar mensajes.
+- Se agrupan eventos por tipo y se usa cache de Actions para evitar repetir durante 15 minutos. Si se pierde la cache, puede duplicarse alguna alerta. Eventos con más de 20 minutos de antigüedad no se envían. No perseguir movimientos atrasados. Sin datos de mercado frescos, no se alerta. No se envían avisos rutinarios.
+- La prueba de código no demuestra entrega de Telegram ni garantiza rentabilidad. No hay backtest de resultados comerciales.
