@@ -6,7 +6,7 @@ const msFor=f=>f==="5M"?300000:900000;
 const iso=t=>new Date(t).toISOString();
 
 // Rules are deliberately preliminary, not entries, and use only information
-// available at each candle close. All levels use the preceding 20 candles.
+// available at each candle close. Levels use preceding 20 and six closed candles.
 export function detectEvents(bars,frame,source,now){
   const ms=msFor(frame), events=[];
   for(let i=Math.max(35,bars.length-Math.ceil(7200000/ms));i<bars.length;i++){
@@ -26,13 +26,12 @@ export function detectEvents(bars,frame,source,now){
     else if(z.c>high&&body>0&&strength){type="breakout";level=high;}
     else if(z.l<low&&z.c>low&&recovery>=0.65&&body>0&&(volume>=1.2||body>=a)){
       type="sweep_recovery";level=low;
-    }else if(z.c>prev.at(-1).h&&body>=1.5*a&&volume>=1.2){
-      type="recovery_impulse";level=prev.at(-1).h;
     }
     if(!type && z.c>localHigh && body>0 && volume>=1.5 && body>=0.6*a){type="breakout";level=localHigh;}
     if(!type && z.c<localLow && body<0 && volume>=1.5 && -body>=0.6*a){type="support_loss";level=localLow;}
     if(!type && z.l<localLow && z.c>localLow && recovery>=0.65 && body>0 && volume>=1.2){type="sweep_recovery";level=localLow;}
-    if(type)events.push({id:frame+":"+type+":"+end,frame,type,source,closedUtc:iso(end),
+    if(!type && z.c>prev.at(-1).h&&body>=1.5*a&&volume>=1.2){type="recovery_impulse";level=prev.at(-1).h;}
+    if(type)events.push({id:frame+":"+type+":"+end,frame,type,source,closedUtc:iso(end),scope:level===high||level===low?"20_candles" :"local",
       open:z.o,high:z.h,low:z.l,close:z.c,level,volumeVs20:volume,
       atrBefore:a,bodyVsAtr:Math.abs(body)/a,rsi14:currentRsi,rsiChange:currentRsi-priorRsi,
       classification:"preliminary_market_event_not_entry"});
