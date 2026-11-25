@@ -42,6 +42,8 @@ export async function price(pair,now=Date.now(),request=json){
   return {data:null,attempts:errors};
 }
 const frames={
+  "5M":{ms:300000,okx:"5m",bitget:"5min",kraken:5},
+  "15M":{ms:900000,okx:"15m",bitget:"15min",kraken:15},
   "1H":{ms:3600000,okx:"1H",bitget:"1h",kraken:60},
   "4H":{ms:14400000,okx:"4H",bitget:"4h",kraken:240},
   "1D":{ms:86400000,okx:"1Dutc",bitget:"1day",kraken:1440}
@@ -174,7 +176,7 @@ export async function report(now=Date.now(),request=json){
   const contextPromise=collectContext(now,request);
   const [usdt,usd,...barData]=await Promise.all([
     price("BTCUSDT",now,request),price("BTCUSD",now,request),
-    ...Object.keys(frames).map(f=>candles(f,now,request))
+    ...["1H","4H","1D"].map(f=>candles(f,now,request))
   ]);
   const timeframes={};
   for(const d of barData){

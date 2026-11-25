@@ -1,0 +1,35 @@
+name: BTC tactical fast alerts
+on:
+  schedule:
+    - cron: "2-57/5 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: btc-fast-alerts
+  cancel-in-progress: false
+jobs:
+  monitor:
+    if: github.event.repository.private == false && (github.event_name == 'workflow_dispatch' || vars.BTC_FAST_ALERTS == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - name: Restore public market deduplication state
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
+        with:
+          path: .fast-state
+          key: btc-fast-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: btc-fast-state-v1-
+      - run: node test_fast_tactical.mjs
+      - name: Observe market and send only material alerts
+        run: node fast_notify.mjs
+        env:
+          BTC_FAST_ALERTS: ${{ vars.BTC_FAST_ALERTS }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
