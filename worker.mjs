@@ -42,6 +42,7 @@ export async function price(pair,now=Date.now(),request=json){
   return {data:null,attempts:errors};
 }
 const frames={
+  "1M":{ms:60000,okx:"1m",bitget:"1min",kraken:1},
   "5M":{ms:300000,okx:"5m",bitget:"5min",kraken:5},
   "15M":{ms:900000,okx:"15m",bitget:"15min",kraken:15},
   "1H":{ms:3600000,okx:"1H",bitget:"1h",kraken:60},

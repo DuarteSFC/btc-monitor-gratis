@@ -1,0 +1,20 @@
+import assert from "node:assert/strict";
+import {earlyPatterns} from "./early_patterns.mjs";
+const base=Array.from({length:40},(_,i)=>({t:i*60000,o:100,h:101,l:99,c:100,v:10}));
+assert.deepEqual(earlyPatterns(base),[]);
+const sweep=[...base.slice(0,-1),{...base.at(-1),o:98,l:97,h:101,c:100.5,v:20}];
+assert.ok(earlyPatterns(sweep).some(e=>e.type==="sweep_recovery"));
+assert.deepEqual(earlyPatterns(sweep.map((b,i)=>i===39?{...b,t:b.t+60000}:b)),[]);
+assert.deepEqual(earlyPatterns(base.slice(0,20)),[]);
+console.log("Early pattern smoke tests passed");
+
+const fixture=(old,recent,last)=>base.map((b,i)=>({...b,...(i>=27&&i<33?old(i):i>=33&&i<39?recent(i):i===39?last:{})}));
+const reversal=fixture(i=>({h:105,l:96}),i=>({o:100,h:101,l:99.8,c:100.5}),{o:100.5,h:101.3,l:100.4,c:101.2,v:12});
+assert.ok(earlyPatterns(reversal).some(e=>e.type==="early_reversal"));
+const compression=fixture(i=>({h:105,l:96}),i=>({o:103,h:104.5,l:103,c:104}),{o:103.5,h:104.8,l:103,c:104.6,v:12});
+assert.ok(earlyPatterns(compression).some(e=>e.type==="compression"));
+const continuation=fixture(i=>i===27?({h:110,l:95}):({h:101,l:99}),i=>({o:106,h:109,l:104,c:108}),{o:109,h:111.5,l:108,c:111,v:20});
+assert.ok(earlyPatterns(continuation).some(e=>e.type==="continuation"));
+assert.deepEqual(earlyPatterns(base.map(b=>({...b,v:0}))),[]);
+assert.deepEqual(earlyPatterns(base.map((b,i)=>i===39?{...b,h:0}:b)),[]);
+console.log("All four positive pattern fixtures and invalid data tests passed");

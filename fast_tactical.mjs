@@ -1,8 +1,11 @@
 import {candles,price,indicators,atr,rsi,validatePrice} from "./worker.mjs";
 
+import {earlyPatterns} from "./early_patterns.mjs";
+// Preserve the existing API contract for hourly consumers.
 export const FAST_VERSION="2.0.0";
-const FRAMES=["5M","15M"];
-const msFor=f=>f==="5M"?300000:900000;
+export const FEATURE_VERSION="2.1.0";
+const FRAMES=["5M","15M","1M"];
+const msFor=f=>f==="1M"?60000:f==="5M"?300000:900000;
 const iso=t=>new Date(t).toISOString();
 
 // Rules are deliberately preliminary, not entries, and use only information
@@ -45,7 +48,7 @@ export async function fastReport(now=Date.now(),request){
   const fresh=p=>p.data&&validatePrice({price:p.data.price,time:Date.parse(p.data.tradeUtc)},clock).ok&&Date.parse(p.data.tradeUtc)<=clock;
   const discrepancy=usdt.data&&usd.data?Math.abs(usdt.data.price-usd.data.price)/usd.data.price*100:null;
   const pricesOk=Boolean(fresh(usdt)&&fresh(usd)&&discrepancy!==null&&discrepancy<=1);
-  const timeframes={},events=[];
+  const timeframes={},events=[],prealerts=[];
   for(const d of frames){
     const last=d.data?.at(-1),ms=msFor(d.frame);
     // Stricter short-frame freshness: no incomplete candles or future close.
@@ -54,11 +57,12 @@ export async function fastReport(now=Date.now(),request){
     if(!valid){timeframes[d.frame]={status:"unavailable_or_stale",attempts:d.attempts};continue;}
     timeframes[d.frame]={source:d.source,plan:d.plan,numberClosed:d.data.length,...indicators(d.data,ms),
       recentClosed:d.data.slice(-Math.ceil(7200000/ms)).map(z=>({openUtc:iso(z.t),closeUtc:iso(z.t+ms),open:z.o,high:z.h,low:z.l,close:z.c,volume:z.v}))};
-    events.push(...detectEvents(d.data,d.frame,d.source,now));
+    if(d.frame!=="1M")events.push(...detectEvents(d.data,d.frame,d.source,now));
+    if(d.frame==="1M"||d.frame==="5M")for(let i=Math.max(35,d.data.length-Math.ceil(300000/ms));i<d.data.length;i++)for(const e of earlyPatterns(d.data.slice(0,i+1),ms))prealerts.push({...e,frame:d.frame,source:d.source,id:d.frame+":"+e.type+":"+e.closedUtc});
   }
-  const complete=FRAMES.every(f=>Number.isFinite(timeframes[f]?.rsi14)&&Number.isFinite(timeframes[f]?.atr14));
-  return {version:FAST_VERSION,generatedUtc:iso(now),completedUtc:iso(done),status:{pricesFreshAndCoherent:pricesOk,shortIndicatorsComputed:complete,eligibleForEntrySignal:false},
-    prices:{BTCUSD:usd,BTCUSDT:usdt,discrepancyPct:discrepancy},timeframes,
+  const complete=["5M","15M"].every(f=>Number.isFinite(timeframes[f]?.rsi14)&&Number.isFinite(timeframes[f]?.atr14));
+  return {version:FAST_VERSION,featureVersion:FEATURE_VERSION,generatedUtc:iso(now),completedUtc:iso(done),status:{pricesFreshAndCoherent:pricesOk,shortIndicatorsComputed:complete,eligibleForEntrySignal:false},
+    experimentalPrealertsEnabled:false,prealerts:[],experimental:{classification:"research_only_not_entry",prealerts:pricesOk?prealerts:[]},prices:{BTCUSD:usd,BTCUSDT:usdt,discrepancyPct:discrepancy},timeframes,
     events:pricesOk?events.sort((a,b)=>Date.parse(a.closedUtc)-Date.parse(b.closedUtc)):[],
     notice:"Public market observations only; no broker connection, orders or entry validation."};
 }
