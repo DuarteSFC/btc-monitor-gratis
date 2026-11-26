@@ -66,7 +66,7 @@ def delayed(routes,m,perp,mark,funding,minutes,cost):
     outcome_tables={}
     for name,horizon,stop in [("4h",240,2.5),("2h15",120,1.5),("2h25",120,2.5)]:
         ix=routes.index[routes==name]
-        original=m.loc[ix,["atr1"]].copy()
+        original=m.loc[ix,["segment","atr1"]].copy()
         original["atr1"]*=stop/2.5
         # make_outcomes expects a minute-aligned decision time and enters one
         # minute later. Index moves, but ATR is from original decision.
