@@ -1,0 +1,40 @@
+{
+  "run": 45872896092,
+  "commit": "66f823f6f041a140d02e3a11a53012a51b21b5d5",
+  "coverage": {
+    "settlements": 3285,
+    "first": "2021-01-01 00:00:00.002000+00:00",
+    "last": "2023-12-31 16:00:00+00:00",
+    "intervalHours": [
+      8
+    ],
+    "inconsistentIntervals": 0,
+    "examples": []
+  },
+  "results": [
+    {
+      "cost": "normal",
+      "n": 180,
+      "equity": 10498.589701532865,
+      "closedDD": 0.012195062530242112,
+      "minuteCloseDD": 0.014015975442490504,
+      "tradeExtremeDD": 0.016070141967098654,
+      "markExtremeDD": 0.01454745523606927,
+      "markFallbackMinutes": 0,
+      "fundingFallbackSettlements": 0,
+      "netFunding": 2.969866297254171
+    },
+    {
+      "cost": "stress",
+      "n": 180,
+      "equity": 10269.518714374417,
+      "closedDD": 0.01512128015082208,
+      "minuteCloseDD": 0.01751491310262314,
+      "tradeExtremeDD": 0.01832785190340997,
+      "markExtremeDD": 0.017931361095924227,
+      "markFallbackMinutes": 0,
+      "fundingFallbackSettlements": 0,
+      "netFunding": 2.8121541923514917
+    }
+  ]
+}
