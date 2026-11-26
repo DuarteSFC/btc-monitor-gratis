@@ -18,3 +18,12 @@ R01 run 45857241202, commit eef91d13b3e18c819213bf4574b39db9a590b057; R01/R02 fr
 - Aumentar frecuencia Ridge reduciendo umbral destruye rentabilidad. 15 variantes de frecuencia: 0/15 superan gate.
 ## Política
 Preservar 2024-25 para evaluación separada, 2026 explorado parcialmente en piloto (no holdout prístino); prueba prospectiva obligatoria. No cambiar parámetros de candidatos archivados sin nuevo ID. Registrar todo experimento, incluidos negativos. No operar dinero real ni cambiar CICLO MONITOR, alertas, Telegram o main. Los artefactos Actions caducan; este resumen y los identificadores de código quedan en Git.
+
+## 2026-11-26 — Derivados: valor incremental (run 45862531838)
+9 variantes, evaluación 2022-23, universo común, costes normal/estrés. 0/9 superan gate. Candidatos exploratorios, separados de R01/R02 (muestras no comparables directamente):
+| ID | Configuración | n | R normal | PF | R estrés | IC exploratorio estrés |
+|---|---|---:|---:|---:|---:|---|
+| D00 | Spot matched trimestral, score >=0.10 | 11 | +0.068536 | 1.5410 | +0.042391 | [-0.2013,+0.2369] |
+| D01 | Spot+derivados lag 15m, score >=0.10 | 25 | +0.037119 | 1.1784 | +0.011946 | [-0.1736,+0.2189] |
+| D02 | Spot+derivados lag 30m, score >=0.10 | 29 | +0.067475 | 1.3497 | +0.040595 | [-0.1463,+0.2667] |
+D02 aumenta frecuencia frente a D00, no demuestra mejora significativa. Funding predictor, no coste de financiación; publicación OI no verificada; spot proxy. Código congelado en commit 6ee4191dc3eec5f5621abb13a058709654393c9c. Mantener todos los negativos y no flexibilizar el gate.
