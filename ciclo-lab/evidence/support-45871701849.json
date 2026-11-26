@@ -1,0 +1,221 @@
+{
+  "run": 45871701849,
+  "commit": "b389eb34cbf65092b3437863e33adc029087c1b3",
+  "results": [
+    {
+      "policy": "C01-known",
+      "n": 138,
+      "monthlyMean": 0.0009501300174573824,
+      "totalReturn": 0.02280312041897718,
+      "positiveMonths": 16,
+      "blocks": [
+        {
+          "blockMonths": 1,
+          "observedBlocks": 24,
+          "mean": 0.0009501300174573824,
+          "sd": 0.0022971077940128655,
+          "effect": 0.4136201269848031,
+          "illustrativeTotalMonths": {
+            "1.0": 37,
+            "0.5": 145
+          }
+        },
+        {
+          "blockMonths": 3,
+          "observedBlocks": 8,
+          "mean": 0.002850390052372148,
+          "sd": 0.0035650437470282925,
+          "effect": 0.7995385904445472,
+          "illustrativeTotalMonths": {
+            "1.0": 30,
+            "0.5": 117
+          }
+        },
+        {
+          "blockMonths": 6,
+          "observedBlocks": 4,
+          "mean": 0.005700780104744296,
+          "sd": 0.004631763651629851,
+          "effect": 1.2308011663631138,
+          "illustrativeTotalMonths": {
+            "1.0": 30,
+            "0.5": 102
+          }
+        }
+      ],
+      "unknown": 0
+    },
+    {
+      "policy": "M01-known",
+      "n": 180,
+      "monthlyMean": 0.0011229946432267206,
+      "totalReturn": 0.026951871437441294,
+      "positiveMonths": 14,
+      "blocks": [
+        {
+          "blockMonths": 1,
+          "observedBlocks": 24,
+          "mean": 0.0011229946432267206,
+          "sd": 0.0042401507697403884,
+          "effect": 0.2648478094790667,
+          "illustrativeTotalMonths": {
+            "1.0": 89,
+            "0.5": 353
+          }
+        },
+        {
+          "blockMonths": 3,
+          "observedBlocks": 8,
+          "mean": 0.003368983929680161,
+          "sd": 0.0061170344177727725,
+          "effect": 0.5507544505376212,
+          "illustrativeTotalMonths": {
+            "1.0": 63,
+            "0.5": 246
+          }
+        },
+        {
+          "blockMonths": 6,
+          "observedBlocks": 4,
+          "mean": 0.006737967859360323,
+          "sd": 0.008365748084689891,
+          "effect": 0.805423231867505,
+          "illustrativeTotalMonths": {
+            "1.0": 60,
+            "0.5": 234
+          }
+        }
+      ],
+      "unknown": 0
+    },
+    {
+      "policy": "MD01-1m",
+      "n": 74,
+      "monthlyMean": 0.0006534653508061674,
+      "totalReturn": 0.01568316841934802,
+      "positiveMonths": 7,
+      "blocks": [
+        {
+          "blockMonths": 1,
+          "observedBlocks": 24,
+          "mean": 0.0006534653508061674,
+          "sd": 0.002685046189451708,
+          "effect": 0.24337210785174848,
+          "illustrativeTotalMonths": {
+            "1.0": 105,
+            "0.5": 418
+          }
+        },
+        {
+          "blockMonths": 3,
+          "observedBlocks": 8,
+          "mean": 0.0019603960524185024,
+          "sd": 0.003466031405480545,
+          "effect": 0.5656025070398071,
+          "illustrativeTotalMonths": {
+            "1.0": 60,
+            "0.5": 234
+          }
+        },
+        {
+          "blockMonths": 6,
+          "observedBlocks": 4,
+          "mean": 0.003920792104837005,
+          "sd": 0.0031493494422253697,
+          "effect": 1.2449530218109186,
+          "illustrativeTotalMonths": {
+            "1.0": 24,
+            "0.5": 96
+          }
+        }
+      ],
+      "unknown": 0
+    },
+    {
+      "policy": "MD01-5m",
+      "n": 74,
+      "monthlyMean": 0.0003755220032251654,
+      "totalReturn": 0.00901252807740397,
+      "positiveMonths": 6,
+      "blocks": [
+        {
+          "blockMonths": 1,
+          "observedBlocks": 24,
+          "mean": 0.0003755220032251654,
+          "sd": 0.0024408316316716166,
+          "effect": 0.1538500232267095,
+          "illustrativeTotalMonths": {
+            "1.0": 262,
+            "0.5": 1045
+          }
+        },
+        {
+          "blockMonths": 3,
+          "observedBlocks": 8,
+          "mean": 0.001126566009675496,
+          "sd": 0.003023337946480785,
+          "effect": 0.3726232494077737,
+          "illustrativeTotalMonths": {
+            "1.0": 135,
+            "0.5": 537
+          }
+        },
+        {
+          "blockMonths": 6,
+          "observedBlocks": 4,
+          "mean": 0.0022531320193509923,
+          "sd": 0.0025631879554772093,
+          "effect": 0.8790350370273602,
+          "illustrativeTotalMonths": {
+            "1.0": 54,
+            "0.5": 198
+          }
+        }
+      ],
+      "unknown": 0
+    },
+    {
+      "policy": "MD01-15m",
+      "n": 75,
+      "monthlyMean": 0.00018220481781802602,
+      "totalReturn": 0.0043729156276326245,
+      "positiveMonths": 6,
+      "blocks": [
+        {
+          "blockMonths": 1,
+          "observedBlocks": 24,
+          "mean": 0.00018220481781802602,
+          "sd": 0.0032656360653590412,
+          "effect": 0.055794587691752925,
+          "illustrativeTotalMonths": {
+            "1.0": 1987,
+            "0.5": 7945
+          }
+        },
+        {
+          "blockMonths": 3,
+          "observedBlocks": 8,
+          "mean": 0.0005466144534540782,
+          "sd": 0.005558436453428169,
+          "effect": 0.09833960647637761,
+          "illustrativeTotalMonths": {
+            "1.0": 1920,
+            "0.5": 7674
+          }
+        },
+        {
+          "blockMonths": 6,
+          "observedBlocks": 4,
+          "mean": 0.0010932289069081566,
+          "sd": 0.004638605676764871,
+          "effect": 0.23568050036764784,
+          "illustrativeTotalMonths": {
+            "1.0": 672,
+            "0.5": 2676
+          }
+        }
+      ],
+      "unknown": 0
+    }
+  ]
+}
