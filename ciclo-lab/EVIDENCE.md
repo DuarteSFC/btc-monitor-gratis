@@ -82,3 +82,6 @@ Five archived variants audited. Under an illustrative IID monthly normal approxi
 
 ## 2026-11-26 — Calendar-independent validation core (run 45871931180)
 Synthetic future-date temporal folds and label purge tests passed. Reconstructed n, mean R, PF, win, equity, closed-trade drawdown and original CI to numerical tolerance in all 6 C01-C03 development replays. Dynamic calendar support, one-sided 1/3-month block lower bounds and inactive-month accounting implemented. C01 stress lower95 -.020996, not passing. No actual holdout data opened by this workflow; only prior development artifacts and synthetic timestamps. Not a complete candidate-specific holdout runner; freeze, verified derivatives 2024-25 and intratrade drawdown still pending. Summary evidence/validation-core-45871931180.json.
+
+## 2026-11-26 — Known-trend robustness (run 45871507129)
+18 replays; 0/3 pass. C01-known stress 1/5/15m n138/139/141, mean +.066137/+.025761/-.009570 R. M01-known n180/183/184, +.059944/+.023396/+.005660; adjusted lower -.047902/-.093391/-.105949, 2022 negative at 5/15m. Combined M01-MD01-known n186/187/192, +.053561/+.023628/-.001425; no improvement sufficient to release. Preserve evidence/known-trend-45871507129.json. Phase 2 infrastructure may be prepared without unsealing actual holdout; release gate unchanged. No final candidate authorized.
