@@ -67,7 +67,7 @@ def shift_options(routes,eligible):
     for month,g in routes.groupby(routes.index.strftime("%Y-%m")):
         ts=g.index;days=ts.days_in_month[0];base=ts.as_unit("ns").asi8
         one=1440*NS
-        day=(ts.day.to_numpy()-1)
+        day=(ts.day.to_numpy(dtype=np.int64)-1)
         options=[]
         for k in range(days):
             shift=((day+k)%days-day)*one
