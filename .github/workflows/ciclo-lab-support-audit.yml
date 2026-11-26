@@ -1,0 +1,40 @@
+name: CICLO LAB calendar support sensitivity
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/support_audit.py, .github/workflows/ciclo-lab-support-audit.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3
+      - run: python -X faulthandler ciclo-lab/support_audit.py --selftest
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-feature-audit
+          path: audit-feature
+          run-id: 45871030306
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-moderate-delay
+          path: audit-moderate
+          run-id: 45870778103
+          github-token: ${{ github.token }}
+      - run: python -X faulthandler ciclo-lab/support_audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-support-audit
+          path: lab-support-audit.json
+          retention-days: 30
