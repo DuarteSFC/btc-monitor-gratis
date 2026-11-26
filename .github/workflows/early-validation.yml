@@ -17,4 +17,5 @@ jobs:
       - run: npm test
       - run: node test_fast_tactical.mjs
       - run: node test_early_patterns.mjs
-      - run: node replay_early.mjs
+      - run: node --check fast_notify.mjs
+      - run: node replay_observation.mjs
