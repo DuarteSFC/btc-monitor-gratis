@@ -12,7 +12,7 @@ const mock=async url=>{
   if(url.includes("market/ticker?"))return {code:"0",data:[{instId:"BTC-USDT",last:"60000",ts:String(now-1000)}]};
   if(url.includes("BTC-USD/ticker"))return {price:"60000",time:new Date(now-1000).toISOString()};
   if(url.includes("market/candles?")){
-    const gran=new URL(url).searchParams.get("bar"),interval=gran==="5m"?300000:gran==="15m"?900000:0;
+    const gran=new URL(url).searchParams.get("bar"),interval=gran==="1m"?60000:gran==="5m"?300000:gran==="15m"?900000:0;
     assert.ok(interval);
     return {code:"0",data:Array.from({length:300},(_,i)=>[String(now-(i+1)*interval),"60000","60030","59970","60000","10","0","0","1"])};
   }
@@ -35,3 +35,6 @@ assert.equal(localBreak.length,1);assert.equal(localBreak[0].type,"breakout");as
 assert.equal(detectEvents([...localBase.slice(0,-1),{...localBase.at(-1),o:60000,h:60090,l:59980,c:60080,v:10}],"5M","mock",now,0).length,0);
 assert.equal(detectEvents([...localBase.slice(0,-1),{...localBase.at(-1),o:60000,h:60010,l:59900,c:59920,v:20}],"5M","mock",now,0)[0].type,"support_loss");
 console.log("OK: local break, low-volume rejection, local support loss and single-close replay.");
+
+assert.equal(result.timeframes["1M"].recentClosed.length,120);
+assert.equal(result.prealerts.length,0);
