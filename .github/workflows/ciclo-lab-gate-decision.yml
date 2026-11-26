@@ -1,0 +1,24 @@
+name: CICLO LAB release gate decision
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/gate_decision.py, .github/workflows/ciclo-lab-gate-decision.yml]
+permissions:
+  contents: read
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python ciclo-lab/gate_decision.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-gate-decision
+          path: lab-gate-decision.json
+          retention-days: 30
