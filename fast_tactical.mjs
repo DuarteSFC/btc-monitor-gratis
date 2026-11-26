@@ -1,7 +1,9 @@
 import {candles,price,indicators,atr,rsi,validatePrice} from "./worker.mjs";
 
 import {earlyPatterns} from "./early_patterns.mjs";
-export const FAST_VERSION="2.1.0-experimental";
+// Preserve the existing API contract for hourly consumers.
+export const FAST_VERSION="2.0.0";
+export const FEATURE_VERSION="2.1.0";
 const FRAMES=["5M","15M","1M"];
 const msFor=f=>f==="1M"?60000:f==="5M"?300000:900000;
 const iso=t=>new Date(t).toISOString();
@@ -59,8 +61,8 @@ export async function fastReport(now=Date.now(),request){
     if(d.frame==="1M"||d.frame==="5M")for(let i=Math.max(35,d.data.length-Math.ceil(300000/ms));i<d.data.length;i++)for(const e of earlyPatterns(d.data.slice(0,i+1),ms))prealerts.push({...e,frame:d.frame,source:d.source,id:d.frame+":"+e.type+":"+e.closedUtc});
   }
   const complete=["5M","15M"].every(f=>Number.isFinite(timeframes[f]?.rsi14)&&Number.isFinite(timeframes[f]?.atr14));
-  return {version:FAST_VERSION,generatedUtc:iso(now),completedUtc:iso(done),status:{pricesFreshAndCoherent:pricesOk,shortIndicatorsComputed:complete,eligibleForEntrySignal:false},
-    prealerts:pricesOk?prealerts:[],prices:{BTCUSD:usd,BTCUSDT:usdt,discrepancyPct:discrepancy},timeframes,
+  return {version:FAST_VERSION,featureVersion:FEATURE_VERSION,generatedUtc:iso(now),completedUtc:iso(done),status:{pricesFreshAndCoherent:pricesOk,shortIndicatorsComputed:complete,eligibleForEntrySignal:false},
+    experimentalPrealertsEnabled:false,prealerts:[],experimental:{classification:"research_only_not_entry",prealerts:pricesOk?prealerts:[]},prices:{BTCUSD:usd,BTCUSDT:usdt,discrepancyPct:discrepancy},timeframes,
     events:pricesOk?events.sort((a,b)=>Date.parse(a.closedUtc)-Date.parse(b.closedUtc)):[],
     notice:"Public market observations only; no broker connection, orders or entry validation."};
 }
