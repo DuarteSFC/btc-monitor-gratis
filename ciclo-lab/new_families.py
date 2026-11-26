@@ -40,8 +40,8 @@ def families(d,m):
     # First retest of a known breakout level, one to six completed bars later.
     breakout=(q.close>high)&(vol>=1.5)&(q.close>q.open)
     a=q.assign(level=high.where(breakout),event=pd.Series(np.arange(len(q)),index=q.index).where(breakout))
-    a["level"]=a.groupby("segment",sort=False).level.ffill()
-    a["event"]=a.groupby("segment",sort=False).event.ffill()
+    a["level"]=a.groupby("segment",sort=False)["level"].ffill()
+    a["event"]=a.groupby("segment",sort=False)["event"].ffill()
     level=lag(a,"level");event=lag(a,"event")
     age=np.arange(len(q))-event
     retest=(age>=1)&(age<=6)&(q.low<=level+.2*lag(q,"atr"))&(q.low>=level-.5*lag(q,"atr"))&(q.close>level)&(q.close>q.open)
