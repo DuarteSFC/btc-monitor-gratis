@@ -9,10 +9,10 @@ export function earlyPatterns(bars,ms=60000){
  if(!Number.isFinite(v))return [];
  const recent=p.slice(-6),older=p.slice(-12,-6),lo=x=>Math.min(...x.map(b=>b.l)),hi=x=>Math.max(...x.map(b=>b.h));
  const rising=lo(recent)>lo(older), bullish=z.c>z.o, range=z.h-z.l, recovery=range>0&&(z.c-z.l)/range>=.65;
- const out=[];const add=(type,level)=>out.push({type,level,closedUtc:new Date(z.t+ms).toISOString(),close:z.c,volumeVs20:v,classification:"experimental_prealert_not_entry"});
- if(bullish&&rising&&z.c>recent.at(-1).h&&rsi(bars.map(b=>b.c))>45&&z.c<high)add("early_reversal",lo(recent));
- if(z.l<low&&z.c>low&&bullish&&recovery&&v>=1.2)add("sweep_recovery",low);
- if(rising&&hi(recent)-lo(recent)<.75*(hi(older)-lo(older))&&high-z.c>=0&&high-z.c<a&&z.c>z.o)add("compression",high);
- if(rising&&hi(older)-lo(older)>3*a&&z.l<=hi(older)&&z.c>hi(older)&&bullish&&recovery)add("continuation",hi(older));
+ const out=[];const add=(type,level,invalidation)=>out.push({type,level,invalidation,closedUtc:new Date(z.t+ms).toISOString(),close:z.c,volumeVs20:v,classification:"experimental_prealert_not_entry"});
+ if(bullish&&rising&&z.c>recent.at(-1).h&&rsi(bars.map(b=>b.c))>45&&z.c<high)add("early_reversal",recent.at(-1).h,lo(recent));
+ if(z.l<low&&z.c>low&&bullish&&recovery&&v>=1.2)add("sweep_recovery",low,z.l);
+ if(rising&&hi(recent)-lo(recent)<.75*(hi(older)-lo(older))&&high-z.c>=0&&high-z.c<a&&z.c>z.o)add("compression",high,lo(recent));
+ if(rising&&hi(older)-lo(older)>3*a&&z.l<=hi(older)&&z.c>hi(older)&&bullish&&recovery)add("continuation",hi(older),Math.min(z.l,lo(recent)));
  return out;
 }
