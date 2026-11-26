@@ -1,0 +1,59 @@
+name: CICLO LAB archive connectivity smoke
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [.github/workflows/ciclo-lab-archive-smoke.yml]
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe public historical 1m archive (no credentials)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv, datetime as dt, hashlib, io, json, math, time, urllib.request, zipfile
+          days = ["2020-03-12", "2021-05-19", "2022-11-09", "2024-04-20", "2025-01-01", "2026-09-27"]
+          base = "https://data.binance.vision/data/spot/daily/klines/BTCUSDT/1m/"
+          def get(url, limit):
+              for attempt in range(3):
+                  try:
+                      with urllib.request.urlopen(url, timeout=20) as r:
+                          raw = r.read(limit+1)
+                          if len(raw)>limit: raise ValueError("response exceeds limit")
+                          return raw
+                  except Exception:
+                      if attempt == 2: raise
+                      time.sleep(attempt+1)
+          reports = []
+          for day in days:
+              name = f"BTCUSDT-1m-{day}.zip"
+              try:
+                  raw = get(base+name, 2000000)
+                  expected = get(base+name+".CHECKSUM", 10000).decode().split()[0].lower()
+                  actual = hashlib.sha256(raw).hexdigest()
+                  if actual != expected: raise ValueError("checksum mismatch")
+                  with zipfile.ZipFile(io.BytesIO(raw)) as z:
+                      members = z.namelist()
+                      if len(members)!=1 or z.getinfo(members[0]).file_size>3000000: raise ValueError("unexpected archive structure")
+                      rows = list(csv.reader(io.StringIO(z.read(members[0]).decode())))
+                  start = int(dt.datetime.fromisoformat(day).replace(tzinfo=dt.timezone.utc).timestamp()*1000)
+                  timestamps=[]
+                  for row in rows:
+                      if len(row)<6: raise ValueError("short row")
+                      t=int(row[0]); t=t//1000 if t>10**14 else t
+                      o,h,l,c,v=map(float,row[1:6])
+                      if not all(map(math.isfinite,[o,h,l,c,v])) or l<=0 or h<max(o,c) or l>min(o,c) or v<0:
+                          raise ValueError("invalid OHLCV")
+                      if not start<=t<start+86400000 or t%60000: raise ValueError("timestamp outside UTC day or grid")
+                      timestamps.append(t)
+                  if len(timestamps)!=len(set(timestamps)) or timestamps!=sorted(timestamps): raise ValueError("duplicate or unordered timestamps")
+                  missing=len(set(range(start,start+86400000,60000))-set(timestamps))
+                  reports.append({"day":day,"rows":len(rows),"missing_minutes":missing,"checksum_verified":True,"status":"ok" if missing==0 else "gaps","sha256":actual})
+              except Exception as e:
+                  reports.append({"day":day,"status":"failed","error":str(e)})
+          print(json.dumps({"source":"Binance public spot archive BTCUSDT 1m","samples":reports},separators=(",",":")))
+          if not all(r["status"]=="ok" for r in reports): raise SystemExit(1)
+          PY
