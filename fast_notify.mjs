@@ -19,14 +19,16 @@ const fmt=x=>Number(x).toLocaleString("es-ES",{maximumFractionDigits:2});
 const localTime=x=>new Date(x).toLocaleString("es-ES",{timeZone:"Europe/Madrid",hour12:false});
 const market=snapshot.prices.BTCUSDT.data.price;
 const candidates=process.env.BTC_CANDIDATES_VALIDATED==="true"?fromEvents(snapshot.events,now,5,2).filter(c=>Math.abs(market-c.entry)<=0.15*(c.entry-c.stop)).map(c=>({...c,type:"candidate"})):[];
-const recent=[...snapshot.events,...candidates].filter(e=>{
+const prealerts=process.env.BTC_EARLY_PREALERTS==="true"?(snapshot.prealerts??[]).map(e=>({...e,pattern:e.type,type:"prealert"})):[];
+const recent=[...snapshot.events,...candidates,...prealerts].filter(e=>{
  const age=now-Date.parse(e.closedUtc);
- return age>=0&&age<=(e.type==="candidate"?600000:7200000)&&!seen.has(e.id);
+ return age>=0&&age<=(e.type==="candidate"?600000:e.type==="prealert"?300000:1200000)&&!seen.has(e.id);
 }).sort((a,b)=>Date.parse(b.closedUtc)-Date.parse(a.closedUtc));
 const header="BTC · Monitor táctico · Sin ejecución de órdenes";
 const quote="BTC/USD "+fmt(snapshot.prices.BTCUSD.data.price)+" ("+snapshot.prices.BTCUSD.data.source+"; "+localTime(snapshot.prices.BTCUSD.data.tradeUtc)+")\nBTC/USDT "+fmt(market)+" ("+snapshot.prices.BTCUSDT.data.source+"; "+localTime(snapshot.prices.BTCUSDT.data.tradeUtc)+")";
 function format(e){
  const time=localTime(e.closedUtc)+" · "+e.frame;
+ if(e.type==="prealert")return "BTC · PREALERTA EXPERIMENTAL (no entrada)\n"+time+"\n"+({early_reversal:"Reversión temprana",sweep_recovery:"Barrido y recuperación",compression:"Compresión",continuation:"Continuación"}[e.pattern]??e.pattern)+"\nNivel de observación "+fmt(e.level)+" | cierre "+fmt(e.close)+" | volumen "+fmt(e.volumeVs20)+"x\nFuente: "+e.source+"\nNo es una recomendación de compra. Evaluar estructura y riesgo; descartar si pierde el nivel.";
  if(e.type==="candidate")return "🟢 BTC · Candidato LONG táctico (hipotético)\n"+time+"\nEntrada "+fmt(e.entry)+" | Stop "+fmt(e.stop)+" | Objetivo "+fmt(e.target)+"\nB/R neto estimado "+fmt(e.rr)+":1 (costes supuestos: 0,05% comisión + 0,02% deslizamiento por lado).\nAcción: validar costes, estructura y riesgo agregado; no perseguir.";
  const age=now-Date.parse(e.closedUtc);
  const title=e.type==="support_loss"?"🔴 BTC · Pérdida de soporte":"🟡 BTC · Movimiento relevante";
