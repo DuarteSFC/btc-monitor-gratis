@@ -64,3 +64,6 @@ Latency run 45869460218: 16 replays, exact original parity. C01 stress mean at 1
 
 ## 2026-11-26 — Worst-case delay training (run 45870129062)
 104158 complete 1/5/15m scenario labels, 28.64% positive worst case. 4 configs, 24 replays, 0 pass delay screen. Ensemble threshold 0: stress n15/15/16, mean +.196303/+.212147/+.155269 R, all trades 2022; insufficient support and no 2023 signals executed. Ensemble .05 only 6/6/7 trades; hurdle models fail robustness. Preserve all outcomes at evidence/robust-delay-45870129062.json. Worst-case training is too restrictive in this experiment, not evidence of year-to-year stability. No holdout accessed; no release.
+
+## 2026-11-26 — Moderate delay penalty (run 45870778103)
+4 policies, 24 replays, 0 pass. MD01 (365d:0.000) stress at 1/5/15m n74/74/75, mean +.084856/+.049261/+.023943 R; normal +.129911/+.092958/+.102632 R. At 1m stress PF1.38988, adjusted lower -.135195; at 15m 2023 stress -.005101 (25). All CIs include zero; annual support insufficient. MD02 (expanding:.025) stress n26 all delays, +.187123/+.200795/+.206800 R but entirely 2022 and 6 active months. Preserve evidence/moderate-delay-45870778103.json. MD01 and MD02 are development hypotheses only; no release or holdout. Use MD prefix, not D03 (already assigned to derivative discount recovery).
