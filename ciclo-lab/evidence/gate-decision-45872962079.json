@@ -1,0 +1,176 @@
+{
+  "run": 45872962079,
+  "commit": "471d239128f2498892af5e941b0d1bda5152d283",
+  "sourceRun": 45871507129,
+  "sourceSHA256": "85274e70de39ab54db428d33cec47b9c94485e7e5ae3283d09c461a67fa38c9e",
+  "policies": {
+    "C01-known": {
+      "baselinePassed": false,
+      "allDelaysPassed": false,
+      "scenarios": {
+        "1": {
+          "checks": {
+            "150_resolved_each_cost": false,
+            "zero_unknown": true,
+            "normal_mean_at_least_0.05": true,
+            "normal_pf_at_least_1.15": true,
+            "positive_adjusted_stress_lower": false,
+            "12_active_months": true,
+            "both_years_positive_30_each": true
+          },
+          "passed": false,
+          "failed": [
+            "150_resolved_each_cost",
+            "positive_adjusted_stress_lower"
+          ]
+        },
+        "5": {
+          "checks": {
+            "150_resolved_each_cost": false,
+            "zero_unknown": true,
+            "normal_mean_at_least_0.05": true,
+            "normal_pf_at_least_1.15": true,
+            "positive_adjusted_stress_lower": false,
+            "12_active_months": true,
+            "both_years_positive_30_each": false
+          },
+          "passed": false,
+          "failed": [
+            "150_resolved_each_cost",
+            "positive_adjusted_stress_lower",
+            "both_years_positive_30_each"
+          ]
+        },
+        "15": {
+          "checks": {
+            "150_resolved_each_cost": false,
+            "zero_unknown": true,
+            "normal_mean_at_least_0.05": false,
+            "normal_pf_at_least_1.15": true,
+            "positive_adjusted_stress_lower": false,
+            "12_active_months": true,
+            "both_years_positive_30_each": false
+          },
+          "passed": false,
+          "failed": [
+            "150_resolved_each_cost",
+            "normal_mean_at_least_0.05",
+            "positive_adjusted_stress_lower",
+            "both_years_positive_30_each"
+          ]
+        }
+      }
+    },
+    "M01-known": {
+      "baselinePassed": false,
+      "allDelaysPassed": false,
+      "scenarios": {
+        "1": {
+          "checks": {
+            "150_resolved_each_cost": true,
+            "zero_unknown": true,
+            "normal_mean_at_least_0.05": true,
+            "normal_pf_at_least_1.15": true,
+            "positive_adjusted_stress_lower": false,
+            "12_active_months": true,
+            "both_years_positive_30_each": true
+          },
+          "passed": false,
+          "failed": [
+            "positive_adjusted_stress_lower"
+          ]
+        },
+        "5": {
+          "checks": {
+            "150_resolved_each_cost": true,
+            "zero_unknown": true,
+            "normal_mean_at_least_0.05": true,
+            "normal_pf_at_least_1.15": true,
+            "positive_adjusted_stress_lower": false,
+            "12_active_months": true,
+            "both_years_positive_30_each": false
+          },
+          "passed": false,
+          "failed": [
+            "positive_adjusted_stress_lower",
+            "both_years_positive_30_each"
+          ]
+        },
+        "15": {
+          "checks": {
+            "150_resolved_each_cost": true,
+            "zero_unknown": true,
+            "normal_mean_at_least_0.05": true,
+            "normal_pf_at_least_1.15": true,
+            "positive_adjusted_stress_lower": false,
+            "12_active_months": true,
+            "both_years_positive_30_each": false
+          },
+          "passed": false,
+          "failed": [
+            "positive_adjusted_stress_lower",
+            "both_years_positive_30_each"
+          ]
+        }
+      }
+    },
+    "M01-MD01-known": {
+      "baselinePassed": false,
+      "allDelaysPassed": false,
+      "scenarios": {
+        "1": {
+          "checks": {
+            "150_resolved_each_cost": true,
+            "zero_unknown": true,
+            "normal_mean_at_least_0.05": true,
+            "normal_pf_at_least_1.15": true,
+            "positive_adjusted_stress_lower": false,
+            "12_active_months": true,
+            "both_years_positive_30_each": true
+          },
+          "passed": false,
+          "failed": [
+            "positive_adjusted_stress_lower"
+          ]
+        },
+        "5": {
+          "checks": {
+            "150_resolved_each_cost": true,
+            "zero_unknown": true,
+            "normal_mean_at_least_0.05": true,
+            "normal_pf_at_least_1.15": true,
+            "positive_adjusted_stress_lower": false,
+            "12_active_months": true,
+            "both_years_positive_30_each": false
+          },
+          "passed": false,
+          "failed": [
+            "positive_adjusted_stress_lower",
+            "both_years_positive_30_each"
+          ]
+        },
+        "15": {
+          "checks": {
+            "150_resolved_each_cost": true,
+            "zero_unknown": true,
+            "normal_mean_at_least_0.05": true,
+            "normal_pf_at_least_1.15": true,
+            "positive_adjusted_stress_lower": false,
+            "12_active_months": true,
+            "both_years_positive_30_each": false
+          },
+          "passed": false,
+          "failed": [
+            "positive_adjusted_stress_lower",
+            "both_years_positive_30_each"
+          ]
+        }
+      }
+    }
+  },
+  "baselinePasses": [],
+  "allDelayPasses": [],
+  "holdoutLocked": true,
+  "releaseAuthorized": false,
+  "limitations": "Checks final three archived policies against existing numerical gates only. Adjusted confidence accounts for a local batch, not all past search. Even a numerical pass would require separate review, execution audit and explicit freeze; never unlock automatically. Actual development screens did not pass; no market data read."
+}
