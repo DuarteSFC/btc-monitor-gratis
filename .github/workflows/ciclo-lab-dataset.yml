@@ -1,0 +1,26 @@
+name: CICLO LAB full minute dataset
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/archive_dataset.py, .github/workflows/ciclo-lab-dataset.yml]
+permissions:
+  contents: read
+jobs:
+  dataset:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: python3 -m py_compile ciclo-lab/archive_dataset.py
+      - run: python3 ciclo-lab/archive_dataset.py --selftest
+      - run: python3 ciclo-lab/archive_dataset.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ciclo-lab-btcusdt-1m-2020-2026
+          path: lab-dataset/
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 30
