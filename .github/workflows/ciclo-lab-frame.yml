@@ -1,0 +1,31 @@
+name: CICLO LAB causal market frames
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/market_frame.py, .github/workflows/ciclo-lab-frame.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  frames:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install --disable-pip-version-check numpy==2.2.6 pandas==2.2.3
+      - run: python3 -m py_compile ciclo-lab/market_frame.py
+      - run: python3 ciclo-lab/market_frame.py --selftest
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-btcusdt-1m-2020-2026
+          path: lab-dataset
+          run-id: 45734087753
+          github-token: ${{ github.token }}
+      - run: python3 ciclo-lab/market_frame.py --dataset lab-dataset
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-frame-development-summary
+          path: lab-frame-summary.json
+          retention-days: 30
