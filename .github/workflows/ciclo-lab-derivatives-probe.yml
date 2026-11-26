@@ -1,0 +1,47 @@
+name: CICLO LAB derivatives archive probe
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [.github/workflows/ciclo-lab-derivatives-probe.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: |
+          python3 - <<'PY'
+          import urllib.request,urllib.error,zipfile,io,csv,hashlib,json
+          base="https://data.binance.vision/data/futures/um"
+          results=[]
+          for day in ["2020-03-12","2021-05-19","2022-11-09","2023-08-17"]:
+              month=day[:7]
+              cases={
+                "perpetual_1m":f"daily/klines/BTCUSDT/1m/BTCUSDT-1m-{day}.zip",
+                "mark_1m":f"daily/markPriceKlines/BTCUSDT/1m/BTCUSDT-1m-{day}.zip",
+                "metrics":f"daily/metrics/BTCUSDT/BTCUSDT-metrics-{day}.zip",
+                "funding":f"monthly/fundingRate/BTCUSDT/BTCUSDT-fundingRate-{month}.zip"}
+              for kind,path in cases.items():
+                  item={"day":day,"kind":kind}
+                  try:
+                      url=base+"/"+path
+                      with urllib.request.urlopen(url,timeout=12) as r: raw=r.read()
+                      digest=hashlib.sha256(raw).hexdigest()
+                      try:
+                          with urllib.request.urlopen(url+".CHECKSUM",timeout=12) as r: published=r.read().decode().split()[0].lower()
+                      except urllib.error.HTTPError as e:
+                          if e.code!=404:raise
+                          published=None
+                      if published and published!=digest:raise ValueError("checksum mismatch")
+                      with zipfile.ZipFile(io.BytesIO(raw)) as z:
+                          names=[n for n in z.namelist() if n.endswith(".csv")]
+                          if len(names)!=1:raise ValueError("unexpected archive")
+                          with z.open(names[0]) as f: rows=list(csv.reader(io.TextIOWrapper(f,encoding="utf-8")))
+                      if not rows:raise ValueError("empty")
+                      item.update(status="available",rows_including_header=len(rows),first_row=rows[0],last_row=rows[-1],sha256=digest,checksum_verified=bool(published))
+                  except Exception as e:item.update(status="unavailable",error=str(e))
+                  results.append(item)
+                  print(json.dumps(item),flush=True)
+          print("DERIVATIVES_PROBE="+json.dumps(results),flush=True)
+          PY
