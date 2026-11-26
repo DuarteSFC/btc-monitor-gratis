@@ -27,3 +27,6 @@ Preservar 2024-25 para evaluación separada, 2026 explorado parcialmente en pilo
 | D01 | Spot+derivados lag 15m, score >=0.10 | 25 | +0.037119 | 1.1784 | +0.011946 | [-0.1736,+0.2189] |
 | D02 | Spot+derivados lag 30m, score >=0.10 | 29 | +0.067475 | 1.3497 | +0.040595 | [-0.1463,+0.2667] |
 D02 aumenta frecuencia frente a D00, no demuestra mejora significativa. Funding predictor, no coste de financiación; publicación OI no verificada; spot proxy. Código congelado en commit 6ee4191dc3eec5f5621abb13a058709654393c9c. Mantener todos los negativos y no flexibilizar el gate.
+
+## 2026-11-26 — Señales directas de derivados (run 45863063325)
+56 replays incluidos controles. Ninguna supera gate. B19 (discount_recovery, 15/30m OI lag) conserva +0.075192 R normal, +0.052307 R estrés, PF 1.5298, 14 operaciones, 0 desconocidas, IC estrés [-0.3074,+0.3205]; ambos lags producen exactamente las mismas entradas y NO son dos pruebas independientes. Uno de cinco controles supera su media. ID D03, candidato secundario no validado, código commit 877029c4f0782c685e41e51db54a703c82e0919a. B17/B18 positivos solo a coste normal y lag 15m; B20 negativo. Funding no imputado al PnL. No evidencia de liquidaciones directas.
