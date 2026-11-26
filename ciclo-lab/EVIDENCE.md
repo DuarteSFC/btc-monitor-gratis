@@ -48,3 +48,6 @@ Six configurations; quarterly expanding development, 2022-23, hourly grid, 2.5 A
 
 ## 2026-11-26 — Exit geometry v0.9 (run 45867520944)
 54 configs, 108 cost replays, 16 positive both, 0 pass. Full summaries: evidence/exit-45867520944.json. New X01 120:1.5:hurdle_tree:0.00 n109 normal +0.092677 R, PF1.29797, stress +0.022497, adjusted lower -0.260258, all24 active months. X02 120:2.5:ensemble:0.00 n63 normal +0.081739, stress +0.053851, PF1.64378, 9 active months. P01 replicated exactly. No >=150 trades profitable under stress; no independent validation. Release protocol frozen in RELEASE_GATE.md; no production integration until all gates pass and user authorization.
+
+## 2026-11-26 — Multi-model portfolio (run 45867984261)
+Three policies, six cost replays; 0/3 pass. C01 union of P01,G01,E60,E15, n156, mean +0.076765 R, PF1.32082, win48.08%, equity10300.69, stress +0.033923, CI [-0.02848,+0.13408], adjusted lower -0.036068, active22 months, zero unknown. First both-cost positive portfolio >=150 trades in the recorded experiments, but fails adjusted confidence. C02 two votes n47, +0.102274 R, stress +0.062907, PF1.54925; C03 three votes n18, +0.165232 R, stress +0.128665, PF2.05518. No independent validation. Full summaries: evidence/portfolio-45867984261.json. Preserve no-trade constraints; do not lower release gate.
