@@ -8,7 +8,7 @@ import argparse
 
 BASE="https://data.binance.vision/data/spot"
 START=date(2020,1,1)
-END=date(2026,11,26)  # exclusive, no partial UTC day
+END=date(2026,11,25)  # exclusive; Nov 25 archive not yet published during first run
 MINUTE=60000
 
 def ms(d):
@@ -32,7 +32,7 @@ def request(url):
         time.sleep(2**attempt)
 def check(raw,start,end):
     first,last=ms(start),ms(end)
-    prev=first-MINUTE; gaps=[]; rows=0
+    prev=first-MINUTE; observed=prev; gaps=[]; rows=0; rejected=0; examples=[]
     with zipfile.ZipFile(io.BytesIO(raw)) as z:
         names=[n for n in z.namelist() if n.endswith(".csv")]
         if len(names)!=1: raise ValueError("unexpected zip content")
@@ -41,23 +41,27 @@ def check(raw,start,end):
                 if row and row[0].lower() in ("open_time","opentime"): continue
                 if len(row)<12: raise ValueError("bad row")
                 t=timestamp(row[0])
-                if not first<=t<last or t%MINUTE or t<=prev:
+                if not first<=t<last or t%MINUTE or t<=observed:
                     raise ValueError("duplicate, unordered or out-of-range candle "+str(t))
-                if t>prev+MINUTE: gaps.append([prev+MINUTE,t])
+                observed=t
                 o,h,l,c,v=map(float,row[1:6])
                 import math
                 if not all(map(math.isfinite,(o,h,l,c,v))) or not (0<l<=min(o,c)<=max(o,c)<=h and v>=0):
                     raise ValueError("invalid OHLCV "+str(t))
                 # Closing timestamps are in milliseconds or microseconds.
                 ct=int(row[6]); ct=ct//1000 if ct>=10**14 else ct
-                if ct!=t+MINUTE-1: raise ValueError("bad close time")
+                if ct!=t+MINUTE-1:
+                    rejected+=1
+                    if len(examples)<10: examples.append({"open_ms":t,"close_raw":row[6],"close_ms":ct,"expected_close_ms":t+MINUTE-1})
+                    continue
+                if t>prev+MINUTE: gaps.append([prev+MINUTE,t])
                 prev=t;rows+=1
     if prev+MINUTE<last: gaps.append([prev+MINUTE,last])
     if not rows: raise ValueError("empty archive")
     missing=sum((b-a)//MINUTE for a,b in gaps)
     expected=(last-first)//MINUTE
     if rows+missing!=expected: raise ValueError("inconsistent coverage")
-    return {"rows":rows,"expected":expected,"missing":missing,"gaps_utc_ms_half_open":gaps}
+    return {"rows":rows,"expected":expected,"missing":missing,"gaps_utc_ms_half_open":gaps,"rejected_close_time":rejected,"close_time_examples":examples}
 def one(kind,start,end,root):
     suffix=start.strftime("%Y-%m" if kind=="monthly" else "%Y-%m-%d")
     name="BTCUSDT-1m-"+suffix+".zip"
@@ -89,6 +93,12 @@ def selftest():
         return buf.getvalue()
     valid=range(t,ms(b),MINUTE)
     assert check(ziprows(valid),a,b)["missing"]==0
+    # A malformed close time excludes only the affected row, not the whole archive.
+    buf=io.BytesIO()
+    with zipfile.ZipFile(buf,"w") as z:
+        z.writestr("test.csv","\n".join(f"{x},100,102,99,101,2,{x+MINUTE-1-(1 if i==7 else 0)},0,1,0,0,0" for i,x in enumerate(valid)))
+    q=check(buf.getvalue(),a,b)
+    assert q["missing"]==1 and q["rejected_close_time"]==1 and q["gaps_utc_ms_half_open"]==[[t+7*MINUTE,t+8*MINUTE]]
     assert check(ziprows(list(valid)[:5]+list(valid)[6:]),a,b)["missing"]==1
     for ts in ([t,t],[t+1],[ms(b)]):
         try: check(ziprows(ts),a,b)
@@ -119,7 +129,7 @@ def main():
     results.sort(key=lambda x:x["start"])
     expected=(ms(END)-ms(START))//MINUTE
     rows=sum(r["rows"] for r in results)
-    report={"dataset_version":"1.0","symbol":"BTCUSDT","market":"spot","interval":"1m","timezone":"UTC","start":str(START),"end_exclusive":str(END),"expected":expected,"rows":rows,"missing_total":expected-rows,"missing_in_verified_files":sum(r["missing"] for r in results),"errors":errors,"files":results,"policy":"Never forward-fill missing bars. Any feature or simulated trade spanning a gap must be invalidated."}
+    report={"dataset_version":"1.1","symbol":"BTCUSDT","market":"spot","interval":"1m","timezone":"UTC","start":str(START),"end_exclusive":str(END),"expected":expected,"rows":rows,"missing_total":expected-rows,"missing_in_verified_files":sum(r["missing"] for r in results),"rejected_close_time":sum(r["rejected_close_time"] for r in results),"close_time_examples":[e for r in results for e in r["close_time_examples"]][:20],"errors":errors,"files":results,"policy":"Raw ZIPs preserved; downstream loader MUST exclude rows with close time != open+59999 ms and verify manifest hashes. Never forward-fill. Reset features at gaps; do not silently discard trades with unknown exits."}
     (root/"manifest.json").write_text(json.dumps(report,indent=2))
     print(json.dumps({k:v for k,v in report.items() if k!="files"}),flush=True)
     if errors: raise SystemExit(1)
