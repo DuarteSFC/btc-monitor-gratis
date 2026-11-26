@@ -1,0 +1,52 @@
+name: CICLO LAB joint statistical audit
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/statistical_audit.py, .github/workflows/ciclo-lab-statistical-audit.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3
+      - run: python -X faulthandler ciclo-lab/statistical_audit.py --selftest
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-batch-futures
+          path: audit-batch
+          run-id: 45866038855
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-hurdle-futures
+          path: audit-hurdle
+          run-id: 45867003715
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-exit-grid
+          path: audit-exit
+          run-id: 45867520944
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-portfolio-screen
+          path: audit-portfolio
+          run-id: 45867984261
+          github-token: ${{ github.token }}
+      - run: python -X faulthandler ciclo-lab/statistical_audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-statistical-audit
+          path: lab-statistical-audit.json
+          retention-days: 30
