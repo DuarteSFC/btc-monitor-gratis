@@ -73,3 +73,6 @@ Latency run 45869460218: 16 replays, exact original parity. C01 stress mean at 1
 
 ## 2026-11-26 — Relative score stability (run 45871277699)
 3 policies, 18 replays. All 9 stress scenarios negative. At 1m stress n91/107/136 and mean -.035698/-.019855/-.026741 for 1/2/5% trailing score cutoff. At 15m mean -.087713/-.061735/-.052524. Lowering selectivity does not rescue the delay-robust strategy in this experiment. Preserve evidence/relative-delay-45871277699.json; reject as operational candidate. No holdout accessed. Known-trend and trigger-fill audits are separate tests of archived candidates.
+
+## 2026-11-26 — Calendar support sensitivity (run 45871701849)
+Five archived variants audited. Under an illustrative IID monthly normal approximation at one-sided alpha .05, power .8, with no search adjustment, C01-known requires 37 total months at observed effect, 145 at half effect; M01-known 89/353; MD01 at 1m 105/418, 5m 262/1045, 15m 1987/7945. Coarser block estimates unstable (only 8 or 4 blocks). These are not forecasts or required live durations; effects selected in development, uncertain, stationarity unverified. Practical conclusion: prioritize material effect size and stable calendar support over increasing count of correlated trades. No gate change or holdout. Full summary evidence/support-45871701849.json.
