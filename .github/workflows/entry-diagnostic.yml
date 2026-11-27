@@ -1,0 +1,23 @@
+name: Fixed execution quality diagnostic (no delivery)
+on:
+  push:
+    branches: [tactical-early-v22]
+    paths: [entry_execution_diagnostic.mjs, download_entry_diagnostic.py, .github/workflows/entry-diagnostic.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - run: node --check entry_execution_diagnostic.mjs && python3 -m py_compile download_entry_diagnostic.py
+      - run: node entry_execution_diagnostic.mjs --selftest
+      - run: python3 download_entry_diagnostic.py /tmp/tactical-entry spot
+      - run: node entry_execution_diagnostic.mjs /tmp/tactical-entry
