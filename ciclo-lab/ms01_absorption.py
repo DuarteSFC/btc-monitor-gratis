@@ -96,11 +96,14 @@ def selftest():
     from microstructure_probe import selftest as test
     test()
     i=pd.date_range("2022-01-01",periods=1000,freq="5s",tz="UTC")
-    a=pd.DataFrame(dict(open=100.,close=100.,volume=1.,buyVolume=.5),index=i)
-    z=conditions(a);b=a.copy();b.loc[i[800]:,"volume"]=100.
+    a=pd.DataFrame(dict(open=100.,close=100.01,volume=1.,buyVolume=.5),index=i)
+    a.loc[i[686]:i[697],["volume","buyVolume"]]=[4.,.4]
+    a.loc[i[697],"close"]=99.995
+    a.loc[i[698]:i[700],["buyVolume","close"]]=[.9,100.02]
+    z=conditions(a);assert bool(z.loc[i[700],"selected"]);b=a.copy();b.loc[i[800]:,"volume"]=100.
     pd.testing.assert_frame_equal(z.iloc[:800],conditions(b).iloc[:800])
     b=a.copy();b.loc[i[500],["volume","buyVolume","close","open"]]=np.nan
-    assert not conditions(b).complete.iloc[500:516].any()
+    assert not conditions(b).complete.iloc[500:516].any() and not bool(conditions(b).loc[i[700],"selected"])
     t=pd.date_range("2022-01-01",periods=2,freq="min",tz="UTC")
     q=pd.DataFrame(dict(open=[100.,100.],high=[100.,100.],low=[100.,100.],close=[100.,100.],volume=[12.,12.]),index=t)
     bb=pd.DataFrame(dict(open=100.,high=100.,low=100.,close=100.,volume=1.),index=pd.date_range(t[0],periods=24,freq="5s"))
