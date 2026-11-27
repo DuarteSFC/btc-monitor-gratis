@@ -1,0 +1,60 @@
+{
+  "run": 45998797768,
+  "totals": {
+    "goodMinutes": 8588,
+    "excludedMinutes": 52,
+    "completeDecisions": 7340,
+    "totalDecisions": 8640,
+    "prefixChecks": 18
+  },
+  "results": [
+    {
+      "day": "2022-02-15",
+      "goodMinutes": 1423,
+      "excludedMinutes": 17,
+      "completeDecisions": 1077,
+      "totalDecisions": 1440,
+      "prefixChecks": 3
+    },
+    {
+      "day": "2022-06-15",
+      "goodMinutes": 1438,
+      "excludedMinutes": 2,
+      "completeDecisions": 1342,
+      "totalDecisions": 1440,
+      "prefixChecks": 3
+    },
+    {
+      "day": "2023-02-15",
+      "goodMinutes": 1434,
+      "excludedMinutes": 6,
+      "completeDecisions": 1286,
+      "totalDecisions": 1440,
+      "prefixChecks": 3
+    },
+    {
+      "day": "2023-06-15",
+      "goodMinutes": 1423,
+      "excludedMinutes": 17,
+      "completeDecisions": 1060,
+      "totalDecisions": 1440,
+      "prefixChecks": 3
+    },
+    {
+      "day": "2026-04-15",
+      "goodMinutes": 1435,
+      "excludedMinutes": 5,
+      "completeDecisions": 1319,
+      "totalDecisions": 1440,
+      "prefixChecks": 3
+    },
+    {
+      "day": "2026-07-15",
+      "goodMinutes": 1435,
+      "excludedMinutes": 5,
+      "completeDecisions": 1256,
+      "totalDecisions": 1440,
+      "prefixChecks": 3
+    }
+  ]
+}
