@@ -1,0 +1,29 @@
+name: CICLO LAB XV0 cross-venue source feasibility
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/xv0_cross_venue.py, .github/workflows/ciclo-lab-xv0.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
+      - run: python -X faulthandler ciclo-lab/xv0_cross_venue.py --selftest
+      - run: python -X faulthandler ciclo-lab/xv0_cross_venue.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ciclo-lab-xv0
+          path: lab-xv0/
+          retention-days: 30
