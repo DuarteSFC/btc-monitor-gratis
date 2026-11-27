@@ -1,0 +1,17 @@
+import assert from "node:assert/strict";
+import {aggregate,emaSeries,evaluate} from "./longer_tactical.mjs";
+const b=Array.from({length:600},(_,i)=>({t:i*60000,o:100,c:100,h:100.1,l:99.9,v:1}));
+assert.equal(aggregate(b,5).length,120);
+assert.equal(aggregate(b,5)[0].end,300000);
+assert.equal(aggregate(b,5)[0].i,4);
+assert.ok(emaSeries(b,20).every(x=>x===100));
+assert.throws(()=>aggregate(b.map((z,i)=>i===1?{...z,t:123}:z),5));
+const s=[{t:60000,i:0,reference:100,atr:1,stop:99.4}];
+b[2]={...b[2],h:103,l:99};
+assert.ok(Math.abs(evaluate(b,s).netR+1)<1e-10);
+b[2].l=99.9;
+assert.ok(Math.abs(evaluate(b,s).netR-2)<1e-10);
+assert.equal(evaluate(b,s,{to:100000}).n,0);
+b[2].o=101;
+assert.equal(evaluate(b,s).rejected,1);
+console.log("OK: closed aggregation, EMA, continuity, adverse-first fills, target net 2R, boundary and chase checks.");

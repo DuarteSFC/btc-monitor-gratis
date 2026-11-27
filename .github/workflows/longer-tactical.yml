@@ -1,0 +1,23 @@
+name: Longer-horizon tactical expectancy (no delivery)
+on:
+  push:
+    branches: [tactical-early-v22]
+    paths: [longer_tactical.mjs, test_longer_tactical.mjs, replay_longer_tactical.mjs, download_longer_tactical.py, .github/workflows/longer-tactical.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - run: node --check longer_tactical.mjs && node --check replay_longer_tactical.mjs && python3 -m py_compile download_longer_tactical.py
+      - run: node test_longer_tactical.mjs
+      - run: python3 download_longer_tactical.py /tmp/tactical-longer/spot spot
+      - run: node replay_longer_tactical.mjs /tmp/tactical-longer
