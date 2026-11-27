@@ -1,0 +1,1302 @@
+{
+  "run": 46003593385,
+  "data": [
+    {
+      "files": 45,
+      "rows": 4104,
+      "archives": [
+        {
+          "month": "2021-01",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-01.zip",
+          "sha256": "4c18c1df8904dea9770aeba5326d26b3fa9a3ffac4891f5f7125d4be2da847c0",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-02",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-02.zip",
+          "sha256": "15e9a939f253a11fc1af2858bb3844f3d39019ccf7efa66a9456f0f60afba3dd",
+          "rows": 84,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-03",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-03.zip",
+          "sha256": "2bcaadc8206cb8d76a26f0f3cbf97020b747545b0e75c3dd8a3b195b435478a5",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-04",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-04.zip",
+          "sha256": "2fee34e8b9b6e828d01bab0df1c67104f7a98f3c063668c8db627b802ffa5a95",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-05",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-05.zip",
+          "sha256": "21809ef6691a1441bd55ba4af4494a038d1a399ae0ae432e80cb41b47d71f3bd",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-06",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-06.zip",
+          "sha256": "8e58ccf8f52c69c55754492daafadab92d4ca8c8bd027f4532582d06e9f36063",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-07",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-07.zip",
+          "sha256": "f8f538bedf642052e428cd25f3134784de6e62a136e76f6a07ea6e79dfc9c39d",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-08",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-08.zip",
+          "sha256": "0120b284bde23d077e1e26e5e4b56fd3e2d1d82a3a7fe0e9de26825b9fc9c0db",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-09",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-09.zip",
+          "sha256": "4b4a94cdafbb8fea7762c266aa79b183700b7c9dcf7e981f7fdbe9372f2eec66",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-10",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-10.zip",
+          "sha256": "4dfb8698f6951b2c66229e1c687977eae0778bb703d6268232da2ceb3e9b5e6d",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-11",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-11.zip",
+          "sha256": "d9a7e22a237717f23d4b0505f14613359b7ea7831b23a78653a891cbbe3d521c",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2021-12",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2021-12.zip",
+          "sha256": "788d5c57e7cbc8e6b94ed4d7672618a85311edf1d7f0888083410d0d3389d811",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-01",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-01.zip",
+          "sha256": "9f5bd01450b05a8c5e48cdc99fa147e85c82ecf7ee7919fa543a4e6039a2b98d",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-02",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-02.zip",
+          "sha256": "9c35e30327ac8915cc1333415b7d5018425781c81918e349d26b734525fcdfe5",
+          "rows": 84,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-03",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-03.zip",
+          "sha256": "3de0714a2b2582029b32147815298b6e67e972e776ca3f68a4208823b4109404",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-04",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-04.zip",
+          "sha256": "7c306ac8b6275a857b064916080e0b6ec502b25a4501c84c3fd2c0b077425de3",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-05",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-05.zip",
+          "sha256": "c458330243c9d8e048ffc7168c9e3c077c01bb82b1644097a4893fee34069b78",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-06",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-06.zip",
+          "sha256": "f6f3a69b656b91500b41501a230e663ccc3c1a65f46273595b00682d8f6fabb1",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-07",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-07.zip",
+          "sha256": "17826e5591af8660a7fed74d60e24eee77c822cf0d901dd8af355a10a36699aa",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-08",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-08.zip",
+          "sha256": "a2680549de5e087566f4d323b3a812c2b9863528c6bc49b0e551cb42c381bb4d",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-09",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-09.zip",
+          "sha256": "816e4de946d9f854cc457c86ca396b9cb49b46e80cf44941b59b9ad2124f2ef8",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-10",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-10.zip",
+          "sha256": "e434c29eb544cc57ff574e38685535bb7d04703aee54bc5d52f53cea372810e6",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-11",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-11.zip",
+          "sha256": "4f4e52f176f69e99353959d287874a4d4a135b5bb4ea85514dd5a3e65958b2d7",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2022-12",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2022-12.zip",
+          "sha256": "8cd0e885d63b85ee602d80eaae956f9ee3e0e25db264eb5c74026a9ae0d71f4e",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-01",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-01.zip",
+          "sha256": "5647d5978092d220eb14e11c7854d86815d0eb6204197e37b4808cc599e986f3",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-02",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-02.zip",
+          "sha256": "7da37820c15fb08600ae668551d0b724326b8f71d761582990721059280a221b",
+          "rows": 84,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-03",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-03.zip",
+          "sha256": "5110b60cbbc5f26048ce02575c26444ea2ed497baed9a5609e118359e1ca3b51",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-04",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-04.zip",
+          "sha256": "fa3a3cf7c3b8285687ae8c8014eed8bc58ad3ceb33ccb62ff4298048213c0e6c",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-05",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-05.zip",
+          "sha256": "bf890ea68d979942ed296b058390eb98b0b495547fee2117d3b76d5e7f629b24",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-06",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-06.zip",
+          "sha256": "b3ddac1309f9a684f4e811776a6c09fb2239bb8d1ae0ff4bd342a1c32a5e171f",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-07",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-07.zip",
+          "sha256": "82577976d8acd886fda84179ee38c9e7ef445732c3b6a062d6ffd2a9e3cc30bf",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-08",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-08.zip",
+          "sha256": "cf749429c366cef3302a804b3e702937e5f1a77aeddc5b628dca7da547a8935a",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-09",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-09.zip",
+          "sha256": "41ac7eb67a46d14d97daec4c37e8229df5ac6b165639ad4b2c54bc7374930341",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-10",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-10.zip",
+          "sha256": "ccaf4474f0dc94adedd4330c14995f338186caa2cc9fd0d2e2c55f74cf263a5c",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-11",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-11.zip",
+          "sha256": "153ec1450eb5d999ce253e2c7ca2e81b79a523ff52dd18b14faefab8212b999b",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2023-12",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2023-12.zip",
+          "sha256": "91bdf41566cebb86c6f0e3646b0037de9c22e14ee2f592c5722c7e4a19c91119",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2026-01",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-01.zip",
+          "sha256": "830cf7797ea6ecdc554ac2d9047a141df1a6a544f4ea58e7028227930462b139",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2026-02",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-02.zip",
+          "sha256": "e445f00c81a7fa8361d99b3660f24b4f58e5d952fe301d70bbc72c319bc01a77",
+          "rows": 84,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2026-03",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-03.zip",
+          "sha256": "9f5625846c503a1e94fcdecd2deb37dc8852e341add353fa48c2b9a0cc70df6a",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2026-04",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-04.zip",
+          "sha256": "86160f455478a8b262d96d1516f583355e6e0cec7beeb5784e69dda76f599e98",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2026-05",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-05.zip",
+          "sha256": "ff926ad3fc48493c26c85af16620b19c695cc1854faa1e7f0ea2ab9fdafc2084",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2026-06",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-06.zip",
+          "sha256": "cc6fb028a811bc423b711f6b89de067bf92a2eda61303e1ce0b219b5d3210e47",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2026-07",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-07.zip",
+          "sha256": "ece7f6c64d0e45fbd64929dec40bae525fe365381046e367de5ca0827bc623d3",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2026-08",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-08.zip",
+          "sha256": "8b843307038b3aedf725b1342003cce39f9526451ed92f407ca80bc637487839",
+          "rows": 93,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        },
+        {
+          "month": "2026-09",
+          "source": "https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-09.zip",
+          "sha256": "d1916b9181cf3507ad5a6522ac6587cd84a424941f1a2132ab887f768b5dd4de",
+          "rows": 90,
+          "expected_grid": null,
+          "duplicates": 0,
+          "conflict_timestamps": 0,
+          "invalid": 0,
+          "outside": 0
+        }
+      ]
+    }
+  ],
+  "scope": [
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "jointSettlements": 3285,
+      "eligible": 17496,
+      "baseSignals": 3262,
+      "signals": 119
+    },
+    {
+      "period": "2022-23",
+      "lag": 60,
+      "jointSettlements": 3285,
+      "eligible": 17104,
+      "baseSignals": 3192,
+      "signals": 122
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "jointSettlements": 819,
+      "eligible": 4368,
+      "baseSignals": 762,
+      "signals": 29
+    },
+    {
+      "period": "2026",
+      "lag": 60,
+      "jointSettlements": 819,
+      "eligible": 4241,
+      "baseSignals": 735,
+      "signals": 28
+    }
+  ],
+  "results": [
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "base",
+      "delay": 1,
+      "cost": "normal",
+      "n": 1160,
+      "signals": 3262,
+      "mean": -0.06578164737999707,
+      "pf": 0.7766582380506255,
+      "equity": 8247.47120006802,
+      "ci": [
+        -0.11005664685276456,
+        -0.01686335033068169
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 578,
+          "mean": -0.08490754387349857,
+          "returnFraction": -0.11623994405601065
+        },
+        "2023": {
+          "n": 582,
+          "mean": -0.04678720034693202,
+          "returnFraction": -0.05901293593718758
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 1,
+      "cost": "normal",
+      "n": 59,
+      "signals": 119,
+      "mean": 0.06785890199608681,
+      "pf": 1.3046662230392678,
+      "equity": 10099.50493660898,
+      "ci": [
+        -0.15281734387622573,
+        0.25179754175687064
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 38,
+          "mean": 0.028906478956127267,
+          "returnFraction": 0.0027187935487194594
+        },
+        "2023": {
+          "n": 21,
+          "mean": 0.13834423892553746,
+          "returnFraction": 0.007231700112178544
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "base",
+      "delay": 1,
+      "cost": "stress",
+      "n": 1160,
+      "signals": 3262,
+      "mean": -0.10943397987899785,
+      "pf": 0.6483498804813641,
+      "equity": 7267.837608806469,
+      "ci": [
+        -0.15378997464727015,
+        -0.06337818021231567
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 578,
+          "mean": -0.11846337703940282,
+          "returnFraction": -0.1580274924831289
+        },
+        "2023": {
+          "n": 582,
+          "mean": -0.10046664043103551,
+          "returnFraction": -0.11518874663622412
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 1,
+      "cost": "stress",
+      "n": 59,
+      "signals": 119,
+      "mean": 0.014349111613980826,
+      "pf": 1.0601645400871977,
+      "equity": 10020.248880728868,
+      "ci": [
+        -0.19760426475997114,
+        0.18419060849418809
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 38,
+          "mean": -0.008987875342050982,
+          "returnFraction": -0.0008826336308862245
+        },
+        "2023": {
+          "n": 21,
+          "mean": 0.056577945153466966,
+          "returnFraction": 0.0029075217037729684
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "base",
+      "delay": 5,
+      "cost": "normal",
+      "n": 1159,
+      "signals": 3262,
+      "mean": -0.06700795480294666,
+      "pf": 0.7719275821778335,
+      "equity": 8219.842012668323,
+      "ci": [
+        -0.11010195038307372,
+        -0.020031023326716788
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 577,
+          "mean": -0.082459208913745,
+          "returnFraction": -0.11291267568719868
+        },
+        "2023": {
+          "n": 582,
+          "mean": -0.051689443425058955,
+          "returnFraction": -0.06510312304596917
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 5,
+      "cost": "normal",
+      "n": 59,
+      "signals": 119,
+      "mean": 0.06481009129211411,
+      "pf": 1.2949776231305572,
+      "equity": 10094.984794056218,
+      "ci": [
+        -0.14974391523235062,
+        0.24557476905816567
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 38,
+          "mean": 0.03109257954378784,
+          "returnFraction": 0.002927193740789342
+        },
+        "2023": {
+          "n": 21,
+          "mean": 0.12582273159860927,
+          "returnFraction": 0.006571285664832434
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "base",
+      "delay": 5,
+      "cost": "stress",
+      "n": 1161,
+      "signals": 3262,
+      "mean": -0.11397487460046427,
+      "pf": 0.6348765559902642,
+      "equity": 7170.904780513118,
+      "ci": [
+        -0.15771739897690717,
+        -0.068845213860946
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 578,
+          "mean": -0.12012042223228798,
+          "returnFraction": -0.16003646379096248
+        },
+        "2023": {
+          "n": 583,
+          "mean": -0.1078820332090507,
+          "returnFraction": -0.12287305815772552
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 5,
+      "cost": "stress",
+      "n": 59,
+      "signals": 119,
+      "mean": 0.011806633445573813,
+      "pf": 1.0502478692109476,
+      "equity": 10016.508373438115,
+      "ci": [
+        -0.19413759692005864,
+        0.17627818319651084
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 38,
+          "mean": -0.006701585747832028,
+          "returnFraction": -0.0006654674898114775
+        },
+        "2023": {
+          "n": 21,
+          "mean": 0.04529769674792721,
+          "returnFraction": 0.0023163048336229787
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "base",
+      "delay": 15,
+      "cost": "normal",
+      "n": 1158,
+      "signals": 3262,
+      "mean": -0.07386800644523578,
+      "pf": 0.7500210304642639,
+      "equity": 8059.922432518357,
+      "ci": [
+        -0.11773727556562497,
+        -0.025614016342319846
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 577,
+          "mean": -0.08853907208353651,
+          "returnFraction": -0.12066279519259152
+        },
+        "2023": {
+          "n": 581,
+          "mean": -0.05929794642234504,
+          "returnFraction": -0.07334496155557305
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 15,
+      "cost": "normal",
+      "n": 59,
+      "signals": 119,
+      "mean": 0.08140122137433015,
+      "pf": 1.3840011872803484,
+      "equity": 10119.699726196926,
+      "ci": [
+        -0.13132654255961607,
+        0.26888224092345797
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 38,
+          "mean": 0.03948157790785542,
+          "returnFraction": 0.0037255134428056556
+        },
+        "2023": {
+          "n": 21,
+          "mean": 0.15725581431366537,
+          "returnFraction": 0.008244459176886891
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "base",
+      "delay": 15,
+      "cost": "stress",
+      "n": 1160,
+      "signals": 3262,
+      "mean": -0.1197897100051843,
+      "pf": 0.6183361145205689,
+      "equity": 7053.225364622462,
+      "ci": [
+        -0.16340389391901658,
+        -0.07461482218383796
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 578,
+          "mean": -0.12425026271454051,
+          "returnFraction": -0.1650357698593771
+        },
+        "2023": {
+          "n": 582,
+          "mean": -0.11535981401548,
+          "returnFraction": -0.12964169367837713
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 15,
+      "cost": "stress",
+      "n": 59,
+      "signals": 119,
+      "mean": 0.027405960455059653,
+      "pf": 1.119577682610403,
+      "equity": 10039.56860998748,
+      "ci": [
+        -0.1755368835503704,
+        0.19556078375249342
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 38,
+          "mean": 0.0012990448686615922,
+          "returnFraction": 0.00009323120457292804
+        },
+        "2023": {
+          "n": 21,
+          "mean": 0.0746470458018752,
+          "returnFraction": 0.0038636297941751735
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 60,
+      "policy": "base",
+      "delay": 1,
+      "cost": "stress",
+      "n": 1149,
+      "signals": 3192,
+      "mean": -0.10446050425388098,
+      "pf": 0.661332964418078,
+      "equity": 7394.767168034765,
+      "ci": [
+        -0.14837634439620428,
+        -0.06117610449781435
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 574,
+          "mean": -0.11426677820353344,
+          "returnFraction": -0.1519298788446496
+        },
+        "2023": {
+          "n": 575,
+          "mean": -0.09467128469370617,
+          "returnFraction": -0.10859340435187394
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 60,
+      "policy": "CF01",
+      "delay": 1,
+      "cost": "stress",
+      "n": 60,
+      "signals": 122,
+      "mean": -0.02321996506638627,
+      "pf": 0.9138497443119138,
+      "equity": 9964.234546707148,
+      "ci": [
+        -0.240895399734331,
+        0.15319401869702942
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 40,
+          "mean": -0.05205756928971354,
+          "returnFraction": -0.005228302818243061
+        },
+        "2023": {
+          "n": 20,
+          "mean": 0.034455243380268265,
+          "returnFraction": 0.0016517574889578753
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "base",
+      "delay": 1,
+      "cost": "normal",
+      "n": 278,
+      "signals": 762,
+      "mean": -0.0862989951486284,
+      "pf": 0.7169702830398379,
+      "equity": 9414.039810497656,
+      "ci": [
+        -0.16388388531811868,
+        -0.008417777534804454
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 278,
+          "mean": -0.0862989951486284,
+          "returnFraction": -0.058596018950234544
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 1,
+      "cost": "normal",
+      "n": 15,
+      "signals": 29,
+      "mean": -0.2968109577609516,
+      "pf": 0.3187256723175203,
+      "equity": 9889.110385312255,
+      "ci": [
+        -0.5707261719500567,
+        0.20390680057576213
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 15,
+          "mean": -0.2968109577609516,
+          "returnFraction": -0.01108896146877447
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "base",
+      "delay": 1,
+      "cost": "stress",
+      "n": 279,
+      "signals": 762,
+      "mean": -0.13653463486454984,
+      "pf": 0.5786028427903837,
+      "equity": 9088.155411297912,
+      "ci": [
+        -0.20642745527895748,
+        -0.06522789387812222
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 279,
+          "mean": -0.13653463486454984,
+          "returnFraction": -0.0911844588702088
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 1,
+      "cost": "stress",
+      "n": 15,
+      "signals": 29,
+      "mean": -0.33421212331804884,
+      "pf": 0.25286735186035825,
+      "equity": 9875.255082404345,
+      "ci": [
+        -0.5941373080168179,
+        0.13791529918415477
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 15,
+          "mean": -0.33421212331804884,
+          "returnFraction": -0.012474491759565515
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "base",
+      "delay": 5,
+      "cost": "normal",
+      "n": 278,
+      "signals": 762,
+      "mean": -0.09527599895637132,
+      "pf": 0.6916546674918408,
+      "equity": 9355.498093253129,
+      "ci": [
+        -0.17098052419111004,
+        -0.020997814592241367
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 278,
+          "mean": -0.09527599895637132,
+          "returnFraction": -0.06445019067468709
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 5,
+      "cost": "normal",
+      "n": 15,
+      "signals": 29,
+      "mean": -0.3155336008810915,
+      "pf": 0.27045365673178573,
+      "equity": 9882.178460891368,
+      "ci": [
+        -0.5816866660143077,
+        0.15075454840078858
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 15,
+          "mean": -0.3155336008810915,
+          "returnFraction": -0.011782153910863248
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "base",
+      "delay": 5,
+      "cost": "stress",
+      "n": 279,
+      "signals": 762,
+      "mean": -0.1464550541286277,
+      "pf": 0.5551790895501327,
+      "equity": 9025.47338945025,
+      "ci": [
+        -0.2172507618155574,
+        -0.07599246544963874
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 279,
+          "mean": -0.1464550541286277,
+          "returnFraction": -0.09745266105497499
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 5,
+      "cost": "stress",
+      "n": 15,
+      "signals": 29,
+      "mean": -0.3521163746950929,
+      "pf": 0.21362984014102504,
+      "equity": 9868.634117443851,
+      "ci": [
+        -0.6047918784465305,
+        0.08697387824573655
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 15,
+          "mean": -0.3521163746950929,
+          "returnFraction": -0.013136588255614956
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "base",
+      "delay": 15,
+      "cost": "normal",
+      "n": 278,
+      "signals": 762,
+      "mean": -0.08429944787231425,
+      "pf": 0.7254260318354752,
+      "equity": 9427.092259157223,
+      "ci": [
+        -0.16691354566799071,
+        -0.0068580324126478465
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 278,
+          "mean": -0.08429944787231425,
+          "returnFraction": -0.05729077408427759
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 15,
+      "cost": "normal",
+      "n": 15,
+      "signals": 29,
+      "mean": -0.32089176734178987,
+      "pf": 0.24882914017198485,
+      "equity": 9880.199243477313,
+      "ci": [
+        -0.6062089907410446,
+        0.10594982639823398
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 15,
+          "mean": -0.32089176734178987,
+          "returnFraction": -0.0119800756522688
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "base",
+      "delay": 15,
+      "cost": "stress",
+      "n": 279,
+      "signals": 762,
+      "mean": -0.13908946779398018,
+      "pf": 0.574376094805751,
+      "equity": 9071.957319121884,
+      "ci": [
+        -0.21153477309982158,
+        -0.06652789443185939
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 279,
+          "mean": -0.13908946779398018,
+          "returnFraction": -0.09280426808781163
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 30,
+      "policy": "CF01",
+      "delay": 15,
+      "cost": "stress",
+      "n": 15,
+      "signals": 29,
+      "mean": -0.35693197702007445,
+      "pf": 0.1867276984615103,
+      "equity": 9866.857365482909,
+      "ci": [
+        -0.6284090100590675,
+        0.04417903730244592
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 15,
+          "mean": -0.35693197702007445,
+          "returnFraction": -0.01331426345170909
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 60,
+      "policy": "base",
+      "delay": 1,
+      "cost": "stress",
+      "n": 273,
+      "signals": 735,
+      "mean": -0.14938624516571747,
+      "pf": 0.5442370153996104,
+      "equity": 9027.391376241749,
+      "ci": [
+        -0.21132822559425468,
+        -0.07620661427411775
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 273,
+          "mean": -0.14938624516571747,
+          "returnFraction": -0.09726086237582512
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 60,
+      "policy": "CF01",
+      "delay": 1,
+      "cost": "stress",
+      "n": 14,
+      "signals": 28,
+      "mean": -0.40230379325969984,
+      "pf": 0.1606049204062205,
+      "equity": 9859.994983710872,
+      "ci": [
+        -0.5941373080168179,
+        0.01762631001392729
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 14,
+          "mean": -0.40230379325969984,
+          "returnFraction": -0.014000501628912797
+        }
+      }
+    }
+  ],
+  "controls": [
+    {
+      "period": "2022-23",
+      "valid": 199,
+      "movableStrata": 48,
+      "totalStrata": 48,
+      "medianMean": -0.09676635232677742,
+      "pRelative": 0.065
+    },
+    {
+      "period": "2026",
+      "valid": 199,
+      "movableStrata": 10,
+      "totalStrata": 10,
+      "medianMean": -0.14664920981843776,
+      "pRelative": 0.95
+    }
+  ]
+}
