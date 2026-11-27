@@ -13,3 +13,6 @@ Production V2.1 remains the factual market-event reference; do not activate rese
 
 - Net utility experiment completed: 394,560 verified bars, all four configurations failed calibration, utility18/26 negative in both held-out windows. Do not deploy.
 - Independent impulse lead audit: distinguish notice received before the 5-minute impulse window from one received during it; compare ranked models against simple volatility/momentum, with delivery latency and matched calibration frequency. Research only; reused samples.
+
+- Independent impulse lead audit completed: Apr-Jun 2026 volatility 33/174 early, 9.73m mean; rank18 32/174, 11.50m; rank26 31/174, 10.10m; momentum 4/174, 21.50m at 1m delay. No demonstrated improvement in coverage or precision over volatility. Freeze all prior learned candidates as research.
+- Directional experiment: train on first future material impulse in either direction, excluding already-underway windows; two-stage event probability and conditional direction; hard 3/day causal cap on experimental attention only. Compare against previous18 and volatility with matched calibration counts, new Oct-Dec 2025 and Jan-Mar 2026 windows in this line. Do not modify production or existing alerts.

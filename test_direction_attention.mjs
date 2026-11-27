@@ -1,0 +1,13 @@
+import assert from "node:assert/strict";
+import {directionEvents,eventLabel,causalSelect,countGate,auditDirection} from "./direction_attention.mjs";
+const M=60000,events=[{start:10*M,finish:15*M,dir:-1},{start:50*M,finish:55*M,dir:1}];
+assert.equal(eventLabel(events,0).kind,"down");assert.equal(eventLabel(events,12*M).kind,"underway");assert.equal(eventLabel(events,25*M).kind,"up");assert.equal(eventLabel(events,60*M).kind,"none");
+const rows=Array.from({length:100},(_,i)=>({t:i*30*M,score:1}));
+assert.equal(causalSelect(rows,1).length,9);
+assert.equal(causalSelect(rows,2).length,0);
+assert.deepEqual(countGate(rows,28),countGate(rows.map(r=>({...r,y:1})),28));
+const a=auditDirection([{t:0},{t:2*M},{t:25*M}],events);
+assert.equal(a.counts.down,1);assert.equal(a.counts.duplicate,1);assert.equal(a.counts.up,1);assert.equal(a.meanLead,24);
+const b=Array.from({length:12},(_,i)=>({t:i*M,o:100,c:i===5?99:100}));
+assert.equal(directionEvents(b)[0].dir,-1);
+console.log("OK: bearish competing events, receipt timing, causal daily cap, label-free threshold, deduplication.");
