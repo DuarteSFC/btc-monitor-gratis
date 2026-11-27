@@ -49,6 +49,15 @@ def reconcile(rows,daily):
     rows.update(daily)
     return n
 
+def recover_day(rows,daily,day):
+    lo=archive.ms(day);hi=lo+86400000
+    conflicts=[dict(time=t,monthly=rows[t],daily=v) for t,v in daily.items() if t in rows and rows[t]!=v]
+    if conflicts:
+        removed=[t for t in rows if lo<=t<hi]
+        for t in removed:del rows[t]
+        return dict(recovered=0,quarantined=True,removed=len(removed),conflictCount=len(conflicts),conflicts=conflicts[:10])
+    return dict(recovered=reconcile(rows,daily),quarantined=False,removed=0,conflictCount=0)
+
 def month(start):
     from datetime import timedelta
     from urllib.error import HTTPError
@@ -63,7 +72,7 @@ def month(start):
         except HTTPError as e:
             if e.code!=404:raise
             report['daily'].append(dict(day=str(day),missing=True));return
-        n=reconcile(rows,d);report['recovered']+=n;report['daily'].append(dict(day=str(day),recovered=n,**r))
+        q=recover_day(rows,d,day);report['recovered']+=q['recovered'];report['daily'].append(dict(day=str(day),**q,**r))
     for day in sorted(affected):
         repair(day)
     expected=(archive.ms(end)-archive.ms(start))//60000
@@ -108,4 +117,7 @@ def selftest():
     try:reconcile(rows,{t:(100.,102.,99.,100.,2.)})
     except ValueError:pass
     else:raise AssertionError('conflict accepted')
+    rows[t-60000]=(100.,101.,99.,100.,2.)
+    q=recover_day(rows,{t:(100.,102.,99.,100.,2.)},a)
+    assert q['quarantined'] and q['conflictCount']==1 and q['removed']==3 and list(rows)==[t-60000]
     print('EV03 source quarantine, recovery and conflict tests PASS',flush=True)
