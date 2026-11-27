@@ -1,11 +1,10 @@
 """EV03: early-cycle spot acquisition and nested dense event census."""
 import argparse,json
-from datetime import date
 from pathlib import Path
 import numpy as np
 import pandas as pd
-import archive_dataset as archive
-from market_frame import load_minutes,segments,bars
+from event_early_source import acquire,selftest as source_test
+from market_frame import segments,bars
 from derivative_screen import load
 from event_lab import paths,classification,describe,selftest as event_test,TARGETS,HORIZONS
 from validation_rehearsal import utc
@@ -26,7 +25,7 @@ def census(p,start,end):
     return dict(decisions=len(f),known=len(idx),missing=len(f)-len(idx),events=out,annual=annual)
 
 def selftest():
-    event_test()
+    event_test();source_test()
     i=pd.date_range('2020-01-01',periods=5*1440,freq='min',tz='UTC')
     p=pd.DataFrame(dict(open=100.,high=100.,low=100.,close=100.,volume=1.),index=i)
     q=census(p,'2020-01-01','2020-01-06')
@@ -38,15 +37,10 @@ def selftest():
 def main():
     a=argparse.ArgumentParser();a.add_argument('--selftest',action='store_true');a.add_argument('--derivatives');a.add_argument('--extension');a=a.parse_args();selftest()
     if a.selftest:return
-    archive.START=date(2017,9,1);archive.END=date(2020,1,1)
-    import sys
-    argv=sys.argv;sys.argv=[argv[0]]
-    try:archive.main()
-    finally:sys.argv=argv
-    manifest=json.loads(Path('lab-dataset/manifest.json').read_text())
-    assert manifest['start']=='2017-09-01' and manifest['end_exclusive']=='2020-01-01'
-    spot=load_minutes('lab-dataset')
-    result={'spot2017-19':census(spot,'2017-10-01','2020-01-01')}
+    spot,manifest=acquire()
+    assert manifest['start']=='2017-09-01' and manifest['end_exclusive']=='2021-01-01'
+    print('EV03_ARCHIVE_TOTAL='+json.dumps({k:v for k,v in manifest.items() if k!='files'}),flush=True)
+    result={'spot2017-20':census(spot,'2017-10-01','2021-01-01')}
     del spot
     for name,root,warm,start,end in [('perp2021-23',a.derivatives,'2021-01-01','2021-02-01','2024-01-01'),('perp2026',a.extension,'2026-01-01','2026-02-01','2026-10-01')]:
         p=load(root,'perp')
@@ -57,5 +51,5 @@ def main():
         print('EV03_SCOPE='+json.dumps(dict(period=name,decisions=q['decisions'],known=q['known'],missing=q['missing'],annual=q['annual'])),flush=True)
         for key,v in q['events'].items():
             print('EV03_EVENT='+json.dumps(dict(period=name,pair=key,grids=v)),flush=True)
-    Path('lab-ev03.json').write_text(json.dumps(dict(archive={k:v for k,v in manifest.items() if k!='files'},results=result,limitations='Spot vs perpetual distinct instruments; overlapping paths; no strategy, PnL or independent inference.'),indent=2))
+    Path('lab-ev03.json').write_text(json.dumps(dict(archive=manifest,results=result,limitations='Spot vs perpetual distinct instruments; overlapping paths; no strategy, PnL or independent inference.'),indent=2))
 if __name__=='__main__':main()
