@@ -1,0 +1,35 @@
+name: CICLO LAB production-rule spot benchmark
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/b07_export.py, ciclo-lab/b07_benchmark.mjs, .github/workflows/ciclo-lab-b07.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
+      - run: node --version
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-btcusdt-1m-2020-2026
+          path: lab-dataset
+          run-id: 45734087753
+          github-token: ${{ github.token }}
+      - run: python -X faulthandler ciclo-lab/b07_export.py --dataset lab-dataset
+      - run: node ciclo-lab/b07_benchmark.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-b07
+          path: lab-b07.json
+          retention-days: 30
