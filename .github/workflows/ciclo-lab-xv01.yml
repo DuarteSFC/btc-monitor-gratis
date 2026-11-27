@@ -2,7 +2,7 @@ name: CICLO LAB XV01 cross-venue premium economics
 on:
   push:
     branches: [ciclo-lab-research]
-    paths: [ciclo-lab/xv01_premium.py, .github/workflows/ciclo-lab-xv01.yml]
+    paths: [ciclo-lab/xv01_premium.py, ciclo-lab/xv01_sources.py, .github/workflows/ciclo-lab-xv01.yml]
 permissions:
   contents: read
   actions: read
@@ -19,7 +19,7 @@ jobs:
           python-version: "3.12"
       - run: |
           python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
-      - run: python -m py_compile ciclo-lab/xv01_premium.py ciclo-lab/xv0_cross_venue.py
+      - run: python -m py_compile ciclo-lab/xv01_premium.py ciclo-lab/xv0_cross_venue.py ciclo-lab/xv01_sources.py
       - run: python -X faulthandler ciclo-lab/xv01_premium.py --selftest
       - uses: actions/download-artifact@v4
         with:

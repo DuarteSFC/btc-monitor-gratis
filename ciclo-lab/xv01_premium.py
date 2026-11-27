@@ -31,7 +31,8 @@ def selftest():
     assert signals(h,z,1).selected.loc[i[181]] and not signals(h,z,2).selected.loc[i[181]]
     print("XV01 prior-only normalization, gaps and delayed availability PASS",flush=True)
 def acquire(start,end):
-    from xv0_cross_venue import binance,coinbase,compare
+    from xv0_cross_venue import compare
+    from xv01_sources import binance,coinbase
     parts=[];manifest=[]
     for month in pd.date_range(start,end,freq="MS",inclusive="left",tz="UTC"):
         stop=month+pd.offsets.MonthBegin(1)
@@ -54,18 +55,23 @@ def acquire(start,end):
     return p,manifest
 def main():
     p=argparse.ArgumentParser();p.add_argument("--selftest",action="store_true");p.add_argument("--derivatives");p.add_argument("--extension");a=p.parse_args();selftest()
+    from xv01_sources import selftest as source_test
+    source_test()
     if a.selftest:return
     from derivative_screen import load
     from market_frame import segments,bars,atr
     from hourly_futures import make_outcomes,FEES
     from validation_rehearsal import replay
     from ca01_relative_strength import controls
-    results={};provenance={}
-    for (name,warm,start,end),root in zip(SCOPES,[a.derivatives,a.extension]):
+    results={};provenance={};inputs={}
+    for name,warm,start,end in SCOPES:
         premium_start=PREMIUM_START[name]
         assert utc(premium_start)+pd.Timedelta(days=8)<utc(start)
         p,manifest=acquire(premium_start,end);z=scores(p);provenance[name]=manifest
         print("XV01_DATA="+json.dumps(dict(period=name,months=len(manifest),expected=len(p),joint=int(p.notna().sum()),scoreHours=int(z.notna().sum()))),flush=True)
+        inputs[name]=z
+    for (name,warm,start,end),root in zip(SCOPES,[a.derivatives,a.extension]):
+        z=inputs[name]
         btc,mark,funding=[load(root,k) for k in ["perp","mark","funding"]]
         assert btc.index.min()>=utc(warm) and btc.index.max()<utc(end)
         h=bars(segments(btc.assign(quote=btc.volume*btc.close)),60);h["atr1"]=atr(h)*1.2
