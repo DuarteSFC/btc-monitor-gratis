@@ -1,0 +1,326 @@
+{
+  "failedRun": 46004530756,
+  "run": 46005162382,
+  "commit": "b64a316ece35b79c53c43c127b9f01cf1158991d",
+  "summary": {
+    "weeks": 6,
+    "joint": 1008,
+    "expected": 1008,
+    "errors": [],
+    "feasible": true
+  },
+  "rows": [
+    {
+      "expected": 168,
+      "binance": 168,
+      "coinbase": 168,
+      "usdt": 168,
+      "joint": 168,
+      "raw": {
+        "n": 168,
+        "median": 6.436201183719348,
+        "p05": 2.7428340178947686,
+        "p95": 10.10547146054086,
+        "min": -0.40401697441794227,
+        "max": 12.014976660470467
+      },
+      "adjusted": {
+        "n": 168,
+        "median": 0.4215095375215139,
+        "p05": -2.1816645703369164,
+        "p95": 2.178764103129116,
+        "min": -4.4445854965313725,
+        "max": 4.0117672466744025
+      },
+      "usdtDeviationBps": {
+        "n": 168,
+        "median": 5.999999999999339,
+        "p05": 3.9999999999995595,
+        "p95": 8.999999999999009,
+        "min": 3.9999999999995595,
+        "max": 11.000000000001009
+      },
+      "week": "2022-02-08",
+      "sources": [
+        {
+          "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-02.zip",
+          "sha256": "4e479b38278726cccb9257f5564c5c78477144d3ffe69df6afaf3b55ace617be",
+          "bytes": 39642,
+          "unit": "ms"
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/BTC-USD/candles?start=2022-02-08T00%3A00%3A00%2B00%3A00&end=2022-02-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "dfb085fc67a81e55fc96c60be531e80c2426ed5da1ac5cef8aed25891c817638",
+          "bytes": 10302
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/USDT-USD/candles?start=2022-02-08T00%3A00%3A00%2B00%3A00&end=2022-02-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "280e70ce99b50fdf6d4f58f3f611608433cb637a5ec24014257db434622fb059",
+          "bytes": 8694
+        }
+      ],
+      "file": "2022-02-08.csv",
+      "fileSHA256": "a7dd77d0ba59d1d110ff8108acb210cd15181c6aeb76d00459b47732c074c0ea"
+    },
+    {
+      "expected": 168,
+      "binance": 168,
+      "coinbase": 168,
+      "usdt": 168,
+      "joint": 168,
+      "raw": {
+        "n": 168,
+        "median": -10.34629898344075,
+        "p05": -18.118771545951763,
+        "p95": -6.763387382954955,
+        "min": -33.07303132313422,
+        "max": -3.696634777425878
+      },
+      "adjusted": {
+        "n": 168,
+        "median": -0.32158182083741327,
+        "p05": -3.571306996922652,
+        "p95": 4.151491310783851,
+        "min": -17.97065903130224,
+        "max": 9.759797267534509
+      },
+      "usdtDeviationBps": {
+        "n": 168,
+        "median": -11.400000000000299,
+        "p05": -15.465000000000284,
+        "p95": -6.7349999999997125,
+        "min": -24.89999999999992,
+        "max": -5.800000000000249
+      },
+      "week": "2022-06-08",
+      "sources": [
+        {
+          "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-06.zip",
+          "sha256": "b18f6f8edbb41960f81aec100c7836fdc0de6d640ee4309a3d0fad999ae0a2c8",
+          "bytes": 42662,
+          "unit": "ms"
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/BTC-USD/candles?start=2022-06-08T00%3A00%3A00%2B00%3A00&end=2022-06-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "94d46760a0713e28ecf9967c4c67afaf70f99693d7790885604a8377adad1513",
+          "bytes": 10306
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/USDT-USD/candles?start=2022-06-08T00%3A00%3A00%2B00%3A00&end=2022-06-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "9c2576db1f4ef9d00026b1db8d784e25ef7925eaa5e511f10c2a77513748d713",
+          "bytes": 9288
+        }
+      ],
+      "file": "2022-06-08.csv",
+      "fileSHA256": "65c8b7477eec518f22af9db7d09ad59ca441e4bd8cb3042dbd85d424e22e4fdd"
+    },
+    {
+      "expected": 168,
+      "binance": 168,
+      "coinbase": 168,
+      "usdt": 168,
+      "joint": 168,
+      "raw": {
+        "n": 168,
+        "median": 1.5382671892449906,
+        "p05": -0.3298064045806903,
+        "p95": 7.841394461755247,
+        "min": -1.0791156048106654,
+        "max": 19.1162795867017
+      },
+      "adjusted": {
+        "n": 168,
+        "median": 0.28540568034918223,
+        "p05": -1.1953050691309586,
+        "p95": 1.690407311187415,
+        "min": -2.4487478920287575,
+        "max": 3.0876618324926497
+      },
+      "usdtDeviationBps": {
+        "n": 168,
+        "median": 1.1999999999989797,
+        "p05": -0.0999999999995449,
+        "p95": 7.6299999999996935,
+        "min": -0.7999999999996898,
+        "max": 21.199999999998997
+      },
+      "week": "2023-02-08",
+      "sources": [
+        {
+          "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-02.zip",
+          "sha256": "53525b700548a19488fcb8754778acdf7941c9ba0b6e7eb548a51a376ef8d86b",
+          "bytes": 40955,
+          "unit": "ms"
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/BTC-USD/candles?start=2023-02-08T00%3A00%3A00%2B00%3A00&end=2023-02-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "65f20e921681a9a37194332d8187bc587025213d015f3d3edb43cd83491b4684",
+          "bytes": 10308
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/USDT-USD/candles?start=2023-02-08T00%3A00%3A00%2B00%3A00&end=2023-02-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "c07d9598396c4683c21a0a1858e0b333d1a2205bb8ae8c3d5c0f38e3f932d7a3",
+          "bytes": 9223
+        }
+      ],
+      "file": "2023-02-08.csv",
+      "fileSHA256": "3f04280e8975fadfed8719a86a705d3dd5476a3e43b3502ccccf9bf80affbd1b"
+    },
+    {
+      "expected": 168,
+      "binance": 168,
+      "coinbase": 168,
+      "usdt": 168,
+      "joint": 168,
+      "raw": {
+        "n": 168,
+        "median": 1.2349949419521167,
+        "p05": -2.965247735223664,
+        "p95": 6.012708660150912,
+        "min": -4.268637540035813,
+        "max": 7.293892228958931
+      },
+      "adjusted": {
+        "n": 168,
+        "median": 0.5002892226058098,
+        "p05": -1.2131262147027089,
+        "p95": 2.058107110346597,
+        "min": -2.391814704265638,
+        "max": 2.6888897785104504
+      },
+      "usdtDeviationBps": {
+        "n": 168,
+        "median": 0.8999999999992347,
+        "p05": -2.264999999999684,
+        "p95": 4.999999999999449,
+        "min": -3.6000000000002697,
+        "max": 5.9000000000009045
+      },
+      "week": "2023-06-08",
+      "sources": [
+        {
+          "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-06.zip",
+          "sha256": "05f87fb5f004ee0aff019adb7015afab8df0baaaf2b77154d75ae53e18d59b11",
+          "bytes": 41669,
+          "unit": "ms"
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/BTC-USD/candles?start=2023-06-08T00%3A00%3A00%2B00%3A00&end=2023-06-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "6fca534db1668187dbaf7bcf15b7cfb6b9b98bfc47b833e9cec3597c72408d49",
+          "bytes": 10315
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/USDT-USD/candles?start=2023-06-08T00%3A00%3A00%2B00%3A00&end=2023-06-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "8b049e7d762978050caeaae101f6c4f67d83376c0f8afe57ac03a692dee93da4",
+          "bytes": 9231
+        }
+      ],
+      "file": "2023-06-08.csv",
+      "fileSHA256": "b8e5dfac3a71b4067c0a6e48998f978adca90594c66be4acdfe97719ad5d70b8"
+    },
+    {
+      "expected": 168,
+      "binance": 168,
+      "coinbase": 168,
+      "usdt": 168,
+      "joint": 168,
+      "raw": {
+        "n": 168,
+        "median": 3.761085659356178,
+        "p05": -0.41879943506828454,
+        "p95": 6.79420515405571,
+        "min": -1.6160674901377625,
+        "max": 10.996221960295482
+      },
+      "adjusted": {
+        "n": 168,
+        "median": 1.5287312653966545,
+        "p05": -0.7831485602524669,
+        "p95": 3.7016190574843404,
+        "min": -1.8477214762324667,
+        "max": 5.72432935577849
+      },
+      "usdtDeviationBps": {
+        "n": 168,
+        "median": 2.20000000000109,
+        "p05": -1.2000000000000899,
+        "p95": 5.064999999999876,
+        "min": -2.9999999999996696,
+        "max": 5.999999999999339
+      },
+      "week": "2026-04-08",
+      "sources": [
+        {
+          "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-04.zip",
+          "sha256": "9f8e49b70978177414a005a6e84b1cf891f97b0196526cbd579535449c14b6f6",
+          "bytes": 42394,
+          "unit": "us"
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/BTC-USD/candles?start=2026-04-08T00%3A00%3A00%2B00%3A00&end=2026-04-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "8305c948a201ce0f19dcd69c7a28ab7c63812c546291c3c70284566c62dd00f1",
+          "bytes": 10208
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/USDT-USD/candles?start=2026-04-08T00%3A00%3A00%2B00%3A00&end=2026-04-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "e8c68933c4be980349f3931016c873ccf4ae7bf4335e3bef781c84aa706d85f3",
+          "bytes": 9172
+        }
+      ],
+      "file": "2026-04-08.csv",
+      "fileSHA256": "2b978ee2689c9676a141ad32cc25c479cabda6f0940f6f1b7797b81715b9d786"
+    },
+    {
+      "expected": 168,
+      "binance": 168,
+      "coinbase": 168,
+      "usdt": 168,
+      "joint": 168,
+      "raw": {
+        "n": 168,
+        "median": -8.046953533830115,
+        "p05": -12.093175317255179,
+        "p95": -5.798169247798246,
+        "min": -14.91346354880907,
+        "max": -4.2094118918822865
+      },
+      "adjusted": {
+        "n": 168,
+        "median": 0.29604954936091055,
+        "p05": -1.4987484306518417,
+        "p95": 2.452475784513908,
+        "min": -2.649220704831201,
+        "max": 3.991556268891916
+      },
+      "usdtDeviationBps": {
+        "n": 168,
+        "median": -8.399999999999519,
+        "p05": -12.065000000000214,
+        "p95": -6.434999999999968,
+        "min": -14.800000000000368,
+        "max": -6.000000000000449
+      },
+      "week": "2026-07-08",
+      "sources": [
+        {
+          "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-07.zip",
+          "sha256": "ec98553c10acdbf3f210c55045614e8d3daf616e407c36718269361b1e972b16",
+          "bytes": 43238,
+          "unit": "us"
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/BTC-USD/candles?start=2026-07-08T00%3A00%3A00%2B00%3A00&end=2026-07-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "b3dc736ed98f13bb007cc6a8ded6061fb164ff08f9619fd11ee13176b6074b53",
+          "bytes": 10189
+        },
+        {
+          "source": "https://api.exchange.coinbase.com/products/USDT-USD/candles?start=2026-07-08T00%3A00%3A00%2B00%3A00&end=2026-07-15T00%3A00%3A00%2B00%3A00&granularity=3600",
+          "sha256": "fe3519fe946ea7526809f4ae47491534b060e763959308ffaeca5cf8ae6683fd",
+          "bytes": 9205
+        }
+      ],
+      "file": "2026-07-08.csv",
+      "fileSHA256": "9c19eb348097556e47383ef04cf23a95ac9de0b83157bd378168fd49600d8bc3"
+    }
+  ]
+}
