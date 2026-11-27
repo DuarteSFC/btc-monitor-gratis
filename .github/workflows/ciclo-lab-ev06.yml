@@ -1,0 +1,54 @@
+name: CICLO LAB EV06 spot perpetual discount
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/event_discount.py, .github/workflows/ciclo-lab-ev06.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
+      - run: |
+          python -m py_compile ciclo-lab/event_discount.py
+          python -X faulthandler ciclo-lab/event_discount.py --selftest
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2021-2023
+          path: lab-derivatives
+          run-id: 45861953804
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2026-extension
+          path: lab-extension
+          run-id: 45995404482
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-dx01
+          path: lab-dx01
+          run-id: 46014427218
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-btcusdt-1m-2020-2026
+          path: lab-dataset
+          run-id: 45734087753
+          github-token: ${{ github.token }}
+      - run: python -X faulthandler ciclo-lab/event_discount.py --derivatives lab-derivatives --extension lab-extension --extra lab-dx01 --dataset lab-dataset
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-ev06
+          path: lab-ev06.json
+          retention-days: 30
