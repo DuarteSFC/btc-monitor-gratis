@@ -7,6 +7,10 @@ permissions:
   contents: read
 jobs:
   replay:
+    strategy:
+      fail-fast: false
+      matrix:
+        offset: [0, 30]
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -20,4 +24,6 @@ jobs:
           node test_early_market.mjs
           node test_fast_notify.mjs
           node --check fast_notify.mjs
-      - run: node replay_early_market.mjs
+      - run: node replay_compare_attention.mjs
+        env:
+          REPLAY_OFFSET_DAYS: ${{ matrix.offset }}
