@@ -1,0 +1,524 @@
+{
+  "run": 46001707102,
+  "primary": false,
+  "folds": [
+    {
+      "week": "2023-02-01",
+      "train": 1910,
+      "test": 547,
+      "known": 547,
+      "priceSignals": 0,
+      "microSignals": 0,
+      "forecast": {
+        "models": {
+          "price": {
+            "n": 547,
+            "mse": 0.21932020860002496,
+            "mae": 0.32975175769023335,
+            "spearman": 0.04541574305141911
+          },
+          "micro": {
+            "n": 547,
+            "mse": 0.2201643253916119,
+            "mae": 0.33095600140372583,
+            "spearman": 0.06379978150888804
+          }
+        },
+        "dayMeanMSEDelta": 0.0008605406344463312,
+        "daysMicroBetter": 3,
+        "days": 7
+      }
+    },
+    {
+      "week": "2023-05-01",
+      "train": 2457,
+      "test": 500,
+      "known": 500,
+      "priceSignals": 0,
+      "microSignals": 0,
+      "forecast": {
+        "models": {
+          "price": {
+            "n": 500,
+            "mse": 0.19865823260229193,
+            "mae": 0.3212172283927316,
+            "spearman": 0.19148257161592058
+          },
+          "micro": {
+            "n": 500,
+            "mse": 0.20000136020961645,
+            "mae": 0.3226197251981854,
+            "spearman": 0.1509142057548546
+          }
+        },
+        "dayMeanMSEDelta": 0.0014096448901444153,
+        "daysMicroBetter": 3,
+        "days": 7
+      }
+    },
+    {
+      "week": "2023-08-01",
+      "train": 2957,
+      "test": 354,
+      "known": 354,
+      "priceSignals": 0,
+      "microSignals": 0,
+      "forecast": {
+        "models": {
+          "price": {
+            "n": 354,
+            "mse": 0.23829963026831744,
+            "mae": 0.34164103845803095,
+            "spearman": 0.19448832964181773
+          },
+          "micro": {
+            "n": 354,
+            "mse": 0.2402039633312693,
+            "mae": 0.34193360074659634,
+            "spearman": 0.1544386728556961
+          }
+        },
+        "dayMeanMSEDelta": 0.0016840358191937221,
+        "daysMicroBetter": 5,
+        "days": 7
+      }
+    },
+    {
+      "week": "2023-11-01",
+      "train": 3311,
+      "test": 477,
+      "known": 477,
+      "priceSignals": 0,
+      "microSignals": 0,
+      "forecast": {
+        "models": {
+          "price": {
+            "n": 477,
+            "mse": 0.20926665142360307,
+            "mae": 0.30654744594921085,
+            "spearman": 0.10537401522796785
+          },
+          "micro": {
+            "n": 477,
+            "mse": 0.21154489076593283,
+            "mae": 0.31019890183647514,
+            "spearman": 0.059786036122397995
+          }
+        },
+        "dayMeanMSEDelta": 0.002230167297625992,
+        "daysMicroBetter": 1,
+        "days": 7
+      }
+    },
+    {
+      "week": "2026-04-01",
+      "train": 3788,
+      "test": 472,
+      "known": 472,
+      "priceSignals": 0,
+      "microSignals": 0,
+      "forecast": {
+        "models": {
+          "price": {
+            "n": 472,
+            "mse": 0.24070189376648113,
+            "mae": 0.3493462988254162,
+            "spearman": 0.03646775384043627
+          },
+          "micro": {
+            "n": 472,
+            "mse": 0.24112464350837617,
+            "mae": 0.3495865179210551,
+            "spearman": 0.05625556648829754
+          }
+        },
+        "dayMeanMSEDelta": 0.0008950853987204729,
+        "daysMicroBetter": 2,
+        "days": 7
+      }
+    },
+    {
+      "week": "2026-07-01",
+      "train": 4260,
+      "test": 529,
+      "known": 529,
+      "priceSignals": 0,
+      "microSignals": 0,
+      "forecast": {
+        "models": {
+          "price": {
+            "n": 529,
+            "mse": 0.2401624963992677,
+            "mae": 0.3460622975108809,
+            "spearman": 0.19632235646060445
+          },
+          "micro": {
+            "n": 529,
+            "mse": 0.24084642471589887,
+            "mae": 0.346232362077882,
+            "spearman": 0.2049391832063313
+          }
+        },
+        "dayMeanMSEDelta": 0.0007611831990102302,
+        "daysMicroBetter": 3,
+        "days": 7
+      }
+    }
+  ],
+  "forecast": [
+    {
+      "period": "2023",
+      "models": {
+        "price": {
+          "n": 1878,
+          "mse": 0.2148432014107575,
+          "mae": 0.32382688231354634,
+          "spearman": 0.1751494445360726
+        },
+        "micro": {
+          "n": 1878,
+          "mse": 0.2163842822197227,
+          "mae": 0.325533634828128,
+          "spearman": 0.1553496702552955
+        }
+      },
+      "dayMeanMSEDelta": 0.0015460971603526148,
+      "daysMicroBetter": 12,
+      "days": 28
+    },
+    {
+      "period": "2026",
+      "models": {
+        "price": {
+          "n": 1001,
+          "mse": 0.24041683761537633,
+          "mae": 0.34761079763122127,
+          "spearman": 0.11294290177077594
+        },
+        "micro": {
+          "n": 1001,
+          "mse": 0.24097761279786617,
+          "mae": 0.34781394205588173,
+          "spearman": 0.12944683122125505
+        }
+      },
+      "dayMeanMSEDelta": 0.0008281342988653515,
+      "daysMicroBetter": 5,
+      "days": 14
+    }
+  ],
+  "results": [
+    {
+      "period": "2023",
+      "policy": "price",
+      "delay": 1,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "price",
+      "delay": 1,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "price",
+      "delay": 5,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "price",
+      "delay": 5,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "price",
+      "delay": 15,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "price",
+      "delay": 15,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "micro",
+      "delay": 1,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "micro",
+      "delay": 1,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "micro",
+      "delay": 5,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "micro",
+      "delay": 5,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "micro",
+      "delay": 15,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2023",
+      "policy": "micro",
+      "delay": 15,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "price",
+      "delay": 1,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "price",
+      "delay": 1,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "price",
+      "delay": 5,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "price",
+      "delay": 5,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "price",
+      "delay": 15,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "price",
+      "delay": 15,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "micro",
+      "delay": 1,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "micro",
+      "delay": 1,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "micro",
+      "delay": 5,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "micro",
+      "delay": 5,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "micro",
+      "delay": 15,
+      "cost": "normal",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    },
+    {
+      "period": "2026",
+      "policy": "micro",
+      "delay": 15,
+      "cost": "stress",
+      "n": 0,
+      "signals": 0,
+      "mean": null,
+      "pf": null,
+      "equity": 10000,
+      "ci": null,
+      "unknown": 0
+    }
+  ]
+}
