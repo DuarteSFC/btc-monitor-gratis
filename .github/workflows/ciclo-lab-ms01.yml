@@ -1,4 +1,4 @@
-name: CICLO LAB MS01 absorption selftest
+name: CICLO LAB MS01 fixed absorption experiment
 on:
   push:
     branches: [ciclo-lab-research]
@@ -9,7 +9,7 @@ permissions:
 jobs:
   diagnostic:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -20,3 +20,38 @@ jobs:
       - run: |
           python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
       - run: python -X faulthandler ciclo-lab/ms01_absorption.py --selftest
+      - name: Require successful fixed 70-day acquisition
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 120); do
+            result=$(gh api repos/${GITHUB_REPOSITORY}/actions/runs/45998649634 --jq '.status + ":" + (.conclusion // "pending")')
+            if [ "$result" = "completed:success" ]; then exit 0; fi
+            if [[ "$result" == completed:* ]]; then echo "Acquisition failed: $result"; exit 1; fi
+            sleep 15
+          done
+          echo "Acquisition not complete"; exit 1
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2021-2023
+          path: lab-derivatives
+          run-id: 45861953804
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2026-extension
+          path: lab-extension
+          run-id: 45995404482
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-ms1-dataset
+          path: lab-ms1
+          run-id: 45998649634
+          github-token: ${{ github.token }}
+      - run: python -X faulthandler ciclo-lab/ms01_absorption.py --dataset lab-ms1 --derivatives lab-derivatives --extension lab-extension
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-ms01
+          path: lab-ms01.json
+          retention-days: 30
