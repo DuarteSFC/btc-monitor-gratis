@@ -139,3 +139,6 @@ Both runs completed. Primary forecasts on identical 1878 (2023) and 1001 (2026) 
 
 ## 2026-11-27 — T24 fixed daily trend / four-hour breakout (run 46002975677)
 24 replays, 398 conditional controls completed; no unknown outcomes. T24 2022–23 n55, normal means -.012327/-.016033/+.010216 R at 1/5/15m, stress -.045990/-.049617/-.023976. 2026 n21, stress -.307512/-.298166/-.297272 R; all normal recent negative. Base 1m stress n233 and n67, -.101379 and -.044341 R. Relative p=.52/.995. Only one T24 executed trade in 2022; insufficient annual support, all stress negative. Reject fixed T24, no threshold/horizon rescue. Evidence/t24-46002975677.json. Existing development gate remains unsatisfied and reserved 2024–25 locked.
+
+## 2026-11-27 — CF01 relative settled funding (run 46003593385)
+45/45 ETH funding archives verified, 4104 settlements; 28 replays and 398 controls. 30m availability lag: 2022–23 n59, stress mean +.014349/+.011807/+.027406 R at 1/5/15m; recent n15, -.334212/-.352116/-.356932. Normal old 1m +.067859 R PF1.304666; old 2022 stress negative at 1m and 5m. 60m availability lag, 1m stress old n60 -.023220, recent n14 -.402304. Relative p=.065/.95, zero unknown, support insufficient; reject CF01 without threshold rescue. Evidence/cf01-46003593385.json. No holdout or production change.
