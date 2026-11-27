@@ -24,7 +24,7 @@ def features(a):
     x["range60"]=(z.high.rolling(12,min_periods=12).max()-z.low.rolling(12,min_periods=12).min())/z.close
     x["closeLocation"]=(z.close-z.low)/(z.high-z.low).replace(0,np.nan)
     x["relVolume"]=z.volume/z.volume.shift(1).rolling(11,min_periods=11).median().replace(0,np.nan)
-    for n in [1,3,12]:
+    for n in [1,3,6,12]:
         s=z[["volume","buyVolume","aggregates","buyAggregates"]].rolling(n,min_periods=n).sum()
         sell=s.volume-s.buyVolume;sc=s.aggregates-s.buyAggregates
         u[f"volumeImb{n}"]=2*s.buyVolume/s.volume.replace(0,np.nan)-1
@@ -57,7 +57,7 @@ def selftest():
     i=pd.date_range("2022-01-01 00:00:05",periods=60*24,freq="5s",tz="UTC")
     a=pd.DataFrame(dict(open=100.,high=100.1,low=99.9,close=100.,volume=1.,buyVolume=.6,aggregates=10.,buyAggregates=4.,maxAggregate=.1),index=i)
     z,x,u=features(a)
-    assert len(x)>0 and abs(u.iloc[-1].volumeImb1-.2)<1e-10
+    assert len(x)>0 and abs(u.iloc[-1].volumeImb1-.2)<1e-10 and "sizeRatio6" in u.columns
     cut=i[900]
     b=a.copy();b.loc[b.index>cut,"buyVolume"]=.9
     _,xx,uu=features(b)
