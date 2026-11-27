@@ -1,0 +1,18 @@
+import assert from "node:assert/strict";
+import {positionFeatures} from "./position_attention.mjs";
+const step=300000,t=20*step;
+const m=new Map(Array.from({length:21},(_,i)=>[i*step,[100+i,1,1,1]]));
+const a=positionFeatures(m,t);
+assert.equal(a.length,11);
+assert.ok(Math.abs(a[0]-Math.log(118/117))<1e-12);
+assert.ok(Math.abs(a[3]-Math.log(118/106))<1e-12);
+const copy=new Map(m);copy.set(t,[99999,20,20,20]);
+assert.deepEqual(positionFeatures(copy,t),a);
+assert.notDeepEqual(positionFeatures(m,t,15),a);
+copy.delete(t-10*60000);
+assert.equal(positionFeatures(copy,t),null);
+assert.equal(positionFeatures(m,t,0),null);
+assert.equal(positionFeatures(m,t+1),null);
+const bad=new Map(m);bad.set(t-10*60000,[100,0,1,1]);
+assert.equal(positionFeatures(bad,t),null);
+console.log("OK: strictly lagged observations, no future use, continuity, invalid-value rejection.");
