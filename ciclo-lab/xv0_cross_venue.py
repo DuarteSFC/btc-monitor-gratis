@@ -57,12 +57,13 @@ def compare(b,c,u,start,end):
     def stats(x):
         x=x.dropna()
         return dict(n=len(x),median=float(x.median()),p05=float(x.quantile(.05)),p95=float(x.quantile(.95)),min=float(x.min()),max=float(x.max())) if len(x) else dict(n=0)
-    return q,dict(expected=len(ix),binance=len(b),coinbase=len(c),usdt=len(u),joint=int(q.adjustedBps.notna().sum()),raw=stats(q.rawBps),adjusted=stats(q.adjustedBps),usdt=stats((q.usdtUSD-1)*10000))
+    return q,dict(expected=len(ix),binance=len(b),coinbase=len(c),usdt=len(u),joint=int(q.adjustedBps.notna().sum()),raw=stats(q.rawBps),adjusted=stats(q.adjustedBps),usdtDeviationBps=stats((q.usdtUSD-1)*10000))
 def selftest():
     t=utc("2022-02-08");end=t+pd.Timedelta(hours=2)
     raw=json.dumps([[int(t.timestamp()),100,102,101,101,2],[int((t+pd.Timedelta(hours=1)).timestamp()),101,103,102,102,3]]).encode()
     c=cb_parse(raw,t,end);b=c.copy();u=c.copy();u[COLS]=1.;u["close"]=1.01
     q,r=compare(b,c,u,t,end)
+    assert r["usdt"]==2 and r["usdtDeviationBps"]["n"]==2
     assert r["joint"]==2 and q.rawBps.eq(0).all() and np.allclose(q.adjustedBps,(1/1.01-1)*10000)
     assert compare(b,c,u.iloc[:1],t,end)[1]["joint"]==1
     for scale in [1000,1000000]:
