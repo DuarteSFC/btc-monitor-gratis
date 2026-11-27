@@ -31,6 +31,8 @@ for month in MONTHS:
     start=int(datetime(y,m,1,tzinfo=timezone.utc).timestamp()*1000)
     expected=calendar.monthrange(y,m)[1]*1440
     count=0
+    prev=start-60000
+    gaps=[]
     with zipfile.ZipFile(io.BytesIO(data)) as z:
         members=[n for n in z.infolist() if not n.is_dir()]
         if len(members)!=1 or members[0].file_size>40_000_000: raise ValueError("unexpected archive")
@@ -40,9 +42,12 @@ for month in MONTHS:
                 if not count and row and row[0].lower() in ("open_time","open time"): continue
                 if len(row)!=12: raise ValueError("unexpected archive columns")
                 t=millis(row[0]); end=millis(row[6])
-                if t!=start+count*60000 or end!=t+59999: raise ValueError("gap or invalid close: "+month)
+                if not start<=t<start+expected*60000 or t%60000 or t<=prev or end!=t+59999: raise ValueError("invalid timestamp or duplicate: "+month)
+                if t>prev+60000:gaps.append((prev+60000,t))
+                prev=t
                 # Retain exact public source quantities. Validation of finite ranges is in JS.
                 w.writerow([t,*row[1:6],row[7],row[8],row[10]])
                 count+=1
-    if count!=expected: raise ValueError("incomplete month: "+month)
-    print(f"{MARKET} {month}: {count} contiguous minutes, SHA256 verified",flush=True)
+    if prev+60000<start+expected*60000:gaps.append((prev+60000,start+expected*60000))
+    if count<expected*.99: raise ValueError("coverage below 99 percent: "+month)
+    print(f"{MARKET} {month}: {count}/{expected} minutes, SHA256 verified, missing intervals (UTC ms) {gaps}",flush=True)
