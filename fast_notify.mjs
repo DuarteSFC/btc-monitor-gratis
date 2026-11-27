@@ -1,5 +1,6 @@
 import {fromEvents} from "./tactical_candidate.mjs";
 import {fastReport} from "./fast_tactical.mjs";
+import {sendAlert} from "./telegram_delivery.mjs";
 import {readFile,writeFile,mkdir,rename} from "node:fs/promises";
 const active=process.env.BTC_FAST_ALERTS==="true";
 const file=".fast-state/state.json";
@@ -10,7 +11,7 @@ const valid=snapshot.status.pricesFreshAndCoherent&&snapshot.status.shortIndicat
   ["BTCUSD","BTCUSDT"].every(p=>{const age=now-Date.parse(snapshot.prices[p]?.data?.tradeUtc);return age>=0&&age<60000;});
 if(!valid){console.log("No valid fresh market data; no alerts.");process.exit(0);}
 if(!active){console.log("Dry run: market valid; Telegram disabled; no messages sent.");process.exit(0);}
-if(!token||!chat){console.log("Telegram credentials not configured; no alerts.");process.exit(0);}
+if(!token||!chat){console.error("Telegram credentials not configured; alert delivery unavailable.");process.exit(1);}
 let state={sent:[],lastByType:{}};
 try{const x=JSON.parse(await readFile(file,"utf8"));if(Array.isArray(x.sent))state=x;}catch{}
 state.lastByType=state.lastByType&&typeof state.lastByType==="object"?state.lastByType:{};
@@ -45,14 +46,12 @@ for(let i=0;i<recent.length;i+=6){
  const batch=recent.slice(i,i+6);
  const message=[header,...batch.map(format),quote].join("\n\n");
  if(message.length>4096)throw Error("Telegram message too long");
- let sent=false;
- try{
-  const r=await fetch("https://api.telegram.org/bot"+token+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chat,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
-  sent=r.ok&&(await r.json()).ok===true;
- }catch{}
- if(!sent){console.error("Telegram delivery failed (credentials and response omitted).");process.exit(1);}
+ const isFresh=()=>{const t=Date.now();return ["BTCUSD","BTCUSDT"].every(p=>{const age=t-Date.parse(snapshot.prices[p]?.data?.tradeUtc);return age>=0&&age<60000;})&&batch.every(e=>{const age=t-Date.parse(e.closedUtc);return age>=0&&age<=(e.type==="candidate"?600000:e.type==="prealert"?300000:1200000);});};
+ const delivery=await sendAlert({token,chat,message,isFresh,log:info=>console.log("Telegram delivery diagnostic: "+JSON.stringify(info))});
+ if(!delivery.ok){console.error("Telegram delivery incomplete: "+delivery.reason+"; pending eligible events will be reconsidered on the next regular run.");await persist();process.exit(1);}
  for(const e of batch){seen.add(e.id);if(e.type==="prealert")state.lastByType[e.pattern]={time:now,level:e.level};}
  await persist();
  console.log("Material market alert sent: "+batch.length+" distinct events.");
+ console.log("Telegram API accepted public event IDs: "+JSON.stringify(batch.map(e=>e.id))+"; device receipt unknown.");
 }
 if(!recent.length){console.log("No new material event.");await persist();}

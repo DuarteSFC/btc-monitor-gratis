@@ -24,3 +24,4 @@ jobs:
           node --check fast_notify.mjs
           node test_tactical_candidate.mjs
           node test_fast_notify.mjs
+          node test_telegram_delivery.mjs
