@@ -1,0 +1,53 @@
+{
+  "run": 45995404482,
+  "commit": "552cb99b2f648ca36ce2edf34bafcdfa31066aac",
+  "period": "2026-01-01 to 2026-10-01 exclusive",
+  "summary": {
+    "perp": {
+      "files": 9,
+      "verified": 9,
+      "rows": 393120,
+      "duplicates": 0,
+      "conflicts": 0,
+      "invalid": 0,
+      "outside": 0,
+      "errors": []
+    },
+    "mark": {
+      "files": 9,
+      "verified": 9,
+      "rows": 391680,
+      "duplicates": 0,
+      "conflicts": 0,
+      "invalid": 0,
+      "outside": 0,
+      "errors": []
+    },
+    "funding": {
+      "files": 9,
+      "verified": 9,
+      "rows": 819,
+      "duplicates": 0,
+      "conflicts": 0,
+      "invalid": 0,
+      "outside": 0,
+      "errors": []
+    },
+    "metrics": {
+      "files": 273,
+      "verified": 273,
+      "rows": 78624,
+      "duplicates": 0,
+      "conflicts": 0,
+      "invalid": 0,
+      "outside": 0,
+      "errors": []
+    }
+  },
+  "artifact": {
+    "id": 15195473376,
+    "name": "ciclo-lab-derivatives-2026-extension",
+    "digest": "sha256:e7f844add217546f9ceaa17f9a355138027359a10608a646fff9b490e9be026c",
+    "expires_at": "2026-12-27T12:03:28Z"
+  }
+}
