@@ -6,7 +6,7 @@ export function attentionAt(bars,source="OKX BTC/USDT",now=Date.now()){
  const x=bars.slice(-24),z=x.at(-1),end=z.t+MS;
  if(end>now||x.some((b,i)=>!finite(b)||(i&&b.t-x[i-1].t!==MS)))return null;
  const p=x.slice(-21,-1),avg=p.reduce((s,b)=>s+b.v,0)/20;
- const a=p.reduce((s,b,i)=>s+Math.max(b.h-b.l,Math.abs(b.h-x[i+3].c),Math.abs(b.l-x[i+3].c)),0)/20;
+ const a=p.reduce((s,b,i)=>s+Math.max(b.h-b.l,Math.abs(b.h-x[i+2].c),Math.abs(b.l-x[i+2].c)),0)/20;
  if(!(avg>0&&a>0))return null;
  const body=z.c-z.o,range=z.h-z.l,v=z.v/avg,loc=range>0?(z.c-z.l)/range:0;
  const tail=x.slice(-3),before=x.slice(-23,-3),avg3=before.reduce((s,b)=>s+b.v,0)/20;

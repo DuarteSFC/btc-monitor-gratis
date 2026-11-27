@@ -6,6 +6,7 @@ import {spawnSync} from "node:child_process";
 const dir=await mkdtemp(join(tmpdir(),"btc-notify-"));
 try{
  await copyFile("fast_notify.mjs",join(dir,"fast_notify.mjs"));
+ await copyFile("early_market.mjs",join(dir,"early_market.mjs"));
  await writeFile(join(dir,"tactical_candidate.mjs"),"export function fromEvents(){throw Error('unvalidated candidates must not run')}");
  await writeFile(join(dir,"fast_tactical.mjs"),`export async function fastReport(){
   const now=Date.now(),tradeUtc=new Date(now-1000).toISOString();
