@@ -1,5 +1,6 @@
 import {fromEvents} from "./tactical_candidate.mjs";
 import {fastReport} from "./fast_tactical.mjs";
+import {chooseAttention} from "./early_market.mjs";
 import {readFile,writeFile,mkdir,rename} from "node:fs/promises";
 const active=process.env.BTC_FAST_ALERTS==="true";
 const file=".fast-state/state.json";
@@ -23,14 +24,16 @@ const candidates=process.env.BTC_CANDIDATES_VALIDATED==="true"?fromEvents(snapsh
 const prealerts=process.env.BTC_EARLY_PREALERTS==="true"?(snapshot.prealerts??[]).map(e=>({...e,pattern:e.type,type:"prealert"})):[];
 const selected=new Map();
 for(const e of prealerts.sort((a,b)=>Date.parse(b.closedUtc)-Date.parse(a.closedUtc))){const key=e.pattern;const age=now-Date.parse(e.closedUtc);const prev=state.lastByType[key];if(age<0||age>300000||seen.has(e.id)||selected.has(key))continue;if(prev&&now-prev.time<300000&&Math.abs(e.level-prev.level)/market<.002)continue;selected.set(key,e);}
-const recent=[...snapshot.events,...candidates,...selected.values()].filter(e=>{
+const attention=chooseAttention(snapshot.earlyMarketEvents??[],snapshot.events,seen,state.lastAttention??0,now);
+const recent=[...snapshot.events,...attention,...candidates,...selected.values()].filter(e=>{
  const age=now-Date.parse(e.closedUtc);
- return age>=0&&age<=(e.type==="candidate"?600000:e.type==="prealert"?300000:1200000)&&!seen.has(e.id);
+ return age>=0&&age<=(e.type==="candidate"?600000:e.type==="prealert"?300000:e.type==="early_attention"?600000:1200000)&&!seen.has(e.id);
 }).sort((a,b)=>Date.parse(b.closedUtc)-Date.parse(a.closedUtc));
 const header="BTC · Monitor táctico · Sin ejecución de órdenes";
 const quote="BTC/USD "+fmt(snapshot.prices.BTCUSD.data.price)+" ("+snapshot.prices.BTCUSD.data.source+"; "+localTime(snapshot.prices.BTCUSD.data.tradeUtc)+")\nBTC/USDT "+fmt(market)+" ("+snapshot.prices.BTCUSDT.data.source+"; "+localTime(snapshot.prices.BTCUSDT.data.tradeUtc)+")";
 function format(e){
  const time=localTime(e.closedUtc)+" · "+e.frame;
+ if(e.type==="early_attention")return "BTC · ATENCIÓN TEMPRANA (movimiento observado, no entrada)\n"+time+"\n"+(e.pattern==="volume_acceleration"?"Aceleración con volumen excepcional":"Aceleración acumulada en tres minutos")+"\nNivel "+fmt(e.level)+" | cierre "+fmt(e.close)+" | volumen 1M "+fmt(e.volumeVs20)+"x | volumen 3M "+fmt(e.volume3Vs20)+"x\nFuente: "+e.source+"\nVigilar reacción 5M/15M. No perseguir ni abrir por este aviso.";
  if(e.type==="prealert")return "BTC · PREALERTA EXPERIMENTAL (no entrada)\n"+time+"\n"+({early_reversal:"Reversión temprana",sweep_recovery:"Barrido y recuperación",compression:"Compresión",continuation:"Continuación"}[e.pattern]??e.pattern)+"\nNivel de observación "+fmt(e.level)+" | invalidación estructural "+fmt(e.invalidation)+" | cierre "+fmt(e.close)+" | volumen "+fmt(e.volumeVs20)+"x\nFuente: "+e.source+"\nNo es una recomendación de compra. Vigilar confirmación del patrón; descartar si pierde la invalidación.";
  if(e.type==="candidate")return "🟢 BTC · Candidato LONG táctico (hipotético)\n"+time+"\nEntrada "+fmt(e.entry)+" | Stop "+fmt(e.stop)+" | Objetivo "+fmt(e.target)+"\nB/R neto estimado "+fmt(e.rr)+":1 (costes supuestos: 0,05% comisión + 0,02% deslizamiento por lado).\nAcción: validar costes, estructura y riesgo agregado; no perseguir.";
  const age=now-Date.parse(e.closedUtc);
@@ -51,7 +54,7 @@ for(let i=0;i<recent.length;i+=6){
   sent=r.ok&&(await r.json()).ok===true;
  }catch{}
  if(!sent){console.error("Telegram delivery failed (credentials and response omitted).");process.exit(1);}
- for(const e of batch){seen.add(e.id);if(e.type==="prealert")state.lastByType[e.pattern]={time:now,level:e.level};}
+ for(const e of batch){seen.add(e.id);if(e.type==="early_attention")state.lastAttention=Date.parse(e.closedUtc);if(e.type==="prealert")state.lastByType[e.pattern]={time:now,level:e.level};}
  await persist();
  console.log("Material market alert sent: "+batch.length+" distinct events.");
 }

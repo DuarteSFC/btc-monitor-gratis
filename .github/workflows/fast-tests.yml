@@ -19,6 +19,7 @@ jobs:
       - run: |
           npm test
           node test_fast_tactical.mjs
+          node test_early_market.mjs
           node --check api/fast.mjs
           node --check api/tactical.mjs
           node --check fast_notify.mjs
