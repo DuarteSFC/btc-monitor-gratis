@@ -1,0 +1,30 @@
+name: V2.2 attention replay (no delivery)
+on:
+  push:
+    branches: [tactical-early-v22]
+    paths: [replay_compare_attention.mjs, early_market.mjs, fast_tactical.mjs, worker.mjs]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  replay:
+    strategy:
+      fail-fast: false
+      matrix:
+        offset: [0, 30]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - run: |
+          npm test
+          node test_fast_tactical.mjs
+          node test_early_market.mjs
+          node test_fast_notify.mjs
+          node --check fast_notify.mjs
+      - run: node replay_compare_attention.mjs
+        env:
+          REPLAY_OFFSET_DAYS: ${{ matrix.offset }}

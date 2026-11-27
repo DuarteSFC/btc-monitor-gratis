@@ -40,7 +40,9 @@ assert.equal(result.timeframes["1M"].recentClosed.length,120);
 assert.equal(result.prealerts.length,0);
 
 assert.equal(result.version,"2.0.0");
-assert.equal(result.featureVersion,"2.1.0");
+assert.equal(result.featureVersion,"2.2.0");
+assert.deepEqual(result.earlyMarketEvents,[]);
+assert.deepEqual(stale.earlyMarketEvents,[]);
 assert.equal(result.experimentalPrealertsEnabled,false);
 assert.equal(result.experimental.classification,"research_only_not_entry");
 assert.deepEqual(stale.experimental.prealerts,[]);

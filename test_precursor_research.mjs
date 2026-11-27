@@ -1,0 +1,13 @@
+import assert from "node:assert/strict";
+import {featuresAt,precursorAt} from "./precursor_research.mjs";
+const t=Date.UTC(2026,0,1),base=Array.from({length:61},(_,i)=>({t:t+i*60000,o:60000,c:60000,h:60010,l:59990,v:10}));
+assert.equal(featuresAt(base).atr,20);
+assert.equal(featuresAt(base).t,t+61*60000);
+assert.deepEqual(precursorAt(base),[]);
+assert.equal(featuresAt(base.filter((_,i)=>i!==40)),null);
+const bad=base.map((z,i)=>i===59?{...z,v:-1}:z);
+assert.equal(featuresAt(bad),null);
+const spike=base.map((z,i)=>i===60?{...z,c:60100,h:60110,v:100}:z);
+assert.deepEqual(precursorAt(spike),[]);
+assert.equal(featuresAt(base).rel,1);
+console.log("OK: closed-bar feature calculations, gap/invalid input rejection, no chasing and flat market suppression.");
