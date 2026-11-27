@@ -1,0 +1,27 @@
+name: CICLO LAB BD01 order-book depth source audit
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/book_depth_probe.py, .github/workflows/ciclo-lab-bd01.yml]
+permissions:
+  contents: read
+jobs:
+  acquisition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m py_compile ciclo-lab/book_depth_probe.py
+          python -X faulthandler ciclo-lab/book_depth_probe.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ciclo-lab-bd01
+          path: lab-bd01/
+          retention-days: 30
