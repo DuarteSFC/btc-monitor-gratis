@@ -1,0 +1,60 @@
+name: CICLO LAB BD03 incremental depth forecasting
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/book_depth_predict.py, .github/workflows/ciclo-lab-bd03.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
+      - run: |
+          python -m py_compile ciclo-lab/book_depth_predict.py
+          python -X faulthandler ciclo-lab/book_depth_predict.py --selftest
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2021-2023
+          path: lab-derivatives
+          run-id: 45861953804
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2026-extension
+          path: lab-extension
+          run-id: 45995404482
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-dx01
+          path: lab-dx01
+          run-id: 46014427218
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-bd01
+          path: lab-bd01
+          run-id: 46030577510
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-bd02
+          path: lab-bd02
+          run-id: 46031056404
+          github-token: ${{ github.token }}
+      - run: python -X faulthandler ciclo-lab/book_depth_predict.py --derivatives lab-derivatives --extension lab-extension --extra lab-dx01 --book lab-bd01 --audit lab-bd02/lab-bd02.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-bd03
+          path: lab-bd03.json
+          retention-days: 30
