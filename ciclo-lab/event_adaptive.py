@@ -20,19 +20,32 @@ def audit_funding(funding, start, end):
     assert funding.interval_hours.eq(8).all() and np.isfinite(funding.rate).all()
 
 
+def coverage(p, mark, start, end):
+    report=[]
+    keep_p=np.ones(len(p),dtype=bool);keep_m=np.ones(len(mark),dtype=bool)
+    for month in pd.date_range(utc(start),utc(end),freq='MS',inclusive='left'):
+        stop=month+pd.offsets.MonthBegin(1)
+        pp=(p.index>=month)&(p.index<stop);mm=(mark.index>=month)&(mark.index<stop)
+        expected=int((stop-month)/pd.Timedelta(minutes=1))
+        n=int(pp.sum());k=int(mm.sum());admitted=n>=.95*expected and k>=.95*expected
+        report.append(dict(month=month.isoformat(),expected=expected,perp=n,mark=k,admitted=bool(admitted)))
+        if not admitted:
+            keep_p &= ~pp;keep_m &= ~mm
+    return p.loc[keep_p],mark.loc[keep_m],report
+
+
 def merged(roots, start, end):
     out = []
     for kind in ('perp', 'mark', 'funding'):
         data = pd.concat([load(r,kind) for r in roots]).sort_index()
         assert data.index.is_unique and data.index.min() >= utc(start) and data.index.max() < utc(end)
-        if kind != 'funding':
-            for month in pd.date_range(utc(start), utc(end), freq='MS', inclusive='left'):
-                stop = month + pd.offsets.MonthBegin(1)
-                n = ((data.index >= month) & (data.index < stop)).sum()
-                assert n >= .95 * ((stop-month)/pd.Timedelta(minutes=1))
+        if kind!='funding':assert (data.index.as_unit('ns').asi8%NS==0).all()
         out.append(data)
+    p,mark,report=coverage(out[0],out[1],start,end)
+    print('EV04_COVERAGE='+json.dumps(report),flush=True)
+    assert len(p)>0 and len(mark)>0
     audit_funding(out[2],start,end)
-    return out
+    return p,mark,out[2],report
 
 
 def conditions(p):
@@ -65,7 +78,12 @@ def selftest():
     try:audit_funding(f.iloc[:-1],'2020-01-01','2020-01-02')
     except AssertionError:pass
     else:raise AssertionError('missing funding accepted')
-    print('EV04 causal features, gap-aware engine and funding cadence PASS',flush=True)
+    i=pd.date_range('2020-01-01','2020-03-01',freq='min',inclusive='left',tz='UTC')
+    d=pd.DataFrame(dict(close=100.),index=i);m=d.loc[(i.month==1)|(i.day>3)]
+    pp,mm,r=coverage(d,m,'2020-01-01','2020-03-01')
+    assert [x['admitted'] for x in r]==[True,False]
+    assert len(pp)==len(mm)==44640 and (pp.index.month==1).all()
+    print('EV04 causal features, gap-aware engine, funding cadence and coverage quarantine PASS',flush=True)
 
 
 def main():
@@ -74,10 +92,15 @@ def main():
     scopes=[('2020-23',[Path(a.extra)/'early',a.derivatives],'2020-01-01','2020-02-01','2024-01-01'),('2026',[a.extension,Path(a.extra)/'recent'],'2026-01-01','2026-02-01','2026-11-01')]
     result={}
     for name,roots,warm,start,end in scopes:
-        p,mark,funding=merged(roots,warm,end)
+        p,mark,funding,report=merged(roots,warm,end)
         h,f=conditions(p);f=f.loc[(f.index>=utc(start))&(f.index<utc(end)-pd.Timedelta(days=2))]
+        keep=np.ones(len(f),dtype=bool)
+        for row in report:
+            if not row['admitted']:
+                month=utc(row['month']);keep &= ~((f.index>=month-pd.Timedelta(days=2))&(f.index<month+pd.offsets.MonthBegin(1)))
+        embargoed=int((~keep & f.eligible).sum());f=f.loc[keep]
         base=f.index[f.eligible];selected=f.index[f.selected]
-        print('EV04_SCOPE='+json.dumps(dict(period=name,minutes=len(p),funding=len(funding),eligible=len(base),selected=len(selected))),flush=True)
+        print('EV04_SCOPE='+json.dumps(dict(period=name,minutes=len(p),funding=len(funding),eligible=len(base),selected=len(selected),embargoed=embargoed,excludedMonths=[r['month'] for r in report if not r['admitted']])),flush=True)
         out={}
         for delay in (1,5,15):
             shift=pd.Timedelta(minutes=delay-1);universe=base if delay==1 else selected
@@ -93,6 +116,6 @@ def main():
                     r=replay(pd.Series('24h',index=ix+shift,dtype='object'),{'24h':{cost:y}},cost,start=start,end=end)
                     out[str(delay)][cost][policy]=r
                     print('EV04_RESULT='+json.dumps(dict(period=name,delay=delay,cost=cost,policy=policy,**{k:r[k] for k in ('n','mean','pf','equity','ci','dd','unknown','years','signals','skipped')})),flush=True)
-        result[name]=out
-    Path('lab-ev04.json').write_text(json.dumps(dict(results=result,limitations='Development diagnostic; zeroFeeSlip retains funding and may change stop and overlap. Not fixed-fill friction decomposition. No independent holdout or orders.'),indent=2))
+        result[name]=dict(coverage=report,embargoed=embargoed,economic=out)
+    Path('lab-ev04.json').write_text(json.dumps(dict(results=result,limitations='Development diagnostic; excluded months not evaluable; zeroFeeSlip retains funding and may change stop and overlap. Not fixed-fill friction decomposition. No independent holdout or orders.'),indent=2))
 if __name__=='__main__':main()
