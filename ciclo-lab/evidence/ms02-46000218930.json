@@ -1,0 +1,785 @@
+{
+  "run": 46000218930,
+  "results": [
+    {
+      "period": "2022-23",
+      "horizon": 1,
+      "selected": {
+        "n": 101,
+        "meanBps": 1.4822721515398944,
+        "medianBps": 0.8893261409070874,
+        "positive": 0.594059405940594,
+        "meanLess14Bps": -12.517727848460105,
+        "meanLess24Bps": -22.517727848460105,
+        "mfeMeanBps": 3.689874811916448,
+        "maeMeanBps": -2.8896936846649686,
+        "first": {
+          "up": 0,
+          "down": 0,
+          "ambiguous": 0,
+          "neither": 101
+        },
+        "medianUpMinutes": null
+      },
+      "rejectedBase": {
+        "n": 614,
+        "meanBps": -0.0898193006504689,
+        "medianBps": 0,
+        "positive": 0.495114006514658,
+        "meanLess14Bps": -14.089819300650468,
+        "meanLess24Bps": -24.08981930065047,
+        "mfeMeanBps": 3.7022438238728497,
+        "maeMeanBps": -4.175296698423366,
+        "first": {
+          "up": 9,
+          "down": 9,
+          "ambiguous": 1,
+          "neither": 595
+        },
+        "medianUpMinutes": 1
+      },
+      "otherEligible": {
+        "n": 65577,
+        "meanBps": 0.02128947919128021,
+        "medianBps": 0,
+        "positive": 0.4899126218033762,
+        "meanLess14Bps": -13.97871052080872,
+        "meanLess24Bps": -23.97871052080872,
+        "mfeMeanBps": 3.616511707322869,
+        "maeMeanBps": -3.588123676730294,
+        "first": {
+          "up": 711,
+          "down": 632,
+          "ambiguous": 25,
+          "neither": 64209
+        },
+        "medianUpMinutes": 1
+      },
+      "matchedBase": {
+        "matchedSelected": 95,
+        "strata": 73,
+        "differenceBps": 2.2082194860414464
+      },
+      "matchedAll": {
+        "matchedSelected": 101,
+        "strata": 78,
+        "differenceBps": 1.5277175676474513
+      }
+    },
+    {
+      "period": "2022-23",
+      "horizon": 5,
+      "selected": {
+        "n": 101,
+        "meanBps": -0.18392389781754917,
+        "medianBps": 0.5333238520188743,
+        "positive": 0.5148514851485149,
+        "meanLess14Bps": -14.183923897817548,
+        "meanLess24Bps": -24.18392389781755,
+        "mfeMeanBps": 8.092905397540553,
+        "maeMeanBps": -8.304049380989342,
+        "first": {
+          "up": 6,
+          "down": 11,
+          "ambiguous": 0,
+          "neither": 84
+        },
+        "medianUpMinutes": 4
+      },
+      "rejectedBase": {
+        "n": 614,
+        "meanBps": 0.21377318718912414,
+        "medianBps": 0.3444428823706769,
+        "positive": 0.5179153094462541,
+        "meanLess14Bps": -13.786226812810876,
+        "meanLess24Bps": -23.786226812810877,
+        "mfeMeanBps": 8.754511787357321,
+        "maeMeanBps": -10.07649397017071,
+        "first": {
+          "up": 40,
+          "down": 62,
+          "ambiguous": 1,
+          "neither": 511
+        },
+        "medianUpMinutes": 3
+      },
+      "otherEligible": {
+        "n": 65577,
+        "meanBps": 0.131654225814078,
+        "medianBps": 0,
+        "positive": 0.4999008798816658,
+        "meanLess14Bps": -13.868345774185922,
+        "meanLess24Bps": -23.868345774185922,
+        "mfeMeanBps": 8.95816364926905,
+        "maeMeanBps": -8.949766836722874,
+        "first": {
+          "up": 4650,
+          "down": 4610,
+          "ambiguous": 32,
+          "neither": 56285
+        },
+        "medianUpMinutes": 3
+      },
+      "matchedBase": {
+        "matchedSelected": 95,
+        "strata": 73,
+        "differenceBps": 0.15754415325365195
+      },
+      "matchedAll": {
+        "matchedSelected": 101,
+        "strata": 78,
+        "differenceBps": -0.014761876296531706
+      }
+    },
+    {
+      "period": "2022-23",
+      "horizon": 15,
+      "selected": {
+        "n": 101,
+        "meanBps": -1.9204731808930784,
+        "medianBps": -2.653017086006182,
+        "positive": 0.44554455445544555,
+        "meanLess14Bps": -15.920473180893078,
+        "meanLess24Bps": -25.92047318089308,
+        "mfeMeanBps": 14.405015319218586,
+        "maeMeanBps": -18.199246812732184,
+        "first": {
+          "up": 15,
+          "down": 19,
+          "ambiguous": 0,
+          "neither": 67
+        },
+        "medianUpMinutes": 6
+      },
+      "rejectedBase": {
+        "n": 614,
+        "meanBps": -0.4038167731006212,
+        "medianBps": -0.08825078155361155,
+        "positive": 0.495114006514658,
+        "meanLess14Bps": -14.40381677310062,
+        "meanLess24Bps": -24.403816773100623,
+        "mfeMeanBps": 14.755063880908965,
+        "maeMeanBps": -17.940835610962715,
+        "first": {
+          "up": 101,
+          "down": 135,
+          "ambiguous": 1,
+          "neither": 377
+        },
+        "medianUpMinutes": 7
+      },
+      "otherEligible": {
+        "n": 65577,
+        "meanBps": 0.3958715288657442,
+        "medianBps": -0.0263157202218256,
+        "positive": 0.4986199429678088,
+        "meanLess14Bps": -13.604128471134256,
+        "meanLess24Bps": -23.604128471134256,
+        "mfeMeanBps": 16.205028037285715,
+        "maeMeanBps": -16.103394310378807,
+        "first": {
+          "up": 11906,
+          "down": 12047,
+          "ambiguous": 46,
+          "neither": 41578
+        },
+        "medianUpMinutes": 7
+      },
+      "matchedBase": {
+        "matchedSelected": 95,
+        "strata": 73,
+        "differenceBps": 1.2301556158024456
+      },
+      "matchedAll": {
+        "matchedSelected": 101,
+        "strata": 78,
+        "differenceBps": -1.5132556169475684
+      }
+    },
+    {
+      "period": "2022-23",
+      "horizon": 30,
+      "selected": {
+        "n": 101,
+        "meanBps": -2.6750744155258674,
+        "medianBps": -1.727616919253716,
+        "positive": 0.45544554455445546,
+        "meanLess14Bps": -16.675074415525867,
+        "meanLess24Bps": -26.675074415525867,
+        "mfeMeanBps": 19.545583389802097,
+        "maeMeanBps": -25.88455685148256,
+        "first": {
+          "up": 27,
+          "down": 33,
+          "ambiguous": 0,
+          "neither": 41
+        },
+        "medianUpMinutes": 13
+      },
+      "rejectedBase": {
+        "n": 614,
+        "meanBps": -2.2692159765386046,
+        "medianBps": -0.0583429291495241,
+        "positive": 0.495114006514658,
+        "meanLess14Bps": -16.269215976538604,
+        "meanLess24Bps": -26.269215976538604,
+        "mfeMeanBps": 21.256129137444603,
+        "maeMeanBps": -27.484876969324812,
+        "first": {
+          "up": 146,
+          "down": 206,
+          "ambiguous": 1,
+          "neither": 261
+        },
+        "medianUpMinutes": 12
+      },
+      "otherEligible": {
+        "n": 65577,
+        "meanBps": 0.8089698424684147,
+        "medianBps": -0.034129459868248446,
+        "positive": 0.49909266968601795,
+        "meanLess14Bps": -13.191030157531586,
+        "meanLess24Bps": -23.191030157531586,
+        "mfeMeanBps": 23.457966795525465,
+        "maeMeanBps": -23.229081795242724,
+        "first": {
+          "up": 17847,
+          "down": 18708,
+          "ambiguous": 62,
+          "neither": 28960
+        },
+        "medianUpMinutes": 11
+      },
+      "matchedBase": {
+        "matchedSelected": 95,
+        "strata": 73,
+        "differenceBps": 0.43856988755350745
+      },
+      "matchedAll": {
+        "matchedSelected": 101,
+        "strata": 78,
+        "differenceBps": -2.056539085198434
+      }
+    },
+    {
+      "period": "2022-23",
+      "horizon": 60,
+      "selected": {
+        "n": 101,
+        "meanBps": -5.511050043190221,
+        "medianBps": -3.6658214911577947,
+        "positive": 0.43564356435643564,
+        "meanLess14Bps": -19.51105004319022,
+        "meanLess24Bps": -29.51105004319022,
+        "mfeMeanBps": 26.74602426859086,
+        "maeMeanBps": -36.9478787442001,
+        "first": {
+          "up": 32,
+          "down": 44,
+          "ambiguous": 0,
+          "neither": 25
+        },
+        "medianUpMinutes": 16.5
+      },
+      "rejectedBase": {
+        "n": 614,
+        "meanBps": 0.21315074194280506,
+        "medianBps": 1.393195667420688,
+        "positive": 0.5130293159609121,
+        "meanLess14Bps": -13.786849258057195,
+        "meanLess24Bps": -23.786849258057195,
+        "mfeMeanBps": 30.65916131350378,
+        "maeMeanBps": -36.820017230169604,
+        "first": {
+          "up": 207,
+          "down": 257,
+          "ambiguous": 1,
+          "neither": 149
+        },
+        "medianUpMinutes": 16
+      },
+      "otherEligible": {
+        "n": 65577,
+        "meanBps": 1.5198063515910667,
+        "medianBps": 0.1869578223145929,
+        "positive": 0.5027677386888696,
+        "meanLess14Bps": -12.480193648408934,
+        "meanLess24Bps": -22.48019364840893,
+        "mfeMeanBps": 34.06080462979982,
+        "maeMeanBps": -33.675381758666795,
+        "first": {
+          "up": 23752,
+          "down": 25463,
+          "ambiguous": 68,
+          "neither": 16294
+        },
+        "medianUpMinutes": 15
+      },
+      "matchedBase": {
+        "matchedSelected": 95,
+        "strata": 73,
+        "differenceBps": -3.6367264471977747
+      },
+      "matchedAll": {
+        "matchedSelected": 101,
+        "strata": 78,
+        "differenceBps": -4.758662645436695
+      }
+    },
+    {
+      "period": "2022-23",
+      "horizon": 120,
+      "selected": {
+        "n": 101,
+        "meanBps": -3.44670780161983,
+        "medianBps": -4.204228252414621,
+        "positive": 0.45544554455445546,
+        "meanLess14Bps": -17.44670780161983,
+        "meanLess24Bps": -27.44670780161983,
+        "mfeMeanBps": 38.73477416021121,
+        "maeMeanBps": -50.60449770983517,
+        "first": {
+          "up": 40,
+          "down": 52,
+          "ambiguous": 0,
+          "neither": 9
+        },
+        "medianUpMinutes": 21.5
+      },
+      "rejectedBase": {
+        "n": 614,
+        "meanBps": 2.5425565094979157,
+        "medianBps": 3.53004223172082,
+        "positive": 0.5456026058631922,
+        "meanLess14Bps": -11.457443490502085,
+        "meanLess24Bps": -21.457443490502083,
+        "mfeMeanBps": 46.77820987600871,
+        "maeMeanBps": -50.944065757084694,
+        "first": {
+          "up": 247,
+          "down": 287,
+          "ambiguous": 1,
+          "neither": 79
+        },
+        "medianUpMinutes": 23
+      },
+      "otherEligible": {
+        "n": 65577,
+        "meanBps": 2.813076796441254,
+        "medianBps": 0.628836338356642,
+        "positive": 0.5075560028668588,
+        "meanLess14Bps": -11.186923203558745,
+        "meanLess24Bps": -21.186923203558745,
+        "mfeMeanBps": 49.18502882023662,
+        "maeMeanBps": -47.763007046169434,
+        "first": {
+          "up": 28025,
+          "down": 30763,
+          "ambiguous": 68,
+          "neither": 6721
+        },
+        "medianUpMinutes": 20
+      },
+      "matchedBase": {
+        "matchedSelected": 95,
+        "strata": 73,
+        "differenceBps": -5.970886583228056
+      },
+      "matchedAll": {
+        "matchedSelected": 101,
+        "strata": 78,
+        "differenceBps": -1.9166885709013433
+      }
+    },
+    {
+      "period": "2026",
+      "horizon": 1,
+      "selected": {
+        "n": 33,
+        "meanBps": -0.0437257036870509,
+        "medianBps": 0.045009226892211984,
+        "positive": 0.5757575757575758,
+        "meanLess14Bps": -14.04372570368705,
+        "meanLess24Bps": -24.043725703687052,
+        "mfeMeanBps": 2.7205386610843183,
+        "maeMeanBps": -3.1325586147520648,
+        "first": {
+          "up": 0,
+          "down": 0,
+          "ambiguous": 0,
+          "neither": 33
+        },
+        "medianUpMinutes": null
+      },
+      "rejectedBase": {
+        "n": 176,
+        "meanBps": 0.5489805285326299,
+        "medianBps": 0.8418591172720813,
+        "positive": 0.5738636363636364,
+        "meanLess14Bps": -13.45101947146737,
+        "meanLess24Bps": -23.45101947146737,
+        "mfeMeanBps": 3.6959499764097954,
+        "maeMeanBps": -3.4899059980857756,
+        "first": {
+          "up": 4,
+          "down": 2,
+          "ambiguous": 0,
+          "neither": 170
+        },
+        "medianUpMinutes": 1
+      },
+      "otherEligible": {
+        "n": 16769,
+        "meanBps": 0.05931157596134926,
+        "medianBps": 0,
+        "positive": 0.4918003458763194,
+        "meanLess14Bps": -13.940688424038651,
+        "meanLess24Bps": -23.94068842403865,
+        "mfeMeanBps": 3.2162947641086808,
+        "maeMeanBps": -3.080240147350138,
+        "first": {
+          "up": 116,
+          "down": 82,
+          "ambiguous": 0,
+          "neither": 16571
+        },
+        "medianUpMinutes": 1
+      },
+      "matchedBase": {
+        "matchedSelected": 31,
+        "strata": 23,
+        "differenceBps": -1.0059233517889161
+      },
+      "matchedAll": {
+        "matchedSelected": 33,
+        "strata": 25,
+        "differenceBps": -0.0936469405300538
+      }
+    },
+    {
+      "period": "2026",
+      "horizon": 5,
+      "selected": {
+        "n": 33,
+        "meanBps": 1.2099485585672103,
+        "medianBps": -0.8696367132154936,
+        "positive": 0.48484848484848486,
+        "meanLess14Bps": -12.790051441432789,
+        "meanLess24Bps": -22.79005144143279,
+        "mfeMeanBps": 7.683981975967152,
+        "maeMeanBps": -7.706905135300264,
+        "first": {
+          "up": 1,
+          "down": 0,
+          "ambiguous": 0,
+          "neither": 32
+        },
+        "medianUpMinutes": 5
+      },
+      "rejectedBase": {
+        "n": 176,
+        "meanBps": -0.2581867455936675,
+        "medianBps": -0.29769181763728003,
+        "positive": 0.48863636363636365,
+        "meanLess14Bps": -14.258186745593667,
+        "meanLess24Bps": -24.25818674559367,
+        "mfeMeanBps": 7.5191990318526125,
+        "maeMeanBps": -8.563373546177802,
+        "first": {
+          "up": 8,
+          "down": 10,
+          "ambiguous": 0,
+          "neither": 158
+        },
+        "medianUpMinutes": 1.5
+      },
+      "otherEligible": {
+        "n": 16769,
+        "meanBps": 0.3171679516941835,
+        "medianBps": 0,
+        "positive": 0.498121533782575,
+        "meanLess14Bps": -13.682832048305816,
+        "meanLess24Bps": -23.682832048305816,
+        "mfeMeanBps": 8.500127314588314,
+        "maeMeanBps": -7.728882018641809,
+        "first": {
+          "up": 1110,
+          "down": 832,
+          "ambiguous": 0,
+          "neither": 14827
+        },
+        "medianUpMinutes": 3
+      },
+      "matchedBase": {
+        "matchedSelected": 31,
+        "strata": 23,
+        "differenceBps": -0.18713849785342174
+      },
+      "matchedAll": {
+        "matchedSelected": 33,
+        "strata": 25,
+        "differenceBps": 0.8551205669060753
+      }
+    },
+    {
+      "period": "2026",
+      "horizon": 15,
+      "selected": {
+        "n": 33,
+        "meanBps": 5.333742190604555,
+        "medianBps": 2.800460098189017,
+        "positive": 0.5757575757575758,
+        "meanLess14Bps": -8.666257809395445,
+        "meanLess24Bps": -18.666257809395447,
+        "mfeMeanBps": 16.424225486810705,
+        "maeMeanBps": -10.473425126415016,
+        "first": {
+          "up": 8,
+          "down": 2,
+          "ambiguous": 0,
+          "neither": 23
+        },
+        "medianUpMinutes": 9
+      },
+      "rejectedBase": {
+        "n": 176,
+        "meanBps": 0.21332102977256312,
+        "medianBps": -1.019927623522321,
+        "positive": 0.4772727272727273,
+        "meanLess14Bps": -13.786678970227436,
+        "meanLess24Bps": -23.786678970227438,
+        "mfeMeanBps": 15.176899303600036,
+        "maeMeanBps": -15.327121238435987,
+        "first": {
+          "up": 32,
+          "down": 24,
+          "ambiguous": 0,
+          "neither": 120
+        },
+        "medianUpMinutes": 7
+      },
+      "otherEligible": {
+        "n": 16769,
+        "meanBps": 0.8871180997570272,
+        "medianBps": -0.048026664404288155,
+        "positive": 0.4978233645417139,
+        "meanLess14Bps": -13.112881900242973,
+        "meanLess24Bps": -23.11288190024297,
+        "mfeMeanBps": 15.7953787009998,
+        "maeMeanBps": -13.878684212298909,
+        "first": {
+          "up": 3224,
+          "down": 2762,
+          "ambiguous": 0,
+          "neither": 10783
+        },
+        "medianUpMinutes": 8
+      },
+      "matchedBase": {
+        "matchedSelected": 31,
+        "strata": 23,
+        "differenceBps": 2.0971305466748964
+      },
+      "matchedAll": {
+        "matchedSelected": 33,
+        "strata": 25,
+        "differenceBps": 4.2008151309312005
+      }
+    },
+    {
+      "period": "2026",
+      "horizon": 30,
+      "selected": {
+        "n": 33,
+        "meanBps": 5.86688425867106,
+        "medianBps": 2.468202120438079,
+        "positive": 0.5454545454545454,
+        "meanLess14Bps": -8.13311574132894,
+        "meanLess24Bps": -18.13311574132894,
+        "mfeMeanBps": 23.71260178799524,
+        "maeMeanBps": -15.007972541798184,
+        "first": {
+          "up": 11,
+          "down": 6,
+          "ambiguous": 0,
+          "neither": 16
+        },
+        "medianUpMinutes": 10
+      },
+      "rejectedBase": {
+        "n": 176,
+        "meanBps": 1.1611270530789255,
+        "medianBps": -3.0343488085898818,
+        "positive": 0.4602272727272727,
+        "meanLess14Bps": -12.838872946921075,
+        "meanLess24Bps": -22.838872946921075,
+        "mfeMeanBps": 23.33944506202411,
+        "maeMeanBps": -21.983030726911228,
+        "first": {
+          "up": 47,
+          "down": 45,
+          "ambiguous": 0,
+          "neither": 84
+        },
+        "medianUpMinutes": 10
+      },
+      "otherEligible": {
+        "n": 16769,
+        "meanBps": 1.6768128754775304,
+        "medianBps": 0.21225321481965764,
+        "positive": 0.5037867493589361,
+        "meanLess14Bps": -12.32318712452247,
+        "meanLess24Bps": -22.32318712452247,
+        "mfeMeanBps": 23.075446947307142,
+        "maeMeanBps": -19.926995994640563,
+        "first": {
+          "up": 5143,
+          "down": 4715,
+          "ambiguous": 0,
+          "neither": 6911
+        },
+        "medianUpMinutes": 12
+      },
+      "matchedBase": {
+        "matchedSelected": 31,
+        "strata": 23,
+        "differenceBps": -0.24763517163008708
+      },
+      "matchedAll": {
+        "matchedSelected": 33,
+        "strata": 25,
+        "differenceBps": 3.341479745741545
+      }
+    },
+    {
+      "period": "2026",
+      "horizon": 60,
+      "selected": {
+        "n": 33,
+        "meanBps": 5.062743463956614,
+        "medianBps": 8.626458737293063,
+        "positive": 0.5454545454545454,
+        "meanLess14Bps": -8.937256536043385,
+        "meanLess24Bps": -18.937256536043385,
+        "mfeMeanBps": 32.244411961118004,
+        "maeMeanBps": -25.32748808404322,
+        "first": {
+          "up": 17,
+          "down": 10,
+          "ambiguous": 0,
+          "neither": 6
+        },
+        "medianUpMinutes": 19
+      },
+      "rejectedBase": {
+        "n": 176,
+        "meanBps": 3.217582198734215,
+        "medianBps": 1.0136837678442756,
+        "positive": 0.5056818181818182,
+        "meanLess14Bps": -10.782417801265785,
+        "meanLess24Bps": -20.782417801265787,
+        "mfeMeanBps": 32.492747804168694,
+        "maeMeanBps": -30.50904801064523,
+        "first": {
+          "up": 65,
+          "down": 69,
+          "ambiguous": 0,
+          "neither": 42
+        },
+        "medianUpMinutes": 17
+      },
+      "otherEligible": {
+        "n": 16769,
+        "meanBps": 2.858480759506229,
+        "medianBps": 0.9878671947260997,
+        "positive": 0.5156538851452084,
+        "meanLess14Bps": -11.141519240493771,
+        "meanLess24Bps": -21.14151924049377,
+        "mfeMeanBps": 33.28926254412067,
+        "maeMeanBps": -28.21294795410901,
+        "first": {
+          "up": 6942,
+          "down": 6365,
+          "ambiguous": 0,
+          "neither": 3462
+        },
+        "medianUpMinutes": 17
+      },
+      "matchedBase": {
+        "matchedSelected": 31,
+        "strata": 23,
+        "differenceBps": -6.682707196966215
+      },
+      "matchedAll": {
+        "matchedSelected": 33,
+        "strata": 25,
+        "differenceBps": 0.16672652026316653
+      }
+    },
+    {
+      "period": "2026",
+      "horizon": 120,
+      "selected": {
+        "n": 33,
+        "meanBps": 1.937895898051136,
+        "medianBps": -1.636616568014837,
+        "positive": 0.45454545454545453,
+        "meanLess14Bps": -12.062104101948863,
+        "meanLess24Bps": -22.062104101948865,
+        "mfeMeanBps": 51.014247907023865,
+        "maeMeanBps": -41.24441584759132,
+        "first": {
+          "up": 21,
+          "down": 12,
+          "ambiguous": 0,
+          "neither": 0
+        },
+        "medianUpMinutes": 26
+      },
+      "rejectedBase": {
+        "n": 176,
+        "meanBps": 6.744025819585092,
+        "medianBps": 7.22615211404265,
+        "positive": 0.5625,
+        "meanLess14Bps": -7.255974180414908,
+        "meanLess24Bps": -17.25597418041491,
+        "mfeMeanBps": 50.480670485870206,
+        "maeMeanBps": -42.57273969220446,
+        "first": {
+          "up": 87,
+          "down": 75,
+          "ambiguous": 0,
+          "neither": 14
+        },
+        "medianUpMinutes": 26
+      },
+      "otherEligible": {
+        "n": 16769,
+        "meanBps": 6.073121557841038,
+        "medianBps": 3.0289697039265207,
+        "positive": 0.5268650486015862,
+        "meanLess14Bps": -7.926878442158962,
+        "meanLess24Bps": -17.926878442158962,
+        "mfeMeanBps": 49.510121150614104,
+        "maeMeanBps": -40.09670696585492,
+        "first": {
+          "up": 8431,
+          "down": 7195,
+          "ambiguous": 0,
+          "neither": 1143
+        },
+        "medianUpMinutes": 22
+      },
+      "matchedBase": {
+        "matchedSelected": 31,
+        "strata": 23,
+        "differenceBps": -17.85844512243778
+      },
+      "matchedAll": {
+        "matchedSelected": 33,
+        "strata": 25,
+        "differenceBps": -5.491465279501124
+      }
+    }
+  ]
+}
