@@ -1,0 +1,15 @@
+import assert from "node:assert/strict";
+import {matchedThreshold,netBarrier,simulateSelected} from "./matched_attention.mjs";
+const p=netBarrier(60000,59850);
+assert.ok(p.target>60500);assert.ok(Math.abs((p.target-p.entry-p.cost*(p.entry+p.target))/p.risk-2)<1e-10);
+const rows=Array.from({length:1000},(_,i)=>({t:i*300000,score:i/1000}));
+assert.ok(matchedThreshold(rows,5).n>=1);
+assert.deepEqual(matchedThreshold(rows,5),matchedThreshold(rows.map(r=>({...r,y:1})),5));
+assert.throws(()=>netBarrier(60000,60000));
+const b=Array.from({length:100},()=>({o:60000,c:60000,h:60010,l:59990}));
+b[2]={o:60000,c:60000,h:61000,l:59800};
+const a=simulateSelected(b,[{i:0,t:0}],{delay:1,horizon:30});
+assert.equal(a.stops,1);assert.ok(Math.abs(a.netR+1)<1e-10);
+b[2].l=59990;const z=simulateSelected(b,[{i:0,t:0}],{delay:1,horizon:30});
+assert.equal(z.targets,1);assert.ok(Math.abs(z.netR-2)<1e-10);
+console.log("OK: label-independent calibration count, cost-adjusted barrier and adverse-first fills.");

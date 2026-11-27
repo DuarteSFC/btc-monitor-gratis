@@ -1,0 +1,22 @@
+name: Matched frequency and net-cost comparison (no delivery)
+on:
+  push:
+    branches: [tactical-early-v22]
+    paths: [matched_attention.mjs, test_matched_attention.mjs, replay_matched_attention.mjs, .github/workflows/matched-attention.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - run: node test_matched_attention.mjs
+      - run: python3 download_spot_flow.py /tmp/tactical-flow
+      - run: node replay_matched_attention.mjs /tmp/tactical-flow
