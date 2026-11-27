@@ -1,0 +1,1968 @@
+{
+  "failedRuns": [
+    46005457618,
+    46006004692
+  ],
+  "run": 46007442861,
+  "data": [
+    {
+      "period": "2022-23",
+      "months": 31,
+      "expected": 22656,
+      "joint": 22642,
+      "scoreHours": 21634
+    },
+    {
+      "period": "2026",
+      "months": 9,
+      "expected": 6552,
+      "joint": 6547,
+      "scoreHours": 6211
+    }
+  ],
+  "months": [
+    {
+      "month": "2021-06",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2021-07",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2021-08",
+      "expected": 744,
+      "joint": 739,
+      "binance": 739,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2021-09",
+      "expected": 720,
+      "joint": 718,
+      "binance": 718,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2021-10",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2021-11",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2021-12",
+      "expected": 744,
+      "joint": 743,
+      "binance": 743,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2022-01",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2022-02",
+      "expected": 672,
+      "joint": 672,
+      "binance": 672,
+      "coinbase": 672,
+      "usdt": 672
+    },
+    {
+      "month": "2022-03",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2022-04",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2022-05",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2022-06",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2022-07",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2022-08",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2022-09",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2022-10",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2022-11",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2022-12",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2023-01",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2023-02",
+      "expected": 672,
+      "joint": 672,
+      "binance": 672,
+      "coinbase": 672,
+      "usdt": 672
+    },
+    {
+      "month": "2023-03",
+      "expected": 744,
+      "joint": 738,
+      "binance": 742,
+      "coinbase": 744,
+      "usdt": 740
+    },
+    {
+      "month": "2023-04",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2023-05",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2023-06",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2023-07",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2023-08",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2023-09",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2023-10",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2023-11",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2023-12",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2026-01",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2026-02",
+      "expected": 672,
+      "joint": 672,
+      "binance": 672,
+      "coinbase": 672,
+      "usdt": 672
+    },
+    {
+      "month": "2026-03",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2026-04",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2026-05",
+      "expected": 744,
+      "joint": 739,
+      "binance": 744,
+      "coinbase": 739,
+      "usdt": 739
+    },
+    {
+      "month": "2026-06",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    },
+    {
+      "month": "2026-07",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2026-08",
+      "expected": 744,
+      "joint": 744,
+      "binance": 744,
+      "coinbase": 744,
+      "usdt": 744
+    },
+    {
+      "month": "2026-09",
+      "expected": 720,
+      "joint": 720,
+      "binance": 720,
+      "coinbase": 720,
+      "usdt": 720
+    }
+  ],
+  "audits": [
+    {
+      "month": "2021-06",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-06.zip",
+      "sha256": "9ea9585cf2c938044d2d1b613f451ff9482bd7d2a38da2c9d22cf0c9f00f65ac",
+      "bytes": 44232,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2021-07",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-07.zip",
+      "sha256": "993a88728e31b4c4e6f3b28442ab251de5ee434fe06865e1b57063a4f91fc8d9",
+      "bytes": 45217,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2021-08",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-08.zip",
+      "sha256": "5cadb462255761842326a2c4b5fe2a91c8a2135c3ba6dd5f0969877f0722f4be",
+      "bytes": 44883,
+      "rows": 740,
+      "valid": 739,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 1,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [
+        {
+          "open": "1628816400000",
+          "close": "1628819999000"
+        }
+      ],
+      "repairs": [
+        {
+          "source": "https://data.binance.vision/data/spot/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2021-08-13.zip",
+          "sha256": "4008bd522671e86df59f6e4dc563946b7c89063718a826f82f9c64ab86bce30c",
+          "bytes": 1388,
+          "rows": 20,
+          "valid": 19,
+          "unit": "ms",
+          "badOpen": 0,
+          "badClose": 1,
+          "badOHLCV": 0,
+          "duplicateRows": 0,
+          "outside": 0,
+          "invalidExamples": [
+            {
+              "open": "1628816400000",
+              "close": "1628819999000"
+            }
+          ],
+          "recovered": 0
+        },
+        {
+          "source": "https://data.binance.vision/data/spot/daily/klines/BTCUSDT/1m/BTCUSDT-1m-2021-08-13.zip",
+          "sha256": "4a81ebd6eeb12123bac605101f6c5ae9f1b2c270e2063feb1051b4a56800dba9",
+          "bytes": 62163,
+          "rows": 1170,
+          "valid": 1169,
+          "unit": "ms",
+          "badOpen": 0,
+          "badClose": 1,
+          "badOHLCV": 0,
+          "duplicateRows": 0,
+          "outside": 0,
+          "invalidExamples": [
+            {
+              "open": "1628819940000",
+              "close": "1628819999000"
+            }
+          ],
+          "recovered": 0
+        }
+      ],
+      "remainingMissing": 5,
+      "recovered": 0
+    },
+    {
+      "month": "2021-09",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-09.zip",
+      "sha256": "0d344f8ab39d910c148b89fada91256afcb3e8b20eb812ebc158ac8ac527ea07",
+      "bytes": 42473,
+      "rows": 718,
+      "valid": 718,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [
+        {
+          "source": "https://data.binance.vision/data/spot/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2021-09-29.zip",
+          "sha256": "f57acec9a851361ee99e241de0db2445d097879c8e9ff21971ebbe5e1ab3fb80",
+          "bytes": 1467,
+          "rows": 22,
+          "valid": 22,
+          "unit": "ms",
+          "badOpen": 0,
+          "badClose": 0,
+          "badOHLCV": 0,
+          "duplicateRows": 0,
+          "outside": 0,
+          "invalidExamples": [],
+          "recovered": 0
+        },
+        {
+          "source": "https://data.binance.vision/data/spot/daily/klines/BTCUSDT/1m/BTCUSDT-1m-2021-09-29.zip",
+          "sha256": "35dc537929474ad75279dcb614ec0095f5c2d0ee36e64a6a05cfc744ed2018f8",
+          "bytes": 66705,
+          "rows": 1320,
+          "valid": 1320,
+          "unit": "ms",
+          "badOpen": 0,
+          "badClose": 0,
+          "badOHLCV": 0,
+          "duplicateRows": 0,
+          "outside": 0,
+          "invalidExamples": [],
+          "recovered": 0
+        }
+      ],
+      "remainingMissing": 2,
+      "recovered": 0
+    },
+    {
+      "month": "2021-10",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-10.zip",
+      "sha256": "8065fe2ddd9992398b49fb76e83a60e51392e1ecd4b46c438c075d3e5f6e2291",
+      "bytes": 44164,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2021-11",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-11.zip",
+      "sha256": "64d376e949c3518c3b526cac41322114a2e7287395e9089f0da34e25079c2940",
+      "bytes": 42690,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2021-12",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-12.zip",
+      "sha256": "b01133a69b22aa7904742a06a892ff3811152377f61e23977051a937afe2fbaa",
+      "bytes": 43757,
+      "rows": 744,
+      "valid": 743,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 1,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [
+        {
+          "open": "1640318400000",
+          "close": "1640321994362"
+        }
+      ],
+      "repairs": [
+        {
+          "source": "https://data.binance.vision/data/spot/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2021-12-24.zip",
+          "error": "daily/monthly conflict",
+          "recovered": 0
+        },
+        {
+          "source": "https://data.binance.vision/data/spot/daily/klines/BTCUSDT/1m/BTCUSDT-1m-2021-12-24.zip",
+          "error": "daily/monthly conflict",
+          "recovered": 0
+        }
+      ],
+      "remainingMissing": 1,
+      "recovered": 0
+    },
+    {
+      "month": "2022-01",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-01.zip",
+      "sha256": "e04068d0aee5e3571dc7e9a1d220475047f544e1cf1bad800b7cbbf190281c40",
+      "bytes": 43687,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-02",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-02.zip",
+      "sha256": "4e479b38278726cccb9257f5564c5c78477144d3ffe69df6afaf3b55ace617be",
+      "bytes": 39642,
+      "rows": 672,
+      "valid": 672,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-03",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-03.zip",
+      "sha256": "1cfb082f6bc9a2937b5b846073ddf65f71b18f2502778ac667aab3421ef80085",
+      "bytes": 43784,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-04",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-04.zip",
+      "sha256": "7157a267e70bcd9ae04a8898527fad00d7733e941df9b95a1d5e0ae6dcd61c3e",
+      "bytes": 42204,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-05",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-05.zip",
+      "sha256": "ff0744eceba5e6d2f7145ecfdc9d3fac84f4576c15221dbeb71c6d6e59484300",
+      "bytes": 43955,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-06",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-06.zip",
+      "sha256": "b18f6f8edbb41960f81aec100c7836fdc0de6d640ee4309a3d0fad999ae0a2c8",
+      "bytes": 42662,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-07",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-07.zip",
+      "sha256": "9f0ba9663f9fada7692b3cfe645df3832599f9e785056ddd77bd464475553e9e",
+      "bytes": 44740,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-08",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-08.zip",
+      "sha256": "3cc22044f94cb303d12013293ba6db6d44abdf1490d38d00f1389e98717a3891",
+      "bytes": 44748,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-09",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-09.zip",
+      "sha256": "a65dcd73017d92ea8d86e82ea1aee3dac55881f8672594d2e85d1cf392e1e78a",
+      "bytes": 43701,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-10",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-10.zip",
+      "sha256": "2591cbbe022ce9d4559aee1fa41ea0033324c2c4debc776cfedc9588167d413b",
+      "bytes": 44566,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-11",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-11.zip",
+      "sha256": "5608adf8602a8ac616ee03c2c4461a37f4646631d67edf3d2f1a94e82e5c5065",
+      "bytes": 43509,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2022-12",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-12.zip",
+      "sha256": "69c5e5f01df947bfea48ab3c8e2f462b7358effa9e2700489a4ad0dbd29b24aa",
+      "bytes": 44019,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-01",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-01.zip",
+      "sha256": "ea8caf7fd56c7f7143723f56f8d12a2fc0b643badbcdae5c660db2d11454a11d",
+      "bytes": 44765,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-02",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-02.zip",
+      "sha256": "53525b700548a19488fcb8754778acdf7941c9ba0b6e7eb548a51a376ef8d86b",
+      "bytes": 40955,
+      "rows": 672,
+      "valid": 672,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-03",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-03.zip",
+      "sha256": "7f2afb8e0179a57ac31eab5205660298ba5eb77039ac2e21aef9b715ff3d06ce",
+      "bytes": 44928,
+      "rows": 743,
+      "valid": 742,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 1,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [
+        {
+          "open": "1679659200000",
+          "close": "1679661581646"
+        }
+      ],
+      "repairs": [
+        {
+          "source": "https://data.binance.vision/data/spot/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2023-03-24.zip",
+          "sha256": "ea9d94f28a39ad8029c9c2863cbb7769137188edd957fea35d0313ae4183561f",
+          "bytes": 1506,
+          "rows": 23,
+          "valid": 22,
+          "unit": "ms",
+          "badOpen": 0,
+          "badClose": 1,
+          "badOHLCV": 0,
+          "duplicateRows": 0,
+          "outside": 0,
+          "invalidExamples": [
+            {
+              "open": "1679659200000",
+              "close": "1679661581646"
+            }
+          ],
+          "recovered": 0
+        },
+        {
+          "source": "https://data.binance.vision/data/spot/daily/klines/BTCUSDT/1m/BTCUSDT-1m-2023-03-24.zip",
+          "sha256": "305d0f6cdb8a6cfd8063a7d48c66f14b33727d934857746d549663e94b41312d",
+          "bytes": 65200,
+          "rows": 1360,
+          "valid": 1359,
+          "unit": "ms",
+          "badOpen": 0,
+          "badClose": 1,
+          "badOHLCV": 0,
+          "duplicateRows": 0,
+          "outside": 0,
+          "invalidExamples": [
+            {
+              "open": "1679661540000",
+              "close": "1679661581646"
+            }
+          ],
+          "recovered": 0
+        }
+      ],
+      "remainingMissing": 2,
+      "recovered": 0
+    },
+    {
+      "month": "2023-04",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-04.zip",
+      "sha256": "1787dc83836deafaa77d4276cbe3b3ca1fe0083b3017079e3560605ff4f7a4ba",
+      "bytes": 41904,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-05",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-05.zip",
+      "sha256": "16b33557a4a4040fc56c711f4b1a750ebafb5a7f8dd46c060d9fc8c66cdc1982",
+      "bytes": 43095,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-06",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-06.zip",
+      "sha256": "05f87fb5f004ee0aff019adb7015afab8df0baaaf2b77154d75ae53e18d59b11",
+      "bytes": 41669,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-07",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-07.zip",
+      "sha256": "f49a738a793055a583784e78a54840a43861fd110118cbe1add14ef1afb63032",
+      "bytes": 42245,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-08",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-08.zip",
+      "sha256": "e983243d44536a06ff4707cf35df29f636fe788e6fb69c3b3feed2ef43d343d4",
+      "bytes": 42213,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-09",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-09.zip",
+      "sha256": "28e12ccaf15745bfe11f570b9079793750047fde3d340fe0231858b26bc0f9d9",
+      "bytes": 40962,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-10",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-10.zip",
+      "sha256": "165ec50601f914d6c41b776414096bc73974bf45fcd41aaddfedd1cf66cb6c6e",
+      "bytes": 42928,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-11",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-11.zip",
+      "sha256": "4f550d182d529839dd9cfc28ef0ecca8cd8003e991067e92a2af5b9e92762f49",
+      "bytes": 41648,
+      "rows": 720,
+      "valid": 720,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2023-12",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2023-12.zip",
+      "sha256": "6117d93e3eb6574df6b0087a45cf12e171afe91789b523b0bfcce00d8f1b6e37",
+      "bytes": 43309,
+      "rows": 744,
+      "valid": 744,
+      "unit": "ms",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2026-01",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-01.zip",
+      "sha256": "a40e86beb4f1e6d4b19ca022c87b8b2f0e4e40874d349a5a75b27baa9634c858",
+      "bytes": 43807,
+      "rows": 744,
+      "valid": 744,
+      "unit": "us",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2026-02",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-02.zip",
+      "sha256": "0be4e5c92892495c5da5b371fe8755f2d508b28a58414b4171284480806ed6c4",
+      "bytes": 40150,
+      "rows": 672,
+      "valid": 672,
+      "unit": "us",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2026-03",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-03.zip",
+      "sha256": "44f383f9423f96cdc29e03b4ba8062296763dd740ab1d93f04b62c88bac30aa6",
+      "bytes": 44392,
+      "rows": 744,
+      "valid": 744,
+      "unit": "us",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2026-04",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-04.zip",
+      "sha256": "9f8e49b70978177414a005a6e84b1cf891f97b0196526cbd579535449c14b6f6",
+      "bytes": 42394,
+      "rows": 720,
+      "valid": 720,
+      "unit": "us",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2026-05",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-05.zip",
+      "sha256": "11b8537dc1769a7de9d6cb2e0354dd4a376018986a826c67d1078e25fbf8fb80",
+      "bytes": 43547,
+      "rows": 744,
+      "valid": 744,
+      "unit": "us",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2026-06",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-06.zip",
+      "sha256": "7c446aee297f382ee92b8d9b3300a1d7c21bed8166118f3bb261275bed5e308e",
+      "bytes": 42265,
+      "rows": 720,
+      "valid": 720,
+      "unit": "us",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2026-07",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-07.zip",
+      "sha256": "ec98553c10acdbf3f210c55045614e8d3daf616e407c36718269361b1e972b16",
+      "bytes": 43238,
+      "rows": 744,
+      "valid": 744,
+      "unit": "us",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2026-08",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-08.zip",
+      "sha256": "1fa85817e358f73e0dd9509f6f31c79bf9b23d9470971a882c8f814871a3fccf",
+      "bytes": 43110,
+      "rows": 744,
+      "valid": 744,
+      "unit": "us",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    },
+    {
+      "month": "2026-09",
+      "source": "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09.zip",
+      "sha256": "39b31046d702bd7e482e03b125d6fbfd730147aa5d9ad03d8b04bf1961a8e9bd",
+      "bytes": 41901,
+      "rows": 720,
+      "valid": 720,
+      "unit": "us",
+      "badOpen": 0,
+      "badClose": 0,
+      "badOHLCV": 0,
+      "duplicateRows": 0,
+      "outside": 0,
+      "invalidExamples": [],
+      "repairs": [],
+      "remainingMissing": 0,
+      "recovered": 0
+    }
+  ],
+  "results": [
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "base",
+      "delay": 1,
+      "cost": "normal",
+      "n": 1138,
+      "signals": 3185,
+      "mean": -0.06360422794747848,
+      "pf": 0.7837056096543169,
+      "equity": 8329.01817566994,
+      "ci": [
+        -0.10987182155769869,
+        -0.013477599242339903
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 578,
+          "mean": -0.08490754387349857,
+          "returnFraction": -0.11623994405601065
+        },
+        "2023": {
+          "n": 560,
+          "mean": -0.04161616258097919,
+          "returnFraction": -0.050858238376995255
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 1,
+      "cost": "normal",
+      "n": 44,
+      "signals": 52,
+      "mean": -0.14786904453123986,
+      "pf": 0.5396816373710618,
+      "equity": 9838.07283999407,
+      "ci": [
+        -0.3259289412716205,
+        0.0445003039886316
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 27,
+          "mean": -0.029025420699565815,
+          "returnFraction": -0.0019937383019999425
+        },
+        "2023": {
+          "n": 17,
+          "mean": -0.33662068238154574,
+          "returnFraction": -0.014198977698592997
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "base",
+      "delay": 1,
+      "cost": "stress",
+      "n": 1138,
+      "signals": 3185,
+      "mean": -0.10746388040681355,
+      "pf": 0.6542336948490628,
+      "equity": 7352.997737279507,
+      "ci": [
+        -0.15299423121910116,
+        -0.0608335214571981
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 578,
+          "mean": -0.11846337703940282,
+          "returnFraction": -0.1580274924831289
+        },
+        "2023": {
+          "n": 560,
+          "mean": -0.09611082852531963,
+          "returnFraction": -0.10667273378892039
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 1,
+      "cost": "stress",
+      "n": 44,
+      "signals": 52,
+      "mean": -0.1823104553454669,
+      "pf": 0.4508658403429363,
+      "equity": 9800.90008779433,
+      "ci": [
+        -0.3527892095048452,
+        0.0025426765992111224
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 27,
+          "mean": -0.06409743587793225,
+          "returnFraction": -0.004351358952572825
+        },
+        "2023": {
+          "n": 17,
+          "mean": -0.3700605450880219,
+          "returnFraction": -0.015558632267994124
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "base",
+      "delay": 5,
+      "cost": "normal",
+      "n": 1137,
+      "signals": 3185,
+      "mean": -0.0644755609842483,
+      "pf": 0.7800682644537338,
+      "equity": 8310.005161188676,
+      "ci": [
+        -0.10960088375123492,
+        -0.016353786095263858
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 577,
+          "mean": -0.082459208913745,
+          "returnFraction": -0.11291267568719868
+        },
+        "2023": {
+          "n": 560,
+          "mean": -0.04594598088546328,
+          "returnFraction": -0.056086808193933906
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 5,
+      "cost": "normal",
+      "n": 44,
+      "signals": 52,
+      "mean": -0.14641963454868911,
+      "pf": 0.5281933367752608,
+      "equity": 9839.718708795888,
+      "ci": [
+        -0.30546761752942675,
+        0.024972466603433635
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 27,
+          "mean": -0.039941656301238485,
+          "returnFraction": -0.0027233001227721155
+        },
+        "2023": {
+          "n": 17,
+          "mean": -0.3155317176475813,
+          "returnFraction": -0.013304828997639058
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "base",
+      "delay": 5,
+      "cost": "stress",
+      "n": 1139,
+      "signals": 3185,
+      "mean": -0.11173057597372653,
+      "pf": 0.6414112453777491,
+      "equity": 7262.441024398265,
+      "ci": [
+        -0.15677657091518335,
+        -0.06480719851474448
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 578,
+          "mean": -0.12012042223228798,
+          "returnFraction": -0.16003646379096248
+        },
+        "2023": {
+          "n": 561,
+          "mean": -0.1030864919497541,
+          "returnFraction": -0.11371943376921122
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 5,
+      "cost": "stress",
+      "n": 44,
+      "signals": 52,
+      "mean": -0.18110698669021305,
+      "pf": 0.437800567060014,
+      "equity": 9802.268525323861,
+      "ci": [
+        -0.3335772433402763,
+        -0.017428119227145863
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 27,
+          "mean": -0.07449248479913205,
+          "returnFraction": -0.005044657317619854
+        },
+        "2023": {
+          "n": 17,
+          "mean": -0.35043590145840053,
+          "returnFraction": -0.014728490149993962
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "base",
+      "delay": 15,
+      "cost": "normal",
+      "n": 1136,
+      "signals": 3185,
+      "mean": -0.07133739815962947,
+      "pf": 0.7576888106595444,
+      "equity": 8151.330427649496,
+      "ci": [
+        -0.11595334380807225,
+        -0.023248273768650452
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 577,
+          "mean": -0.08853907208353651,
+          "returnFraction": -0.12066279519259152
+        },
+        "2023": {
+          "n": 559,
+          "mean": -0.05358182418092756,
+          "returnFraction": -0.06420416204245886
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 15,
+      "cost": "normal",
+      "n": 44,
+      "signals": 52,
+      "mean": -0.14625223912411245,
+      "pf": 0.5425158811428568,
+      "equity": 9839.855432790788,
+      "ci": [
+        -0.3183927583411544,
+        0.042765169950366194
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 27,
+          "mean": -0.04365614853986605,
+          "returnFraction": -0.00297642242577557
+        },
+        "2023": {
+          "n": 17,
+          "mean": -0.30919897122850376,
+          "returnFraction": -0.013038034295145703
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "base",
+      "delay": 15,
+      "cost": "stress",
+      "n": 1138,
+      "signals": 3185,
+      "mean": -0.11752771294680762,
+      "pf": 0.6243442200263865,
+      "equity": 7145.878156500328,
+      "ci": [
+        -0.16256203609781789,
+        -0.0717010023067488
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 578,
+          "mean": -0.12425026271454051,
+          "returnFraction": -0.1650357698593771
+        },
+        "2023": {
+          "n": 560,
+          "mean": -0.11058908122225469,
+          "returnFraction": -0.12037641449059042
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 15,
+      "cost": "stress",
+      "n": 44,
+      "signals": 52,
+      "mean": -0.18108006156206616,
+      "pf": 0.4539105923971065,
+      "equity": 9802.256869472969,
+      "ci": [
+        -0.34579582218740845,
+        0.0009813533357113974
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 27,
+          "mean": -0.07794982311396871,
+          "returnFraction": -0.005279828051741285
+        },
+        "2023": {
+          "n": 17,
+          "mean": -0.3448751461561033,
+          "returnFraction": -0.014494485000961786
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 2,
+      "policy": "base",
+      "delay": 1,
+      "cost": "stress",
+      "n": 1138,
+      "signals": 3185,
+      "mean": -0.10746388040681355,
+      "pf": 0.6542336948490628,
+      "equity": 7352.997737279507,
+      "ci": [
+        -0.15299423121910116,
+        -0.0608335214571981
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 578,
+          "mean": -0.11846337703940282,
+          "returnFraction": -0.1580274924831289
+        },
+        "2023": {
+          "n": 560,
+          "mean": -0.09611082852531963,
+          "returnFraction": -0.10667273378892039
+        }
+      }
+    },
+    {
+      "period": "2022-23",
+      "lag": 2,
+      "policy": "XV01",
+      "delay": 1,
+      "cost": "stress",
+      "n": 55,
+      "signals": 60,
+      "mean": -0.15870720600817276,
+      "pf": 0.5483600640135224,
+      "equity": 9783.091958633528,
+      "ci": [
+        -0.35493960011007103,
+        0.07165723490676172
+      ],
+      "unknown": 0,
+      "years": {
+        "2022": {
+          "n": 36,
+          "mean": -0.238426579660204,
+          "returnFraction": -0.021280808310233004
+        },
+        "2023": {
+          "n": 19,
+          "mean": -0.007659971720113521,
+          "returnFraction": -0.0004099958264142585
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "base",
+      "delay": 1,
+      "cost": "normal",
+      "n": 268,
+      "signals": 728,
+      "mean": -0.09183648295044226,
+      "pf": 0.7028551081965392,
+      "equity": 9399.562257387654,
+      "ci": [
+        -0.17170051479803572,
+        -0.009731140381191777
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 268,
+          "mean": -0.09183648295044226,
+          "returnFraction": -0.06004377426123461
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 1,
+      "cost": "normal",
+      "n": 7,
+      "signals": 8,
+      "mean": -0.009011314656800265,
+      "pf": 0.9721735557699569,
+      "equity": 9998.297092431165,
+      "ci": [
+        -0.6044294342775292,
+        0.5879599278344604
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 7,
+          "mean": -0.009011314656800265,
+          "returnFraction": -0.0001702907568834278
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "base",
+      "delay": 1,
+      "cost": "stress",
+      "n": 269,
+      "signals": 728,
+      "mean": -0.141402085778653,
+      "pf": 0.5691263720729905,
+      "equity": 9089.53908224017,
+      "ci": [
+        -0.21370030996618233,
+        -0.06522789387812222
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 269,
+          "mean": -0.141402085778653,
+          "returnFraction": -0.09104609177598295
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 1,
+      "cost": "stress",
+      "n": 7,
+      "signals": 8,
+      "mean": -0.04668678978632992,
+      "pf": 0.8613469006282695,
+      "equity": 9991.714132776355,
+      "ci": [
+        -0.6223276997696336,
+        0.5305363256975314
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 7,
+          "mean": -0.04668678978632992,
+          "returnFraction": -0.0008285867223645594
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "base",
+      "delay": 5,
+      "cost": "normal",
+      "n": 268,
+      "signals": 728,
+      "mean": -0.10192137601648263,
+      "pf": 0.674608069627668,
+      "equity": 9336.29083717032,
+      "ci": [
+        -0.18020963802549994,
+        -0.022212379803003814
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 268,
+          "mean": -0.10192137601648263,
+          "returnFraction": -0.06637091628296801
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 5,
+      "cost": "normal",
+      "n": 7,
+      "signals": 8,
+      "mean": -0.0319011373917869,
+      "pf": 0.8977983043561031,
+      "equity": 9994.310755512655,
+      "ci": [
+        -0.5827638867532661,
+        0.5164627800920368
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 7,
+          "mean": -0.0319011373917869,
+          "returnFraction": -0.0005689244487345153
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "base",
+      "delay": 5,
+      "cost": "stress",
+      "n": 269,
+      "signals": 728,
+      "mean": -0.15242113439890576,
+      "pf": 0.5428848360924599,
+      "equity": 9022.431784072623,
+      "ci": [
+        -0.22566106243219047,
+        -0.07599246544963874
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 269,
+          "mean": -0.15242113439890576,
+          "returnFraction": -0.09775682159273771
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 5,
+      "cost": "stress",
+      "n": 7,
+      "signals": 8,
+      "mean": -0.06928212751824428,
+      "pf": 0.78405841570616,
+      "equity": 9987.780766410793,
+      "ci": [
+        -0.6093802613332924,
+        0.45992299330988007
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 7,
+          "mean": -0.06928212751824428,
+          "returnFraction": -0.001221923358920657
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "base",
+      "delay": 15,
+      "cost": "normal",
+      "n": 268,
+      "signals": 728,
+      "mean": -0.0904218396576777,
+      "pf": 0.7096789003799879,
+      "equity": 9408.428501812226,
+      "ci": [
+        -0.17631765661630855,
+        -0.009968997438978887
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 268,
+          "mean": -0.0904218396576777,
+          "returnFraction": -0.059157149818777365
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 15,
+      "cost": "normal",
+      "n": 7,
+      "signals": 8,
+      "mean": 0.09041169529413727,
+      "pf": 1.3006574462355194,
+      "equity": 10015.675146684525,
+      "ci": [
+        -0.5748825938971508,
+        0.7942052550376745
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 7,
+          "mean": 0.09041169529413727,
+          "returnFraction": 0.0015675146684524428
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "base",
+      "delay": 15,
+      "cost": "stress",
+      "n": 269,
+      "signals": 728,
+      "mean": -0.14468359567275502,
+      "pf": 0.5631028260026457,
+      "equity": 9069.47740056373,
+      "ci": [
+        -0.2225917228202068,
+        -0.06919047565995035
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 269,
+          "mean": -0.14468359567275502,
+          "returnFraction": -0.09305225994362695
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 1,
+      "policy": "XV01",
+      "delay": 15,
+      "cost": "stress",
+      "n": 7,
+      "signals": 8,
+      "mean": 0.049248593100087903,
+      "pf": 1.1592755451028216,
+      "equity": 10008.473732298864,
+      "ci": [
+        -0.58746168232498,
+        0.7292605215710823
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 7,
+          "mean": 0.049248593100087903,
+          "returnFraction": 0.0008473732298863695
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 2,
+      "policy": "base",
+      "delay": 1,
+      "cost": "stress",
+      "n": 269,
+      "signals": 729,
+      "mean": -0.141402085778653,
+      "pf": 0.5691263720729905,
+      "equity": 9089.53908224017,
+      "ci": [
+        -0.21370030996618233,
+        -0.06522789387812222
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 269,
+          "mean": -0.141402085778653,
+          "returnFraction": -0.09104609177598295
+        }
+      }
+    },
+    {
+      "period": "2026",
+      "lag": 2,
+      "policy": "XV01",
+      "delay": 1,
+      "cost": "stress",
+      "n": 13,
+      "signals": 13,
+      "mean": -0.22433877171852934,
+      "pf": 0.16793018946877955,
+      "equity": 9927.267151177388,
+      "ci": [
+        -0.41068427876652164,
+        -0.06623429971976809
+      ],
+      "unknown": 0,
+      "years": {
+        "2026": {
+          "n": 13,
+          "mean": -0.22433877171852934,
+          "returnFraction": -0.007273284882261248
+        }
+      }
+    }
+  ],
+  "controls": [
+    {
+      "period": "2022-23",
+      "valid": 199,
+      "movableStrata": 41,
+      "totalStrata": 41,
+      "medianMean": -0.11696371991416174,
+      "pRelative": 0.805
+    },
+    {
+      "period": "2026",
+      "valid": 199,
+      "movableStrata": 8,
+      "totalStrata": 8,
+      "medianMean": -0.24123733213331558,
+      "pRelative": 0.16
+    }
+  ]
+}
