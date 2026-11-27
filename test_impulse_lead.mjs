@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import {impulses,measureLead} from "./impulse_lead.mjs";
+const M=60000;
+const b=Array.from({length:15},(_,i)=>({t:i*M,o:100,c:i===8||i===9?101:100}));
+const e=impulses(b);
+assert.equal(e.length,1);assert.equal(e[0].start,4*M);assert.equal(e[0].finish,9*M);
+const q=measureLead([{t:1*M},{t:2*M}],e,{delay:1});
+assert.equal(q.early,1);assert.equal(q.unmatched,1);assert.equal(q.meanLead,2);
+assert.equal(measureLead([{t:5*M}],e).underway,1);
+assert.equal(measureLead([{t:9*M}],e).early,0);
+assert.equal(measureLead([],e).precision,null);
+console.log("OK: independent price episodes, lead before start, delivery delay, one-to-one matching, late alerts.");

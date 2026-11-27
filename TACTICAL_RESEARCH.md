@@ -10,3 +10,6 @@ Production V2.1 remains the factual market-event reference; do not activate rese
 - Spot archive 391,680 bars: 18-variable classifier 6/20 and 51/173 positive windows at 1-minute delay; 26-variable 16/39 and 92/331. Counts differ; no consistent improvement from buy-flow. OKX recent ranker 59/293 versus V2.1 39/358; frequency drift to 9.77/day.
 - Matched calibration test: all four models negative in Apr-Jun 2026 across all tested horizons/delays/cadences, no proven edge beyond volatility. Keep observation classification only as research, not entry rule.
 - Utility regression follow-up: learn net return instead of positive-window classification; fixed comparison on Jul-Sep 2025 and Jul 2026 windows not used by these earlier experiments. Require positive calibration at both delays and >=25 trades before considering further validation. No live deployment.
+
+- Net utility experiment completed: 394,560 verified bars, all four configurations failed calibration, utility18/26 negative in both held-out windows. Do not deploy.
+- Independent impulse lead audit: distinguish notice received before the 5-minute impulse window from one received during it; compare ranked models against simple volatility/momentum, with delivery latency and matched calibration frequency. Research only; reused samples.
