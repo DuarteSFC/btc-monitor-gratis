@@ -1,0 +1,15 @@
+import assert from "node:assert/strict";
+import {netPlan,simulatePlan} from "./structural_research.mjs";
+const p=netPlan(60000,59800,60700);
+assert.ok(p&&p.rr>=2);
+assert.equal(netPlan(60000,59800,60400),null);
+assert.equal(netPlan(60000,59980,61000),null);
+assert.equal(netPlan(60000,60000,61000),null);
+assert.equal(netPlan(60000,59000,65000),null);
+assert.equal(netPlan(60000,59800,60700,-1),null);
+assert.equal(simulatePlan(p,[{o:60000,h:60750,l:59750,c:60500}]).reason,"stop");
+assert.ok(simulatePlan(p,[{o:59700,h:60000,l:59600,c:59800}]).netR<-1);
+assert.ok(simulatePlan(p,[{o:60000,h:60700,l:59900,c:60600}]).netR>=2);
+assert.equal(simulatePlan(p,[{o:60000,h:60100,l:59950,c:60000}]).reason,"time");
+assert.equal(simulatePlan(p,[]),null);
+console.log("OK: net RR gate, structural risk bounds, adverse-first fills, costs and time exits.");
