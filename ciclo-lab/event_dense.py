@@ -39,6 +39,9 @@ def main():
     if a.selftest:return
     spot,manifest=acquire()
     assert manifest['start']=='2017-09-01' and manifest['end_exclusive']=='2021-01-01'
+    assert manifest['rows']+manifest['excludedRows']==manifest['verifiedRows']
+    assert manifest['verifiedRows']+manifest['missing']==manifest['expected']
+    assert manifest['admittedMonths']+len(manifest['excludedMonths'])==40
     print('EV03_ARCHIVE_TOTAL='+json.dumps({k:v for k,v in manifest.items() if k!='files'}),flush=True)
     result={'spot2017-20':census(spot,'2017-10-01','2021-01-01')}
     del spot
