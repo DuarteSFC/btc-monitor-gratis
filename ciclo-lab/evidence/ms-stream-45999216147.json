@@ -1,0 +1,73 @@
+{
+  "run": 45999216147,
+  "results": {
+    "MS_STREAM": [
+      {
+        "day": "2022-02-15",
+        "rawComplete": 1408,
+        "filteredComplete": 1077,
+        "rawSignals": 2,
+        "filteredSignals": 2,
+        "sameSignals": 2,
+        "rawOnly": 0,
+        "filteredOnly": 0,
+        "pointChecks": 2816
+      },
+      {
+        "day": "2022-06-15",
+        "rawComplete": 1408,
+        "filteredComplete": 1342,
+        "rawSignals": 0,
+        "filteredSignals": 0,
+        "sameSignals": 0,
+        "rawOnly": 0,
+        "filteredOnly": 0,
+        "pointChecks": 2816
+      },
+      {
+        "day": "2023-02-15",
+        "rawComplete": 1408,
+        "filteredComplete": 1286,
+        "rawSignals": 3,
+        "filteredSignals": 2,
+        "sameSignals": 2,
+        "rawOnly": 1,
+        "filteredOnly": 0,
+        "pointChecks": 2816
+      },
+      {
+        "day": "2023-06-15",
+        "rawComplete": 1376,
+        "filteredComplete": 1060,
+        "rawSignals": 2,
+        "filteredSignals": 2,
+        "sameSignals": 2,
+        "rawOnly": 0,
+        "filteredOnly": 0,
+        "pointChecks": 2816
+      },
+      {
+        "day": "2026-04-15",
+        "rawComplete": 1408,
+        "filteredComplete": 1319,
+        "rawSignals": 3,
+        "filteredSignals": 3,
+        "sameSignals": 3,
+        "rawOnly": 0,
+        "filteredOnly": 0,
+        "pointChecks": 2816
+      },
+      {
+        "day": "2026-07-15",
+        "rawComplete": 1408,
+        "filteredComplete": 1256,
+        "rawSignals": 2,
+        "filteredSignals": 2,
+        "sameSignals": 2,
+        "rawOnly": 0,
+        "filteredOnly": 0,
+        "pointChecks": 2816
+      }
+    ]
+  }
+}
