@@ -142,3 +142,6 @@ Both runs completed. Primary forecasts on identical 1878 (2023) and 1001 (2026) 
 
 ## 2026-11-27 — CF01 relative settled funding (run 46003593385)
 45/45 ETH funding archives verified, 4104 settlements; 28 replays and 398 controls. 30m availability lag: 2022–23 n59, stress mean +.014349/+.011807/+.027406 R at 1/5/15m; recent n15, -.334212/-.352116/-.356932. Normal old 1m +.067859 R PF1.304666; old 2022 stress negative at 1m and 5m. 60m availability lag, 1m stress old n60 -.023220, recent n14 -.402304. Relative p=.065/.95, zero unknown, support insufficient; reject CF01 without threshold rescue. Evidence/cf01-46003593385.json. No holdout or production change.
+
+## 2026-11-27 — MX01 external VIX context (run 46004100547)
+958 scoped daily observations, Cboe source SHA recorded, all monthly coverage checks pass. 28 replays and 398 controls. 2-day availability lag: old stress mean -.181215/-.185976/-.199116 R at 1/5/15m, recent -.156390/-.164157/-.160675. 1m stress n361/n156 versus base n1160/n279; base means -.109434/-.136535. 3-day 1m stress -.172065/-.135480. All 14 candidate replays negative; zero unknown, relative p=1/.535. Reject MX01; external daily vintage/receipt not verified. Evidence/mx01-46004100547.json. No threshold rescue, no independent holdout or production change.
