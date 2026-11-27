@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import {fitUtility,scoreUtility,utilityLabel} from "./utility_attention.mjs";
+import {netBarrier} from "./matched_attention.mjs";
+const rows=Array.from({length:200},(_,i)=>({x:[i/200],y:i/200-.4}));
+const m=fitUtility(rows);assert.ok(scoreUtility(m,[.9])>scoreUtility(m,[.1]));
+assert.throws(()=>fitUtility([]));assert.throws(()=>scoreUtility(m,[NaN]));
+const b=Array.from({length:100},()=>({o:60000,c:60000,h:60010,l:59990}));
+b[2]={o:60000,c:60000,h:61000,l:59800};
+assert.ok(Math.abs(utilityLabel(b,0,netBarrier)+1)<1e-10);
+b[2].l=59990;assert.ok(Math.abs(utilityLabel(b,0,netBarrier)-2)<1e-10);
+assert.equal(utilityLabel(b,99,netBarrier),null);
+console.log("OK: utility fitting, invalid rows, net return labels and adverse-first resolution.");
