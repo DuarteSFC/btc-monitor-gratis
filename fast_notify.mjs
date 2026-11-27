@@ -9,13 +9,36 @@ const snapshot=await fastReport();
 const now=Date.now();
 const valid=snapshot.status.pricesFreshAndCoherent&&snapshot.status.shortIndicatorsComputed&&
   ["BTCUSD","BTCUSDT"].every(p=>{const age=now-Date.parse(snapshot.prices[p]?.data?.tradeUtc);return age>=0&&age<60000;});
-if(!valid){console.log("No valid fresh market data; no alerts.");process.exit(0);}
-if(!active){console.log("Dry run: market valid; Telegram disabled; no messages sent.");process.exit(0);}
-if(!token||!chat){console.log("Telegram credentials not configured; no alerts.");process.exit(0);}
+if(!active){console.log(valid?"Dry run: market valid; Telegram disabled; no messages sent.":"Dry run: coverage unavailable; no messages sent.");process.exit(valid?0:1);}
+if(!token||!chat){console.error("Telegram credentials not configured; alert delivery unavailable.");process.exit(1);}
 let state={sent:[],lastByType:{}};
 try{const x=JSON.parse(await readFile(file,"utf8"));if(Array.isArray(x.sent))state=x;}catch{}
 state.lastByType=state.lastByType&&typeof state.lastByType==="object"?state.lastByType:{};
 const seen=new Set(state.sent.filter(x=>typeof x==="string").slice(-500));
+async function deliver(message){
+ if(message.length>4096)throw Error("Telegram message too long");
+ try{
+  const r=await fetch("https://api.telegram.org/bot"+token+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chat,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
+  return r.ok&&(await r.json()).ok===true;
+ }catch{return false;}
+}
+if(!valid){
+ const previous=Number.isSafeInteger(state.coverageFailures)&&state.coverageFailures>=0?state.coverageFailures:0;
+ state.coverageFailures=previous+1;
+ if(state.coverageFailures>=2&&!state.coverageNoticeSent){
+  state.coverageNoticeSent=await deliver("BTC · INCIDENCIA DE COBERTURA\nDos o más revisiones consecutivas sin cotizaciones e indicadores esenciales verificados. No se puede descartar un movimiento material. No es una señal de entrada.");
+  if(state.coverageNoticeSent)console.log("Coverage warning accepted by Telegram API; device receipt unknown.");
+  else console.error("Coverage warning delivery failed.");
+ }
+ await persist();
+ console.error("Market coverage unavailable; consecutive failed checks: "+state.coverageFailures);
+ process.exit(1);
+}
+if(state.coverageFailures||state.coverageNoticeSent){
+ console.log("Market coverage recovered; prior failure count: "+(state.coverageFailures??0));
+ state.coverageFailures=0;state.coverageNoticeSent=false;
+ await persist();
+}
 const labels={support_loss:"Pérdida de soporte",breakout:"Ruptura alcista",sweep_recovery:"Barrido y recuperación",recovery_impulse:"Impulso de recuperación"};
 const fmt=x=>Number(x).toLocaleString("es-ES",{maximumFractionDigits:2});
 const localTime=x=>new Date(x).toLocaleString("es-ES",{timeZone:"Europe/Madrid",hour12:false});
@@ -47,15 +70,11 @@ async function persist(){
 for(let i=0;i<recent.length;i+=6){
  const batch=recent.slice(i,i+6);
  const message=[header,...batch.map(format),quote].join("\n\n");
- if(message.length>4096)throw Error("Telegram message too long");
- let sent=false;
- try{
-  const r=await fetch("https://api.telegram.org/bot"+token+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chat,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
-  sent=r.ok&&(await r.json()).ok===true;
- }catch{}
+ const sent=await deliver(message);
  if(!sent){console.error("Telegram delivery failed (credentials and response omitted).");process.exit(1);}
  for(const e of batch){seen.add(e.id);if(e.type==="early_attention")state.lastAttention=Date.parse(e.closedUtc);if(e.type==="prealert")state.lastByType[e.pattern]={time:now,level:e.level};}
  await persist();
  console.log("Material market alert sent: "+batch.length+" distinct events.");
+ console.log("Telegram API accepted public event IDs: "+JSON.stringify(batch.map(e=>e.id))+"; device receipt unknown.");
 }
 if(!recent.length){console.log("No new material event.");await persist();}

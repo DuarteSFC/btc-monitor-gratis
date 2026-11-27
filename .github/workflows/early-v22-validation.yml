@@ -2,6 +2,7 @@ name: V2.2 attention replay (no delivery)
 on:
   push:
     branches: [tactical-early-v22]
+    paths: [replay_compare_attention.mjs, early_market.mjs, fast_tactical.mjs, worker.mjs]
   workflow_dispatch:
 permissions:
   contents: read

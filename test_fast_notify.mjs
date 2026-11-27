@@ -10,13 +10,16 @@ try{
  await writeFile(join(dir,"tactical_candidate.mjs"),"export function fromEvents(){throw Error('unvalidated candidates must not run')}");
  await writeFile(join(dir,"fast_tactical.mjs"),`export async function fastReport(){
   const now=Date.now(),tradeUtc=new Date(now-1000).toISOString();
+  const mode=process.env.MOCK_MODE??"baseline";
+  const attention={id:"attention-new",frame:"1M",type:"early_attention",pattern:"volume_acceleration",closedUtc:new Date(now-60000).toISOString(),level:60000,close:60050,low:59990,volumeVs20:7,volume3Vs20:3,source:"mock spot"};
   const events=Array.from({length:8},(_,i)=>({id:"event"+i,frame:i%2?"5M":"15M",type:"breakout",closedUtc:new Date(now-(i===7?30:i+1)*60000).toISOString(),scope:"local",level:60000+i,close:60050+i,volumeVs20:1.9,source:"mock spot"}));
-  return {status:{pricesFreshAndCoherent:true,shortIndicatorsComputed:true},prices:{BTCUSD:{data:{price:60050,source:"mock USD",tradeUtc}},BTCUSDT:{data:{price:60050,source:"mock USDT",tradeUtc}}},events};
+  const valid=mode!=="bad";
+  return {status:{pricesFreshAndCoherent:valid,shortIndicatorsComputed:valid},earlyMarketEvents:mode==="attention"||mode==="overlap"?[attention]:[],prices:{BTCUSD:{data:{price:60050,source:"mock USD",tradeUtc}},BTCUSDT:{data:{price:60050,source:"mock USDT",tradeUtc}}},events:mode==="attention"?[]:mode==="overlap"?[{...events[0],id:"baseline-overlap"}]:events};
  }`);
  await writeFile(join(dir,"mock.mjs"),`import assert from "node:assert/strict";import {appendFile} from "node:fs/promises";let calls=0;
  globalThis.fetch=async (url,opts)=>{assert.equal(url,"https://api.telegram.org/botFAKE/sendMessage");const body=JSON.parse(opts.body);assert.equal(body.chat_id,"FAKE");assert.ok(body.text.length<=4096);calls++;if(process.env.FAIL_SECOND==="true"&&calls===2)return {ok:false};await appendFile("messages.jsonl",JSON.stringify(body.text)+"\\n");return {ok:true,json:async()=>({ok:true})};};`);
  const env={...process.env,BTC_FAST_ALERTS:"true",BTC_CANDIDATES_VALIDATED:"false",BTC_EARLY_PREALERTS:"false",TELEGRAM_BOT_TOKEN:"FAKE",TELEGRAM_CHAT_ID:"FAKE"};
- const run=fail=>spawnSync(process.execPath,["--import","./mock.mjs","fast_notify.mjs"],{cwd:dir,env:{...env,FAIL_SECOND:String(fail)},encoding:"utf8"});
+ const run=(fail,mode="baseline",overrides={})=>spawnSync(process.execPath,["--import","./mock.mjs","fast_notify.mjs"],{cwd:dir,env:{...env,FAIL_SECOND:String(fail),MOCK_MODE:mode,...overrides},encoding:"utf8"});
  const a=run(true);assert.equal(a.status,1,a.stderr);
  const b=run(false);assert.equal(b.status,0,b.stderr);
  const messages=(await readFile(join(dir,"messages.jsonl"),"utf8")).trim().split("\n").map(JSON.parse);
@@ -25,5 +28,19 @@ try{
  assert.ok(!messages.join("\n").includes("Candidato LONG"));
  const c=run(false);assert.equal(c.status,0,c.stderr);assert.match(c.stdout,/No new material event/);
  assert.equal((await readFile(join(dir,"messages.jsonl"),"utf8")).trim().split("\n").length,2);
+ const readMessages=async()=> (await readFile(join(dir,"messages.jsonl"),"utf8")).trim().split("\n").map(JSON.parse);
+ const d=run(false,"attention");assert.equal(d.status,0,d.stderr);assert.match(d.stdout,/attention-new/);
+ assert.equal((await readMessages()).length,3);assert.match((await readMessages()).at(-1),/ATENCIÓN TEMPRANA/);
+ assert.doesNotMatch((await readMessages()).at(-1),/Candidato LONG/);
+ const e=run(false,"attention");assert.equal(e.status,0,e.stderr);assert.equal((await readMessages()).length,3);
+ const f=run(false,"overlap");assert.equal(f.status,0,f.stderr);assert.match((await readMessages()).at(-1),/Movimiento relevante/);
+ assert.equal((await readMessages()).length,4);
+ const g=run(false,"bad");assert.equal(g.status,1);assert.equal((await readMessages()).length,4);
+ const h=run(false,"bad");assert.equal(h.status,1);assert.match((await readMessages()).at(-1),/INCIDENCIA DE COBERTURA/);
+ assert.equal((await readMessages()).length,5);
+ const i=run(false,"bad");assert.equal(i.status,1);assert.equal((await readMessages()).length,5);
+ const j=run(false,"baseline");assert.equal(j.status,0,j.stderr);assert.match(j.stdout,/coverage recovered/);
+ const k=run(false,"baseline",{TELEGRAM_CHAT_ID:""});assert.equal(k.status,1);assert.match(k.stderr,/credentials not configured/);
+ console.log("OK: 1M alert delivery, baseline preservation, health warning, recovery, missing credentials and API acceptance evidence.");
  console.log("OK: mock Telegram delivery, distinct same-type events, bounded batching, partial failure recovery, deduplication, expired event suppression, candidate gate.");
 }finally{await rm(dir,{recursive:true,force:true});}
