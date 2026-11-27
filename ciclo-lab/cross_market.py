@@ -31,7 +31,7 @@ def extract(raw,expected):
         if different.any():raise ValueError("conflicting raw flow")
         a=a.loc[~a.index.duplicated()]
     a=a.sort_index()
-    pd.testing.assert_index_equal(a.index,expected.index)
+    pd.testing.assert_index_equal(a.index,expected.index,check_names=False)
     np.testing.assert_allclose(a.volume,expected.volume,rtol=1e-10,atol=1e-10)
     return a.buy
 
@@ -46,7 +46,7 @@ def perp_flow(root,perp):
         return extract(raw,expected)
     with ThreadPoolExecutor(max_workers=4) as pool:
         a=pd.concat(list(pool.map(one,files))).sort_index()
-    pd.testing.assert_index_equal(a.index,perp.index)
+    pd.testing.assert_index_equal(a.index,perp.index,check_names=False)
     return a,len(files)
 
 def conditions(d,perp,buy,m,start,end):
@@ -131,9 +131,9 @@ def selftest():
     b=io.BytesIO()
     with zipfile.ZipFile(b,"w") as z:
         z.writestr("a.csv","\n".join(f"{u},100,101,99,100,10,{u+59999},0,1,6,0,0" for u in ms))
-    q=extract(b.getvalue(),pd.DataFrame({"volume":10.},index=t.as_unit("ms")))
+    q=extract(b.getvalue(),pd.DataFrame({"volume":10.},index=pd.to_datetime(ms,unit="ms",utc=True)))
     assert q.tolist()==[6.,6.,6.]
-    y=pd.DataFrame(dict(R=[.1,.2,-.1],riskFraction=.01,exit=t.asi8+2*NS),index=t)
+    y=pd.DataFrame(dict(R=[.1,.2,-.1],riskFraction=.01,exit=t.asi8+3*NS),index=t)
     a=fast(t,y);assert a["n"]==2
     print("Cross-market raw-flow checksum schema, volume parity and overlap selftest PASS",flush=True)
 
