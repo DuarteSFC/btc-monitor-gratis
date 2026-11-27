@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: "22"
       - run: node --check entry_execution_diagnostic.mjs && python3 -m py_compile download_entry_diagnostic.py
+      - run: python3 download_entry_diagnostic.py --selftest
       - run: node entry_execution_diagnostic.mjs --selftest
       - run: python3 download_entry_diagnostic.py /tmp/tactical-entry spot
       - run: node entry_execution_diagnostic.mjs /tmp/tactical-entry
