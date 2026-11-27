@@ -1,0 +1,41 @@
+name: CICLO LAB XV01 cross-venue premium economics
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/xv01_premium.py, .github/workflows/ciclo-lab-xv01.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
+      - run: python -m py_compile ciclo-lab/xv01_premium.py ciclo-lab/xv0_cross_venue.py
+      - run: python -X faulthandler ciclo-lab/xv01_premium.py --selftest
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2021-2023
+          path: lab-derivatives
+          run-id: 45861953804
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2026-extension
+          path: lab-extension
+          run-id: 45995404482
+          github-token: ${{ github.token }}
+      - run: python -X faulthandler ciclo-lab/xv01_premium.py --derivatives lab-derivatives --extension lab-extension
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-xv01
+          path: lab-xv01.json
+          retention-days: 30
