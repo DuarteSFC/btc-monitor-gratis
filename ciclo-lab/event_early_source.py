@@ -55,19 +55,35 @@ def month(start):
     end=archive.nextmonth(start)
     rows,affected,report=fetch('monthly',start,end)
     report.update(month=str(start),daily=[],recovered=0)
-    for day in sorted(affected):
+    attempted=set()
+    def repair(day):
+        attempted.add(day)
         try:
             d,_,r=fetch('daily',day,day+timedelta(days=1))
         except HTTPError as e:
             if e.code!=404:raise
-            report['daily'].append(dict(day=str(day),missing=True));continue
+            report['daily'].append(dict(day=str(day),missing=True));return
         n=reconcile(rows,d);report['recovered']+=n;report['daily'].append(dict(day=str(day),recovered=n,**r))
+    for day in sorted(affected):
+        repair(day)
     expected=(archive.ms(end)-archive.ms(start))//60000
-    report.update(expected=expected,rows=len(rows),missing=expected-len(rows))
-    if len(rows)/expected<.95:raise ValueError('coverage below 95% '+str(report))
+    if len(rows)/expected<.95:
+        counts={}
+        for t in rows:
+            key=t//86400000
+            counts[key]=counts.get(key,0)+1
+        day=start
+        while day<end:
+            if day not in attempted and counts.get(archive.ms(day)//86400000,0)<1440:
+                repair(day)
+            day+=timedelta(days=1)
+    admitted=len(rows)/expected>=.95
+    report.update(expected=expected,rows=len(rows),missing=expected-len(rows),admitted=admitted,excludedRows=0 if admitted else len(rows))
     print('EV03_ARCHIVE='+__import__('json').dumps(report),flush=True)
-    t=sorted(rows);frame=pd.DataFrame([rows[k] for k in t],columns=COLS,index=pd.to_datetime(t,unit='ms',utc=True))
+    t=sorted(rows) if admitted else []
+    frame=pd.DataFrame([rows[k] for k in t],columns=COLS,index=pd.to_datetime(t,unit='ms',utc=True),dtype=float)
     return frame,report
+
 
 def acquire():
     months=[];a=date(2017,9,1)
@@ -75,9 +91,10 @@ def acquire():
         months.append(a);a=archive.nextmonth(a)
     with ThreadPoolExecutor(max_workers=4) as pool:
         result=list(pool.map(month,months))
-    p=pd.concat([x[0] for x in result]);reports=[x[1] for x in result]
+    reports=[x[1] for x in result]
+    p=pd.concat([x[0] for x in result if x[1]['admitted']])
     assert p.index.is_unique and p.index.is_monotonic_increasing
-    return p,dict(start='2017-09-01',end_exclusive='2021-01-01',rows=len(p),expected=sum(r['expected'] for r in reports),missing=sum(r['missing'] for r in reports),files=reports)
+    return p,dict(start='2017-09-01',end_exclusive='2021-01-01',rows=len(p),expected=sum(r['expected'] for r in reports),missing=sum(r['missing'] for r in reports),verifiedRows=sum(r['rows'] for r in reports),excludedRows=sum(r['excludedRows'] for r in reports),admittedMonths=sum(r['admitted'] for r in reports),excludedMonths=[r['month'] for r in reports if not r['admitted']],files=reports)
 
 def selftest():
     from datetime import timedelta
