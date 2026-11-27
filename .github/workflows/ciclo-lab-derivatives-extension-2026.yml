@@ -1,0 +1,23 @@
+name: CICLO LAB derivatives extension dataset
+on:
+  push:
+    branches: [ciclo-lab-research]
+    paths: [ciclo-lab/derivatives_extension_2026.py, .github/workflows/ciclo-lab-derivatives-extension-2026.yml]
+permissions:
+  contents: read
+jobs:
+  derivatives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: python3 -X faulthandler ciclo-lab/derivatives_extension_2026.py --selftest
+      - run: python3 -X faulthandler ciclo-lab/derivatives_extension_2026.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ciclo-lab-derivatives-2026-extension
+          path: lab-derivatives/
+          retention-days: 30
