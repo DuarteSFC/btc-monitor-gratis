@@ -1,4 +1,4 @@
-name: CICLO LAB extension model selftest
+name: CICLO LAB frozen model development extension
 on:
   push:
     branches: [ciclo-lab-research]
@@ -20,3 +20,27 @@ jobs:
       - run: |
           python -m pip install --only-binary=:all: --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
       - run: python -X faulthandler ciclo-lab/extension_2026.py --selftest
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-btcusdt-1m-2020-2026
+          path: lab-dataset
+          run-id: 45734087753
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2021-2023
+          path: lab-derivatives
+          run-id: 45861953804
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: ciclo-lab-derivatives-2026-extension
+          path: lab-extension
+          run-id: 45995404482
+          github-token: ${{ github.token }}
+      - run: python -X faulthandler ciclo-lab/extension_2026.py --dataset lab-dataset --derivatives lab-derivatives --extension lab-extension
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ciclo-lab-extension-2026
+          path: lab-extension-2026.json
+          retention-days: 30
