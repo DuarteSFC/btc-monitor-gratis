@@ -1,0 +1,419 @@
+{
+  "run": 45998872506,
+  "results": {
+    "MS01_WEEK": [
+      {
+        "week": "2022-02-01",
+        "goodMinutes": 10012,
+        "excludedMinutes": 68,
+        "completeBins": 120144,
+        "completeDecisions": 8318,
+        "baseSignals": 64,
+        "selected": 7
+      },
+      {
+        "week": "2022-05-01",
+        "goodMinutes": 9976,
+        "excludedMinutes": 104,
+        "completeBins": 119706,
+        "completeDecisions": 8416,
+        "baseSignals": 99,
+        "selected": 16
+      },
+      {
+        "week": "2022-08-01",
+        "goodMinutes": 9988,
+        "excludedMinutes": 92,
+        "completeBins": 119856,
+        "completeDecisions": 7960,
+        "baseSignals": 73,
+        "selected": 9
+      },
+      {
+        "week": "2022-11-01",
+        "goodMinutes": 10000,
+        "excludedMinutes": 80,
+        "completeBins": 120000,
+        "completeDecisions": 8300,
+        "baseSignals": 85,
+        "selected": 7
+      },
+      {
+        "week": "2023-02-01",
+        "goodMinutes": 10038,
+        "excludedMinutes": 42,
+        "completeBins": 120454,
+        "completeDecisions": 8938,
+        "baseSignals": 97,
+        "selected": 16
+      },
+      {
+        "week": "2023-05-01",
+        "goodMinutes": 10015,
+        "excludedMinutes": 65,
+        "completeBins": 120180,
+        "completeDecisions": 8509,
+        "baseSignals": 102,
+        "selected": 13
+      },
+      {
+        "week": "2023-08-01",
+        "goodMinutes": 9923,
+        "excludedMinutes": 157,
+        "completeBins": 119070,
+        "completeDecisions": 6947,
+        "baseSignals": 85,
+        "selected": 10
+      },
+      {
+        "week": "2023-11-01",
+        "goodMinutes": 10010,
+        "excludedMinutes": 70,
+        "completeBins": 120106,
+        "completeDecisions": 8290,
+        "baseSignals": 110,
+        "selected": 23
+      },
+      {
+        "week": "2026-04-01",
+        "goodMinutes": 10036,
+        "excludedMinutes": 44,
+        "completeBins": 120375,
+        "completeDecisions": 8074,
+        "baseSignals": 103,
+        "selected": 15
+      },
+      {
+        "week": "2026-07-01",
+        "goodMinutes": 10027,
+        "excludedMinutes": 53,
+        "completeBins": 120317,
+        "completeDecisions": 8728,
+        "baseSignals": 106,
+        "selected": 18
+      }
+    ],
+    "MS01_SCOPE": [
+      {
+        "period": "2022-23",
+        "baseSignals": 715,
+        "signals": 101,
+        "weeks": 8
+      },
+      {
+        "period": "2026",
+        "baseSignals": 209,
+        "signals": 33,
+        "weeks": 2
+      }
+    ],
+    "MS01_RESULT": [
+      {
+        "period": "2022-23",
+        "delay": 1,
+        "cost": "normal",
+        "n": 88,
+        "mean": -0.238376114229128,
+        "pf": 0.2653649275570163,
+        "equity": 9488.28462053261,
+        "ci": [
+          -0.33046489363248804,
+          -0.123844645376314
+        ],
+        "unknown": 0,
+        "years": {
+          "2022": {
+            "n": 35,
+            "mean": -0.1477286191792576,
+            "returnFraction": -0.012874387559210257
+          },
+          "2023": {
+            "n": 53,
+            "mean": -0.298237667563948,
+            "returnFraction": -0.03829715038752878
+          }
+        }
+      },
+      {
+        "period": "2022-23",
+        "delay": 1,
+        "cost": "stress",
+        "n": 88,
+        "mean": -0.3057671420044702,
+        "pf": 0.16461830555849405,
+        "equity": 9348.64794522079,
+        "ci": [
+          -0.3952500731647976,
+          -0.19240552113864487
+        ],
+        "unknown": 0,
+        "years": {
+          "2022": {
+            "n": 35,
+            "mean": -0.21404597554458266,
+            "returnFraction": -0.018584400282520525
+          },
+          "2023": {
+            "n": 53,
+            "mean": -0.36633772362892425,
+            "returnFraction": -0.04655080519540045
+          }
+        }
+      },
+      {
+        "period": "2022-23",
+        "delay": 5,
+        "cost": "normal",
+        "n": 88,
+        "mean": -0.23796339899380856,
+        "pf": 0.2564061638670833,
+        "equity": 9489.15008776178,
+        "ci": [
+          -0.33280167908354,
+          -0.12314119646922737
+        ],
+        "unknown": 0,
+        "years": {
+          "2022": {
+            "n": 35,
+            "mean": -0.12132972450571149,
+            "returnFraction": -0.010589866294386656
+          },
+          "2023": {
+            "n": 53,
+            "mean": -0.3149856368633066,
+            "returnFraction": -0.0404951249294354
+          }
+        }
+      },
+      {
+        "period": "2022-23",
+        "delay": 5,
+        "cost": "stress",
+        "n": 88,
+        "mean": -0.3057465777328644,
+        "pf": 0.1582043074854154,
+        "equity": 9348.694412622635,
+        "ci": [
+          -0.3973857470234073,
+          -0.19475307142250092
+        ],
+        "unknown": 0,
+        "years": {
+          "2022": {
+            "n": 35,
+            "mean": -0.19098256869437882,
+            "returnFraction": -0.016600107849151398
+          },
+          "2023": {
+            "n": 53,
+            "mean": -0.381534130871487,
+            "returnFraction": -0.04853045088858506
+          }
+        }
+      },
+      {
+        "period": "2022-23",
+        "delay": 15,
+        "cost": "normal",
+        "n": 88,
+        "mean": -0.23443446634553958,
+        "pf": 0.2617958851084744,
+        "equity": 9496.557030415173,
+        "ci": [
+          -0.37095179229983,
+          -0.10778512699010812
+        ],
+        "unknown": 0,
+        "years": {
+          "2022": {
+            "n": 35,
+            "mean": -0.10429845738934426,
+            "returnFraction": -0.009110829606618508
+          },
+          "2023": {
+            "n": 53,
+            "mean": -0.32037334018453645,
+            "returnFraction": -0.04123346735186414
+          }
+        }
+      },
+      {
+        "period": "2022-23",
+        "delay": 15,
+        "cost": "stress",
+        "n": 88,
+        "mean": -0.301262777296402,
+        "pf": 0.1525592669967422,
+        "equity": 9357.955963377326,
+        "ci": [
+          -0.43192218955469863,
+          -0.17630403060025573
+        ],
+        "unknown": 0,
+        "years": {
+          "2022": {
+            "n": 35,
+            "mean": -0.1725072250918078,
+            "returnFraction": -0.015005815073001978
+          },
+          "2023": {
+            "n": 53,
+            "mean": -0.38629002875226615,
+            "returnFraction": -0.04919858858926541
+          }
+        }
+      },
+      {
+        "period": "2026",
+        "delay": 1,
+        "cost": "normal",
+        "n": 29,
+        "mean": -0.008850569017928401,
+        "pf": 0.9566113588191754,
+        "equity": 9993.275591080415,
+        "ci": [
+          -0.18260055332772354,
+          0.20499556551720405
+        ],
+        "unknown": 0,
+        "years": {
+          "2026": {
+            "n": 29,
+            "mean": -0.008850569017928401,
+            "returnFraction": -0.0006724408919584249
+          }
+        }
+      },
+      {
+        "period": "2026",
+        "delay": 1,
+        "cost": "stress",
+        "n": 29,
+        "mean": -0.10396380350636812,
+        "pf": 0.5825179063476369,
+        "equity": 9924.645650799359,
+        "ci": [
+          -0.26055987029313077,
+          0.08876981715426278
+        ],
+        "unknown": 0,
+        "years": {
+          "2026": {
+            "n": 29,
+            "mean": -0.10396380350636812,
+            "returnFraction": -0.007535434920064099
+          }
+        }
+      },
+      {
+        "period": "2026",
+        "delay": 5,
+        "cost": "normal",
+        "n": 29,
+        "mean": -0.02922074760939277,
+        "pf": 0.8597306728897077,
+        "equity": 9978.56307794368,
+        "ci": [
+          -0.20480352051987258,
+          0.18688112674196697
+        ],
+        "unknown": 0,
+        "years": {
+          "2026": {
+            "n": 29,
+            "mean": -0.02922074760939277,
+            "returnFraction": -0.002143692205632097
+          }
+        }
+      },
+      {
+        "period": "2026",
+        "delay": 5,
+        "cost": "stress",
+        "n": 29,
+        "mean": -0.12257092177175258,
+        "pf": 0.5150194379220143,
+        "equity": 9911.29053920881,
+        "ci": [
+          -0.2805817762969657,
+          0.07190397610543278
+        ],
+        "unknown": 0,
+        "years": {
+          "2026": {
+            "n": 29,
+            "mean": -0.12257092177175258,
+            "returnFraction": -0.008870946079118858
+          }
+        }
+      },
+      {
+        "period": "2026",
+        "delay": 15,
+        "cost": "normal",
+        "n": 29,
+        "mean": -0.0952737540910472,
+        "pf": 0.6278745928227726,
+        "equity": 9930.870336050626,
+        "ci": [
+          -0.25866715393246564,
+          0.10582581494454472
+        ],
+        "unknown": 0,
+        "years": {
+          "2026": {
+            "n": 29,
+            "mean": -0.0952737540910472,
+            "returnFraction": -0.0069129663949373575
+          }
+        }
+      },
+      {
+        "period": "2026",
+        "delay": 15,
+        "cost": "stress",
+        "n": 29,
+        "mean": -0.18308184273616956,
+        "pf": 0.3939646869150939,
+        "equity": 9867.869678630768,
+        "ci": [
+          -0.33062306234767597,
+          -0.0014926493681615993
+        ],
+        "unknown": 0,
+        "years": {
+          "2026": {
+            "n": 29,
+            "mean": -0.18308184273616956,
+            "returnFraction": -0.013213032136923226
+          }
+        }
+      }
+    ],
+    "MS01_CONTROL": [
+      {
+        "period": "2022-23",
+        "baseN": 350,
+        "baseMean": -0.21735019187665094,
+        "baseUnknown": 0,
+        "valid": 199,
+        "movableStrata": 73,
+        "totalStrata": 78,
+        "medianMean": -0.24846401994411257,
+        "pRelative": 0.955
+      },
+      {
+        "period": "2026",
+        "baseN": 87,
+        "baseMean": -0.1645473448634244,
+        "baseUnknown": 0,
+        "valid": 199,
+        "movableStrata": 23,
+        "totalStrata": 25,
+        "medianMean": -0.059848806821710655,
+        "pRelative": 0.715
+      }
+    ]
+  }
+}
