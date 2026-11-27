@@ -1,0 +1,21 @@
+name: Selective attention ranking research (no delivery)
+on:
+  push:
+    branches: [tactical-early-v22]
+    paths: [rank_attention.mjs, replay_rank_attention.mjs, test_rank_attention.mjs, .github/workflows/rank-attention.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - run: node test_rank_attention.mjs
+      - run: node replay_rank_attention.mjs

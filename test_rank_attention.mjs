@@ -1,0 +1,14 @@
+import assert from "node:assert/strict";
+import {fitRanker,scoreRanker,observe,selectAlerts,chooseThreshold,summarize} from "./rank_attention.mjs";
+const rows=Array.from({length:200},(_,i)=>({x:[i/200],y:i>=100?1:0}));
+const m=fitRanker(rows);assert.ok(scoreRanker(m,[.9])>scoreRanker(m,[.1]));
+assert.throws(()=>fitRanker([]));assert.throws(()=>scoreRanker(m,[NaN]));
+const b=Array.from({length:50},()=>({o:60000,h:60010,l:59990,c:60000}));
+assert.equal(observe(b,0,1),"neither");b[2]={o:60000,h:60400,l:59800,c:60000};
+assert.equal(observe(b,0,1),"down");b[2].l=59999;assert.equal(observe(b,0,1),"up");
+assert.equal(observe(b,45,1),null);
+const r=Array.from({length:20},(_,i)=>({t:i*300000,score:i,outcomes:{0:"up",1:"up",2:"up"}}));
+const selected=selectAlerts(r,()=>true);assert.equal(selected.length,4);
+assert.equal(summarize(r,selected,1).coveredPositiveWindowEpisodes,1);
+assert.equal(chooseThreshold(r,1).winner,null);
+console.log("OK: deterministic fit, score ordering, delayed labels, adverse-first, cooldown and abstention.");
