@@ -1,0 +1,13 @@
+import assert from "node:assert/strict";
+import {flowFeatures} from "./spot_flow_features.mjs";
+const b=Array.from({length:61},(_,i)=>({t:i*60000,o:60000,c:60000,h:60010,l:59990,v:1,q:100,n:10,buy:50}));
+assert.deepEqual(flowFeatures(b).slice(0,5),[0,0,0,0,0]);
+const x=b.map((v,i)=>i>=56?{...v,buy:80}:v);
+assert.ok(Math.abs(flowFeatures(x)[1]-.6)<1e-10);
+assert.ok(flowFeatures(x)[3]>0);
+assert.equal(flowFeatures(b.slice(1)),null);
+assert.equal(flowFeatures(b.map((v,i)=>i===59?{...v,buy:101}:v)),null);
+assert.equal(flowFeatures(b.map((v,i)=>i===59?{...v,t:v.t+1}:v)),null);
+assert.equal(flowFeatures(b.map((v,i)=>i===59?{...v,n:1.5}:v)),null);
+assert.ok(flowFeatures(b.map(v=>({...v,q:0,buy:0,n:0}))).every(Number.isFinite));
+console.log("OK: observable buyer-initiated volume, continuity, bounds and zero-volume handling.");
