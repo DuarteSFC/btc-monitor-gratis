@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 
 SCOPES=[("2022-23","2021-01-01","2022-01-01","2024-01-01"),("2026","2026-01-01","2026-04-01","2026-10-01")]
+PREMIUM_START={"2022-23":"2021-06-01","2026":"2026-01-01"}
 def utc(s):return pd.Timestamp(s,tz="UTC")
 def scores(p):
     p=p.asfreq("h")
@@ -45,10 +46,10 @@ def acquire(start,end):
         q=pd.concat(chunks);expected=pd.date_range(month+pd.Timedelta(hours=1),stop,freq="h")
         pd.testing.assert_index_equal(q.index,expected,check_names=False)
         valid=int(q.adjustedBps.notna().sum())
-        if valid/len(q)<.95:raise ValueError("incomplete month "+str(month))
-        row=dict(month=month.strftime("%Y-%m"),expected=len(q),joint=valid,sources=sources)
-        manifest.append(row);parts.append(q.adjustedBps)
+        row=dict(month=month.strftime("%Y-%m"),expected=len(q),joint=valid,binance=int(q.binance.notna().sum()),coinbase=int(q.coinbase.notna().sum()),usdt=int(q.usdtUSD.notna().sum()),sources=sources)
         print("XV01_MONTH="+json.dumps({k:v for k,v in row.items() if k!="sources"}),flush=True)
+        if valid/len(q)<.95:raise ValueError(f"incomplete month {month}: {valid}/{len(q)} joint observations")
+        manifest.append(row);parts.append(q.adjustedBps)
     p=pd.concat(parts);assert p.index.is_unique and p.index.is_monotonic_increasing
     return p,manifest
 def main():
@@ -61,7 +62,9 @@ def main():
     from ca01_relative_strength import controls
     results={};provenance={}
     for (name,warm,start,end),root in zip(SCOPES,[a.derivatives,a.extension]):
-        p,manifest=acquire(warm,end);z=scores(p);provenance[name]=manifest
+        premium_start=PREMIUM_START[name]
+        assert utc(premium_start)+pd.Timedelta(days=8)<utc(start)
+        p,manifest=acquire(premium_start,end);z=scores(p);provenance[name]=manifest
         print("XV01_DATA="+json.dumps(dict(period=name,months=len(manifest),expected=len(p),joint=int(p.notna().sum()),scoreHours=int(z.notna().sum()))),flush=True)
         btc,mark,funding=[load(root,k) for k in ["perp","mark","funding"]]
         assert btc.index.min()>=utc(warm) and btc.index.max()<utc(end)
