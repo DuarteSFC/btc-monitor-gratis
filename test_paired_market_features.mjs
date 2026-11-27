@@ -1,0 +1,11 @@
+import assert from "node:assert/strict";
+import {pairedFeatures} from "./paired_market_features.mjs";
+const s=Array.from({length:61},(_,i)=>({t:i*60000,o:100,c:100,h:101,l:99,q:100,buy:50,n:10}));
+assert.deepEqual(pairedFeatures(s,s),Array(10).fill(0));
+const p=s.map((z,i)=>i>=56?{...z,c:100.5,buy:80,q:100}:z);
+const v=pairedFeatures(s,p);assert.ok(v[0]>0);assert.ok(v[2]>0);assert.ok(v[6]>.59);
+assert.equal(pairedFeatures(s,p.slice(1)),null);
+assert.equal(pairedFeatures(s,p.map((z,i)=>i===59?{...z,t:z.t+1}:z)),null);
+assert.equal(pairedFeatures(s,p.map((z,i)=>i===59?{...z,buy:101}:z)),null);
+assert.ok(pairedFeatures(s.map(z=>({...z,q:0,buy:0})),p).every(Number.isFinite));
+console.log("OK: synchronized candles, basis, executed-flow difference, zero-volume handling, strict validation.");
