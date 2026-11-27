@@ -1,0 +1,65 @@
+{
+  "run": 45997846970,
+  "results": [
+    {
+      "period": "2022-23",
+      "cost": "normal",
+      "n": 1,
+      "mean": 1.2516087364433939,
+      "pf": null,
+      "win": 1,
+      "equity": 10031.290218411084,
+      "dd": 0,
+      "unknown": 0,
+      "events5": 10698,
+      "paired": 2075,
+      "candidates": 1,
+      "skipped": 0
+    },
+    {
+      "period": "2022-23",
+      "cost": "stress",
+      "n": 1,
+      "mean": 1.1110636922496628,
+      "pf": null,
+      "win": 1,
+      "equity": 10027.776592306242,
+      "dd": 0,
+      "unknown": 0,
+      "events5": 10698,
+      "paired": 2075,
+      "candidates": 1,
+      "skipped": 0
+    },
+    {
+      "period": "2026",
+      "cost": "normal",
+      "n": 0,
+      "mean": null,
+      "pf": null,
+      "win": null,
+      "equity": 10000,
+      "dd": 0,
+      "unknown": 0,
+      "events5": 3014,
+      "paired": 556,
+      "candidates": 0,
+      "skipped": 0
+    },
+    {
+      "period": "2026",
+      "cost": "stress",
+      "n": 0,
+      "mean": null,
+      "pf": null,
+      "win": null,
+      "equity": 10000,
+      "dd": 0,
+      "unknown": 0,
+      "events5": 3014,
+      "paired": 556,
+      "candidates": 0,
+      "skipped": 0
+    }
+  ]
+}
